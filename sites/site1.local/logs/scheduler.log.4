@@ -1,0 +1,1563 @@
+2026-05-18 07:29:52,114 ERROR scheduler Skipped queueing erpnext.controllers.accounts_controller.update_invoice_status because it was found in queue for site1.local
+2026-05-18 07:29:52,116 ERROR scheduler Skipped queueing erpnext.crm.utils.open_leads_opportunities_based_on_todays_event because it was found in queue for site1.local
+2026-05-18 07:29:52,176 ERROR scheduler Skipped queueing frappe.oauth.delete_oauth2_data because it was found in queue for site1.local
+2026-05-18 07:29:52,178 ERROR scheduler Skipped queueing frappe.core.doctype.user_invitation.user_invitation.mark_expired_invitations because it was found in queue for site1.local
+2026-05-18 07:29:52,180 ERROR scheduler Skipped queueing erpnext.projects.doctype.project.project.project_status_update_reminder because it was found in queue for site1.local
+2026-05-18 07:29:52,185 ERROR scheduler Skipped queueing erpnext.selling.doctype.quotation.quotation.set_expired_status because it was found in queue for site1.local
+2026-05-18 07:29:52,207 ERROR scheduler Skipped queueing erpnext.projects.doctype.project.project.send_project_status_email_to_users because it was found in queue for site1.local
+2026-05-18 07:29:52,215 ERROR scheduler Skipped queueing frappe.social.doctype.energy_point_log.energy_point_log.send_weekly_summary because it was found in queue for site1.local
+2026-05-21 11:34:20,436 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1463, in get_connection
+    if connection.can_read():
+       ~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 861, in can_read
+    return self._parser.can_read(timeout)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 444, in can_read
+    return self.read_from_socket(timeout=timeout, raise_on_timeout=False)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 455, in read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1467, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:35:20,552 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:36:20,653 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:37:20,755 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:38:20,842 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:39:20,940 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:40:21,031 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:41:21,114 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:42:21,194 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:43:21,276 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:44:21,358 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:45:21,452 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:46:21,533 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:47:21,625 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:48:21,709 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:49:21,785 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:50:21,921 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:51:22,090 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:52:22,219 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:53:22,326 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:54:22,478 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:55:22,616 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:56:22,777 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:57:22,907 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:58:23,111 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 11:59:23,253 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.
+2026-05-21 12:00:23,643 ERROR scheduler Exception in Enqueue Events for Site site1.local
+Traceback (most recent call last):
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 699, in connect
+    sock = self.retry.call_with_retry(
+        lambda: self._connect(), lambda error: self.disconnect(error)
+    )
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/retry.py", line 46, in call_with_retry
+    return do()
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 700, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1002, in _connect
+    raise err
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 990, in _connect
+    sock.connect(socket_address)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 102, in enqueue_events_for_site
+    enqueue_events(site=site)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/scheduler.py", line 122, in enqueue_events
+    if job_type.enqueue():
+       ~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 74, in enqueue
+    if not self.is_job_in_queue():
+           ~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/apps/frappe/frappe/core/doctype/scheduled_job_type/scheduled_job_type.py", line 95, in is_job_in_queue
+    return is_job_enqueued(self.rq_job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 567, in is_job_enqueued
+    return get_job_status(job_id) in (JobStatus.QUEUED, JobStatus.STARTED)
+           ~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 572, in get_job_status
+    job = get_job(job_id)
+  File "/home/frappe/tejas/apps/frappe/frappe/utils/background_jobs.py", line 579, in get_job
+    return Job.fetch(create_job_id(job_id), connection=get_redis_conn())
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 591, in fetch
+    job.refresh()
+    ~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/rq/job.py", line 989, in refresh
+    data = self.connection.hgetall(self.key)
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/commands/core.py", line 4887, in hgetall
+    return self.execute_command("HGETALL", name)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/client.py", line 1266, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+                              ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 1457, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "/home/frappe/tejas/env/lib/python3.14/site-packages/redis/connection.py", line 705, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 111 connecting to 127.0.0.1:11007. Connection refused.

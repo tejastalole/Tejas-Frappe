@@ -1,0 +1,414 @@
+2026-05-12 06:41:11,508 DEBUG cd tejas && uv venv env --seed --python python3
+2026-05-12 06:41:28,039 LOG Getting frappe
+2026-05-12 06:41:28,040 DEBUG cd tejas/apps && git clone https://github.com/frappe/frappe.git --branch version-15 --depth 1 --origin upstream
+2026-05-12 06:41:49,584 LOG Installing frappe
+2026-05-12 06:41:49,585 DEBUG cd /home/frappe/tejas && uv pip install --quiet --upgrade -e /home/frappe/tejas/apps/frappe  --python /home/frappe/tejas/env/bin/python
+2026-05-12 06:41:51,978 DEBUG cd /home/frappe/tejas/apps/frappe && yarn install --check-files
+2026-05-12 06:42:07,531 DEBUG cd /home/frappe/tejas && sudo supervisorctl restart frappe:
+2026-05-12 06:42:07,707 WARNING cd /home/frappe/tejas && sudo supervisorctl restart frappe: executed with exit code 2
+2026-05-12 06:42:07,719 WARNING restarting supervisor group `frappe:` failed. Use `bench restart` to retry.
+2026-05-12 06:42:07,720 DEBUG cd tejas && bench build
+2026-05-12 06:42:07,833 INFO /home/frappe/.local/bin/bench build
+2026-05-12 06:42:37,144 LOG setting up backups
+2026-05-12 06:42:37,168 LOG backups were set up
+2026-05-12 06:42:37,168 INFO Bench tejas initialized
+2026-05-12 06:43:20,320 INFO /home/frappe/.local/bin/bench new-site site1.local
+2026-05-12 06:44:29,676 INFO /home/frappe/.local/bin/bench get-app erpnext --branch version-15
+2026-05-12 06:44:43,381 LOG Getting erpnext
+2026-05-12 06:44:43,381 DEBUG cd ./apps && git clone https://github.com/frappe/erpnext.git --branch version-15 --depth 1 --origin upstream
+2026-05-12 06:45:04,798 LOG Installing erpnext
+2026-05-12 06:45:04,799 DEBUG cd /home/frappe/tejas && uv pip install --quiet --upgrade -e /home/frappe/tejas/apps/erpnext  --python /home/frappe/tejas/env/bin/python
+2026-05-12 06:45:06,082 DEBUG cd /home/frappe/tejas/apps/erpnext && yarn install --check-files
+2026-05-12 06:45:06,574 DEBUG bench build --app erpnext
+2026-05-12 06:45:06,767 INFO /home/frappe/.local/bin/bench build --app erpnext
+2026-05-12 06:45:12,114 DEBUG cd /home/frappe/tejas && sudo supervisorctl restart frappe:
+2026-05-12 06:45:12,514 WARNING cd /home/frappe/tejas && sudo supervisorctl restart frappe: executed with exit code 2
+2026-05-12 06:45:12,514 WARNING restarting supervisor group `frappe:` failed. Use `bench restart` to retry.
+2026-05-12 06:45:12,938 INFO /home/frappe/.local/bin/bench get-app payments
+2026-05-12 06:45:28,518 LOG Getting payments
+2026-05-12 06:45:28,519 DEBUG cd ./apps && git clone https://github.com/frappe/payments.git  --depth 1 --origin upstream
+2026-05-12 06:45:42,737 LOG Installing payments
+2026-05-12 06:45:42,738 DEBUG cd /home/frappe/tejas && uv pip install --quiet --upgrade -e /home/frappe/tejas/apps/payments  --python /home/frappe/tejas/env/bin/python
+2026-05-12 06:45:43,748 DEBUG bench build --app payments
+2026-05-12 06:45:43,938 INFO /home/frappe/.local/bin/bench build --app payments
+2026-05-12 06:45:49,560 DEBUG cd /home/frappe/tejas && sudo supervisorctl restart frappe:
+2026-05-12 06:45:50,204 WARNING cd /home/frappe/tejas && sudo supervisorctl restart frappe: executed with exit code 2
+2026-05-12 06:45:50,204 WARNING restarting supervisor group `frappe:` failed. Use `bench restart` to retry.
+2026-05-12 06:45:50,887 INFO /home/frappe/.local/bin/bench get-app hrms
+2026-05-12 06:46:06,816 LOG Getting hrms
+2026-05-12 06:46:06,816 DEBUG cd ./apps && git clone https://github.com/frappe/hrms.git  --depth 1 --origin upstream
+2026-05-12 06:46:23,092 LOG Installing hrms
+2026-05-12 06:46:23,093 DEBUG cd /home/frappe/tejas && uv pip install --quiet --upgrade -e /home/frappe/tejas/apps/hrms  --python /home/frappe/tejas/env/bin/python
+2026-05-12 06:46:23,604 DEBUG cd /home/frappe/tejas/apps/hrms && yarn install --check-files
+2026-05-12 06:47:09,568 DEBUG bench build --app hrms
+2026-05-12 06:47:09,745 INFO /home/frappe/.local/bin/bench build --app hrms
+2026-05-12 06:47:44,514 DEBUG cd /home/frappe/tejas && sudo supervisorctl restart frappe:
+2026-05-12 06:47:44,774 WARNING cd /home/frappe/tejas && sudo supervisorctl restart frappe: executed with exit code 2
+2026-05-12 06:47:44,774 WARNING restarting supervisor group `frappe:` failed. Use `bench restart` to retry.
+2026-05-12 06:47:52,408 INFO /home/frappe/.local/bin/bench --site site1.local install-app erpnext
+2026-05-12 06:49:06,259 INFO /home/frappe/.local/bin/bench --site site1.local install-app payments
+2026-05-12 06:49:12,818 INFO /home/frappe/.local/bin/bench --site site1.local install-app hrms
+2026-05-12 06:49:50,287 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-12 06:49:51,133 INFO /home/frappe/.local/bin/bench start
+2026-05-12 06:49:51,553 INFO /home/frappe/.local/bin/bench watch
+2026-05-12 06:49:51,557 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-12 06:49:51,574 INFO /home/frappe/.local/bin/bench schedule
+2026-05-12 06:49:51,580 INFO /home/frappe/.local/bin/bench worker
+2026-05-12 12:00:00,793 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-13 06:00:01,335 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-13 12:00:01,707 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-14 06:00:01,703 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-14 12:00:02,260 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-15 10:25:40,251 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-15 10:25:45,473 INFO /home/frappe/.local/bin/bench start
+2026-05-15 10:25:45,944 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-15 10:25:45,956 INFO /home/frappe/.local/bin/bench schedule
+2026-05-15 10:25:45,961 INFO /home/frappe/.local/bin/bench worker
+2026-05-15 10:25:45,971 INFO /home/frappe/.local/bin/bench watch
+2026-05-15 10:47:10,902 INFO /home/frappe/.local/bin/bench new-app --help
+2026-05-15 10:47:17,772 INFO /home/frappe/.local/bin/bench new-app ai_bot --no-git
+2026-05-15 10:47:17,775 LOG creating new app ai_bot
+2026-05-15 10:47:34,495 WARNING /home/frappe/.local/bin/bench new-app ai_bot --no-git executed with exit code 1
+2026-05-15 10:47:43,710 INFO /home/frappe/.local/bin/bench new-app ai_bot --no-git
+2026-05-15 10:47:43,714 LOG creating new app ai_bot
+2026-05-15 10:47:58,682 WARNING /home/frappe/.local/bin/bench new-app ai_bot --no-git executed with exit code 1
+2026-05-15 10:48:07,647 INFO /home/frappe/.local/bin/bench new-app ai_bot --no-git
+2026-05-15 10:48:07,651 LOG creating new app ai_bot
+2026-05-15 10:48:22,815 WARNING /home/frappe/.local/bin/bench new-app ai_bot --no-git executed with exit code 1
+2026-05-15 10:48:42,250 INFO /home/frappe/.local/bin/bench new-app ai_bot --no-git
+2026-05-15 10:48:42,255 LOG creating new app ai_bot
+2026-05-15 10:49:02,487 LOG Installing ai_bot
+2026-05-15 10:49:02,488 DEBUG cd /home/frappe/tejas && uv pip install --quiet --upgrade -e /home/frappe/tejas/apps/ai_bot  --python /home/frappe/tejas/env/bin/python
+2026-05-15 10:49:03,302 DEBUG bench build --app ai_bot
+2026-05-15 10:49:03,432 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-15 10:49:06,157 WARNING /home/frappe/.local/bin/bench new-app ai_bot --no-git executed with exit code 1
+2026-05-15 10:49:19,195 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-05-15 10:50:53,150 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_bot
+2026-05-15 10:51:00,691 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-15 10:51:02,034 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many sales order is created"]
+2026-05-15 10:51:03,486 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-15 10:51:12,664 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-05-15 10:51:40,790 INFO /home/frappe/.local/bin/bench start
+2026-05-15 10:51:41,214 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-15 10:51:41,216 INFO /home/frappe/.local/bin/bench watch
+2026-05-15 10:51:41,217 INFO /home/frappe/.local/bin/bench schedule
+2026-05-15 10:51:41,224 INFO /home/frappe/.local/bin/bench worker
+2026-05-15 10:57:52,674 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-15 10:58:12,917 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-15 10:58:17,220 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-15 11:03:28,542 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["How many sales orders this month?"]
+2026-05-15 11:03:36,788 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["How many sales orders this month?"]
+2026-05-15 11:03:54,780 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["How many sales orders this month?"]
+2026-05-15 11:04:07,216 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["How many sales orders this month?"]
+2026-05-15 11:04:18,866 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["Total value of sales orders this month"]
+2026-05-15 11:04:20,149 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["Count draft sales orders"]
+2026-05-15 12:00:02,103 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-15 12:01:08,875 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.utils.create_sales_order.parse_create_so_params --args ["create a sales order for customer tejas item is ABC1 Qty 50 rate is 100 rs"]
+2026-05-15 12:02:30,500 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["create a sales order for customer tejas item is ABC1 Qty 50 rate is 100 rs"]
+2026-05-15 13:37:59,136 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-16 06:00:01,693 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-16 08:36:50,918 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-16 08:36:54,945 INFO /home/frappe/.local/bin/bench start
+2026-05-16 08:36:55,403 INFO /home/frappe/.local/bin/bench watch
+2026-05-16 08:36:55,412 INFO /home/frappe/.local/bin/bench schedule
+2026-05-16 08:36:55,413 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-16 08:36:55,423 INFO /home/frappe/.local/bin/bench worker
+2026-05-16 16:15:37,319 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-16 16:15:41,332 INFO /home/frappe/.local/bin/bench start
+2026-05-16 16:15:41,746 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-16 16:15:41,753 INFO /home/frappe/.local/bin/bench watch
+2026-05-16 16:15:41,763 INFO /home/frappe/.local/bin/bench schedule
+2026-05-16 16:15:41,771 INFO /home/frappe/.local/bin/bench worker
+2026-05-16 16:21:26,958 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-16 16:22:36,305 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-16 16:22:39,419 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-16 16:23:23,482 INFO /home/frappe/.local/bin/bench start
+2026-05-16 16:23:23,897 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-16 16:23:23,909 INFO /home/frappe/.local/bin/bench watch
+2026-05-16 16:23:23,919 INFO /home/frappe/.local/bin/bench schedule
+2026-05-16 16:23:23,926 INFO /home/frappe/.local/bin/bench worker
+2026-05-16 16:25:03,699 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-16 16:25:06,465 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-16 16:27:19,625 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-16 16:27:23,024 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-16 16:27:49,082 INFO /home/frappe/.local/bin/bench restart
+2026-05-16 16:27:53,136 DEBUG cd /home/frappe/tejas && sudo supervisorctl restart frappe:
+2026-05-16 16:27:53,406 WARNING cd /home/frappe/tejas && sudo supervisorctl restart frappe: executed with exit code 2
+2026-05-16 16:27:53,407 WARNING /home/frappe/.local/bin/bench restart executed with exit code 1
+2026-05-16 16:32:19,065 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many items"]
+2026-05-16 16:32:20,465 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many sales order whose grand total is 5000", "CONV_ID"]
+2026-05-16 16:32:37,250 INFO /home/frappe/.local/bin/bench --site site1.local execute 
+import frappe
+frappe.set_user('Administrator')
+from ai_bot.api.chat import ask
+r1 = ask('how many items')
+r2 = ask('how many sales order whose grand total is 5000', r1['conversation_id'])
+print('Q2:', r2['reply'])
+
+2026-05-16 16:32:44,258 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many sales order whose grand total is 5000"]
+2026-05-16 16:32:53,240 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.skills.registry.process_message --args ["how many items", null]
+2026-05-16 16:33:02,968 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many items"]
+2026-05-16 16:33:05,237 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many sales order whose grand total is 5000", "6k73g81ca1"]
+2026-05-16 16:36:51,887 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["what is inside my frappe"]
+2026-05-16 16:36:53,975 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many employee"]
+2026-05-16 16:36:55,286 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["list customers"]
+2026-05-16 16:37:08,804 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.utils.doctype_discovery.discover_doctype --args ["employee"]
+2026-05-16 16:37:10,359 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.exists --args ["DocType", "Employee"]
+2026-05-16 16:39:19,812 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many employee"]
+2026-05-16 16:39:41,348 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many employee"]
+2026-05-16 16:39:43,288 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many Lead"]
+2026-05-16 17:36:23,684 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.copilot.intent_parser.parse_intent --args ["how many sales orders are there"]
+2026-05-16 17:36:35,542 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.copilot.intent_parser.parse_intent --args ["how many sales orders are there"]
+2026-05-16 17:36:57,373 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.copilot.intent_parser.parse_intent --args ["how many sales orders are there"]
+2026-05-16 17:36:58,474 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many sales orders"]
+2026-05-16 17:37:11,693 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.utils.doctype_discovery.discover_doctype --args ["how many sales orders are there"]
+2026-05-16 17:37:20,422 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-16 17:37:27,906 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.copilot.intent_parser.parse_intent --args ["how many sales orders are there"]
+2026-05-16 17:37:28,945 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.parse_query --args ["Show overdue invoices above 50000"]
+2026-05-16 17:37:43,719 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.parse_query --args ["Show overdue invoices above 50000"]
+2026-05-16 17:37:44,879 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["Create customer ABC Pvt Ltd"]
+2026-05-16 17:38:03,964 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.parse_query --args ["Show overdue invoices above 50000"]
+2026-05-16 17:38:05,220 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.parse_query --args ["Create customer ABC Pvt Ltd"]
+2026-05-16 17:38:17,116 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.parse_query --args ["Show overdue invoices above 50000"]
+2026-05-16 17:38:18,351 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many sales orders"]
+2026-05-16 17:38:36,983 INFO /home/frappe/.local/bin/bench start
+2026-05-16 17:38:37,576 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-16 17:38:37,596 INFO /home/frappe/.local/bin/bench worker
+2026-05-16 17:38:37,600 INFO /home/frappe/.local/bin/bench watch
+2026-05-16 17:38:37,601 INFO /home/frappe/.local/bin/bench schedule
+2026-05-16 17:46:01,916 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-16 17:51:35,543 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.copilot.compound_parser.parse_intents --args ["delete the Tejas also change the id to XYZ Customer"]
+2026-05-16 17:51:51,479 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["how many customers"]
+2026-05-16 17:51:52,787 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.parse_query --args ["create a bottles item qty is 100"]
+2026-05-16 17:52:06,379 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-18 07:27:50,075 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-18 07:27:52,580 INFO /home/frappe/.local/bin/bench start
+2026-05-18 07:27:53,007 INFO /home/frappe/.local/bin/bench watch
+2026-05-18 07:27:53,012 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-18 07:27:53,025 INFO /home/frappe/.local/bin/bench schedule
+2026-05-18 07:27:53,029 INFO /home/frappe/.local/bin/bench worker
+2026-05-18 07:32:18,041 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.copilot.query_planner.plan_query --args ["find Tejas"]
+2026-05-18 07:32:18,950 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["what is in my site"]
+2026-05-18 07:32:28,742 INFO /home/frappe/.local/bin/bench --site site1.local execute ai_bot.api.chat.ask --args ["find Tejas"]
+2026-05-18 07:32:30,555 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-18 07:33:12,768 INFO /home/frappe/.local/bin/bench start
+2026-05-18 07:33:13,266 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-18 07:33:13,288 INFO /home/frappe/.local/bin/bench watch
+2026-05-18 07:33:13,289 INFO /home/frappe/.local/bin/bench schedule
+2026-05-18 07:33:13,305 INFO /home/frappe/.local/bin/bench worker
+2026-05-18 07:34:23,010 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-05-18 07:35:49,197 INFO /home/frappe/.local/bin/bench --site site1.local execute import frappe; print([a for a in frappe.get_installed_apps() if 'ai' in a]); print(frappe.get_hooks('app_include_js', app_name='ai_bot'))
+2026-05-18 07:36:20,251 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_installed_apps
+2026-05-18 07:36:21,304 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_hooks --args ["app_include_js", "ai_bot"]
+2026-05-18 07:37:42,477 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-18 07:37:44,971 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-18 07:38:28,271 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.get_value --args ["Installed Application", {"app_name": "ai_bot"}, "app_name"]
+2026-05-18 12:00:01,479 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-19 06:00:02,125 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-20 06:00:02,250 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-20 12:00:00,518 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-21 05:28:16,941 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-21 05:28:54,780 INFO /home/frappe/.local/bin/bench start
+2026-05-21 05:28:55,221 INFO /home/frappe/.local/bin/bench schedule
+2026-05-21 05:28:55,229 INFO /home/frappe/.local/bin/bench worker
+2026-05-21 05:28:55,233 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-21 05:28:55,237 INFO /home/frappe/.local/bin/bench watch
+2026-05-21 05:29:36,274 INFO /home/frappe/.local/bin/bench build
+2026-05-21 05:36:44,417 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-05-21 05:36:44,582 INFO /home/frappe/.local/bin/bench version
+2026-05-21 05:39:39,833 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 05:42:41,502 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-21 05:42:43,969 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 05:44:26,595 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 05:46:10,171 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-21 05:46:12,744 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 06:00:01,646 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-21 08:59:34,056 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-21 08:59:43,451 INFO /home/frappe/.local/bin/bench start
+2026-05-21 08:59:43,827 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-21 08:59:43,828 INFO /home/frappe/.local/bin/bench schedule
+2026-05-21 08:59:43,829 INFO /home/frappe/.local/bin/bench watch
+2026-05-21 08:59:43,831 INFO /home/frappe/.local/bin/bench worker
+2026-05-21 09:03:28,893 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-21 09:03:31,273 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 09:05:22,915 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 09:06:37,143 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-21 09:06:41,615 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 09:11:20,910 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-21 09:11:23,344 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 09:24:29,610 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 09:25:16,099 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-21 09:25:19,548 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 09:26:39,193 INFO /home/frappe/.local/bin/bench version
+2026-05-21 09:27:08,947 INFO /home/frappe/.local/bin/bench new-app ai_resume_parser --no-git
+2026-05-21 09:27:08,951 LOG creating new app ai_resume_parser
+2026-05-21 09:28:24,813 WARNING /home/frappe/.local/bin/bench new-app ai_resume_parser --no-git executed with exit code 1
+2026-05-21 09:33:24,272 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 09:38:17,398 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 09:38:27,186 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 09:38:36,759 INFO /home/frappe/.local/bin/bench --site site1.local install-app hrms
+2026-05-21 09:38:44,738 INFO /home/frappe/.local/bin/bench --site site1.local install-app hrms --force
+2026-05-21 09:39:04,826 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 09:40:05,219 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 09:40:31,580 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 09:40:46,999 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 09:41:16,918 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 09:41:45,872 INFO /home/frappe/.local/bin/bench build --app ai_resume_parser
+2026-05-21 09:41:48,980 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 09:50:20,426 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 09:50:35,210 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 09:50:40,580 INFO /home/frappe/.local/bin/bench --site site1.local install-app hrms
+2026-05-21 09:52:01,666 INFO /home/frappe/.local/bin/bench start
+2026-05-21 09:52:02,230 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-21 09:52:02,238 INFO /home/frappe/.local/bin/bench watch
+2026-05-21 09:52:02,240 INFO /home/frappe/.local/bin/bench schedule
+2026-05-21 09:52:02,240 INFO /home/frappe/.local/bin/bench worker
+2026-05-21 10:00:21,335 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app ai_resume_parser --yes --no-backup
+2026-05-21 10:00:54,557 INFO /home/frappe/.local/bin/bench build
+2026-05-21 10:00:56,139 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 10:01:53,041 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 10:03:52,629 INFO /home/frappe/.local/bin/bench new-app ai_resume_parser --no-git
+2026-05-21 10:03:52,648 LOG creating new app ai_resume_parser
+2026-05-21 10:04:08,799 WARNING /home/frappe/.local/bin/bench new-app ai_resume_parser --no-git executed with exit code 1
+2026-05-21 10:04:25,721 INFO /home/frappe/.local/bin/bench new-app ai_resume_parser --no-git
+2026-05-21 10:04:25,724 LOG creating new app ai_resume_parser
+2026-05-21 10:04:41,582 WARNING /home/frappe/.local/bin/bench new-app ai_resume_parser --no-git executed with exit code 1
+2026-05-21 10:06:22,854 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 10:06:31,875 INFO /home/frappe/.local/bin/bench --site site1.local install-app ai_resume_parser
+2026-05-21 10:06:37,077 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 10:06:48,293 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 10:07:00,187 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 10:07:15,401 INFO /home/frappe/.local/bin/bench build --app ai_resume_parser
+2026-05-21 10:07:16,970 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-21 10:07:19,604 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 10:08:40,121 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-05-21 10:09:43,039 INFO /home/frappe/.local/bin/bench version
+2026-05-21 10:10:37,226 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-21 10:10:57,737 INFO /home/frappe/.local/bin/bench --site site1.local execute import frappe; frappe.init(); print(frappe.get_app_path('ai_resume_parser'))
+2026-05-21 10:14:09,159 INFO /home/frappe/.local/bin/bench start
+2026-05-21 10:14:09,579 INFO /home/frappe/.local/bin/bench watch
+2026-05-21 10:14:09,583 INFO /home/frappe/.local/bin/bench schedule
+2026-05-21 10:14:09,586 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-21 10:14:09,586 INFO /home/frappe/.local/bin/bench worker
+2026-05-21 10:31:46,288 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 10:35:33,520 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 10:37:53,898 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 10:56:53,378 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-21 12:00:02,377 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-22 06:00:01,511 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-22 08:53:43,898 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-22 08:53:47,934 INFO /home/frappe/.local/bin/bench start
+2026-05-22 08:53:48,382 INFO /home/frappe/.local/bin/bench watch
+2026-05-22 08:53:48,386 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-22 08:53:48,394 INFO /home/frappe/.local/bin/bench schedule
+2026-05-22 08:53:48,407 INFO /home/frappe/.local/bin/bench worker
+2026-05-22 09:45:49,903 INFO /home/frappe/.local/bin/bench rename-site site1.local tej
+2026-05-22 09:46:11,166 INFO /home/frappe/.local/bin/bench rename-site site1.local fg.local
+2026-05-22 09:46:41,826 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-22 09:46:56,200 INFO /home/frappe/.local/bin/bench start
+2026-05-22 09:46:56,714 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-22 09:46:56,720 INFO /home/frappe/.local/bin/bench schedule
+2026-05-22 09:46:56,750 INFO /home/frappe/.local/bin/bench watch
+2026-05-22 09:46:56,763 INFO /home/frappe/.local/bin/bench worker
+2026-05-22 10:04:08,515 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures
+2026-05-22 10:05:10,896 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures
+2026-05-22 10:14:55,997 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures
+2026-05-22 10:22:11,427 INFO /home/frappe/.local/bin/bench migrate
+2026-05-22 10:23:20,786 INFO /home/frappe/.local/bin/bench migrate
+2026-05-22 10:43:05,170 INFO /home/frappe/.local/bin/bench migrate
+2026-05-22 10:45:12,627 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures
+2026-05-22 10:45:15,722 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures1
+2026-05-22 10:45:22,394 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures
+2026-05-22 10:45:34,638 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures1
+2026-05-22 10:46:30,479 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures
+2026-05-22 10:50:52,192 INFO /home/frappe/.local/bin/bench --site site1.local export-fixtures
+2026-05-22 11:01:27,288 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-22 11:02:32,510 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-22 11:02:36,578 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-22 11:07:21,683 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-22 11:07:25,654 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-22 11:10:41,747 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-22 11:12:39,538 INFO /home/frappe/.local/bin/bench migrate
+2026-05-22 11:14:12,061 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-22 11:18:05,286 INFO /home/frappe/.local/bin/bench migrate
+2026-05-22 11:18:47,168 INFO /home/frappe/.local/bin/bench build
+2026-05-22 11:21:46,833 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-22 11:22:41,507 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-22 11:24:01,293 INFO /home/frappe/.local/bin/bench build
+2026-05-22 11:26:15,199 INFO /home/frappe/.local/bin/bench build
+2026-05-22 11:28:42,533 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-22 11:28:59,350 INFO /home/frappe/.local/bin/bench --site site1.local reload-doc Tejas Testing
+2026-05-22 11:29:10,812 INFO /home/frappe/.local/bin/bench --site site1.local reload-doc ai_bot doctype tejas_testing
+2026-05-22 11:29:12,720 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-22 11:29:27,817 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-22 11:29:50,019 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-22 11:30:07,946 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-22 11:30:22,146 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-22 11:30:38,364 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-22 12:03:21,302 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-22 12:03:28,949 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-22 12:03:39,355 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-22 13:18:05,190 INFO /home/frappe/.local/bin/bench build --app ai_bot
+2026-05-22 13:18:08,508 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-23 05:41:27,945 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-23 05:41:32,014 INFO /home/frappe/.local/bin/bench start
+2026-05-23 05:41:32,526 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-23 05:41:32,531 INFO /home/frappe/.local/bin/bench watch
+2026-05-23 05:41:32,536 INFO /home/frappe/.local/bin/bench schedule
+2026-05-23 05:41:32,540 INFO /home/frappe/.local/bin/bench worker
+2026-05-23 06:00:02,445 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-23 06:29:54,700 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-23 06:30:00,153 INFO /home/frappe/.local/bin/bench start
+2026-05-23 06:30:00,670 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-23 06:30:00,672 INFO /home/frappe/.local/bin/bench schedule
+2026-05-23 06:30:00,686 INFO /home/frappe/.local/bin/bench watch
+2026-05-23 06:30:00,689 INFO /home/frappe/.local/bin/bench worker
+2026-05-23 06:55:06,897 INFO /home/frappe/.local/bin/bench new-app gym_management --no-input
+2026-05-23 06:55:06,912 WARNING /home/frappe/.local/bin/bench new-app gym_management --no-input executed with exit code 2
+2026-05-23 06:55:14,095 INFO /home/frappe/.local/bin/bench new-app gym_management --no-git
+2026-05-23 06:55:14,101 LOG creating new app gym_management
+2026-05-23 06:55:29,476 WARNING /home/frappe/.local/bin/bench new-app gym_management --no-git executed with exit code 1
+2026-05-23 06:58:20,026 INFO /home/frappe/.local/bin/bench --site site1.local install-app gym_management
+2026-05-23 06:58:30,046 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-23 06:58:48,567 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-23 06:58:54,114 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-23 06:58:59,971 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-23 06:59:32,722 INFO /home/frappe/.local/bin/bench start
+2026-05-23 06:59:33,459 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-23 06:59:33,467 INFO /home/frappe/.local/bin/bench watch
+2026-05-23 06:59:33,486 INFO /home/frappe/.local/bin/bench worker
+2026-05-23 06:59:33,544 INFO /home/frappe/.local/bin/bench schedule
+2026-05-23 07:00:53,709 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-23 07:01:30,430 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-23 07:01:40,402 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-23 07:01:50,106 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-23 07:02:02,869 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-23 07:02:44,099 INFO /home/frappe/.local/bin/bench --site site1.local execute gym_management.gym_management.workspace.sync_workspace.sync_gym_workspace
+2026-05-23 07:02:45,304 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-23 07:02:50,789 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-23 07:40:53,877 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-23 07:41:02,310 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-23 07:41:06,266 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-23 07:51:09,433 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-23 07:51:18,150 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-23 07:51:32,201 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-23 07:55:21,349 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-05-23 07:55:29,148 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-23 07:55:32,324 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-05-23 08:53:57,958 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-23 08:54:11,631 INFO /home/frappe/.local/bin/bench start
+2026-05-23 08:55:18,961 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-23 08:55:22,395 INFO /home/frappe/.local/bin/bench start
+2026-05-23 08:55:22,781 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-23 08:55:22,782 INFO /home/frappe/.local/bin/bench watch
+2026-05-23 08:55:22,782 INFO /home/frappe/.local/bin/bench schedule
+2026-05-23 08:55:22,797 INFO /home/frappe/.local/bin/bench worker
+2026-05-23 08:56:01,991 INFO /home/frappe/.local/bin/bench stop
+2026-05-23 08:56:23,036 INFO /home/frappe/.local/bin/bench start
+2026-05-23 08:56:23,414 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-23 08:56:23,420 INFO /home/frappe/.local/bin/bench schedule
+2026-05-23 08:56:23,431 INFO /home/frappe/.local/bin/bench watch
+2026-05-23 08:56:23,433 INFO /home/frappe/.local/bin/bench worker
+2026-05-23 09:08:33,875 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-23 09:11:30,417 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-23 09:26:36,865 INFO /home/frappe/.local/bin/bench build --app gym_management

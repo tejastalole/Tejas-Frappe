@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "creation": "2026-05-21 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "gym_name",
+  "column_break_1",
+  "default_membership_plan",
+  "section_break_reminders",
+  "membership_expiry_reminder_days",
+  "allow_checkout_without_checkin"
+ ],
+ "fields": [
+  {
+   "default": "My Gym",
+   "fieldname": "gym_name",
+   "fieldtype": "Data",
+   "label": "Gym Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_membership_plan",
+   "fieldtype": "Link",
+   "label": "Default Membership Plan",
+   "options": "Membership Plan"
+  },
+  {
+   "fieldname": "section_break_reminders",
+   "fieldtype": "Section Break",
+   "label": "Reminders"
+  },
+  {
+   "default": "7",
+   "fieldname": "membership_expiry_reminder_days",
+   "fieldtype": "Int",
+   "label": "Membership Expiry Reminder (Days Before)"
+  },
+  {
+   "default": "0",
+   "fieldname": "allow_checkout_without_checkin",
+   "fieldtype": "Check",
+   "label": "Allow Check-out Without Check-in"
+  }
+ ],
+ "issingle": 1,
+ "modified": "2026-05-21 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Gym Management",
+ "name": "Gym Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Gym Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

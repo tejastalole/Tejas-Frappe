@@ -1,0 +1,25 @@
+{
+  "name": "Gym Management",
+  "short_name": "Gym",
+  "description": "Gym member check-in and attendance",
+  "start_url": "/gym-app",
+  "scope": "/gym-app",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "icons": [
+    {
+      "src": "/assets/gym_management/gym_pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/gym_management/gym_pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

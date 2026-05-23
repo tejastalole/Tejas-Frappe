@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "creation": "2026-05-21 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_llm",
+  "openai_api_key",
+  "llm_model",
+  "column_break_ai",
+  "default_language",
+  "enable_voice",
+  "log_actions",
+  "confirm_destructive_actions"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enable_llm",
+   "fieldtype": "Check",
+   "label": "Enable LLM Intent Parsing"
+  },
+  {
+   "depends_on": "eval:doc.enable_llm",
+   "fieldname": "openai_api_key",
+   "fieldtype": "Password",
+   "label": "OpenAI API Key"
+  },
+  {
+   "default": "gpt-4o-mini",
+   "depends_on": "eval:doc.enable_llm",
+   "fieldname": "llm_model",
+   "fieldtype": "Data",
+   "label": "LLM Model"
+  },
+  {
+   "fieldname": "column_break_ai",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "en",
+   "fieldname": "default_language",
+   "fieldtype": "Select",
+   "label": "Default Language",
+   "options": "en\nhi"
+  },
+  {
+   "default": "0",
+   "description": "Voice input uses browser speech recognition when supported.",
+   "fieldname": "enable_voice",
+   "fieldtype": "Check",
+   "label": "Enable Voice Hints"
+  },
+  {
+   "default": "1",
+   "fieldname": "log_actions",
+   "fieldtype": "Check",
+   "label": "Log Copilot Actions"
+  },
+  {
+   "default": "1",
+   "fieldname": "confirm_destructive_actions",
+   "fieldtype": "Check",
+   "label": "Confirm Destructive Actions"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-05-21 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "AI Bot",
+ "name": "AI Bot Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

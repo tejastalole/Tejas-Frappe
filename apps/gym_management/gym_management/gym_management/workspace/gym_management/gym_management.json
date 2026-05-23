@@ -1,0 +1,168 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"hdr_shortcuts\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"sc_member\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Gym Member\",\"col\":3}},{\"id\":\"sc_membership\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Gym Membership\",\"col\":3}},{\"id\":\"sc_attendance\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Attendance Log\",\"col\":3}},{\"id\":\"sc_plan\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Membership Plan\",\"col\":3}},{\"id\":\"sc_settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Gym Settings\",\"col\":3}},{\"id\":\"sc_report\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Active Members\",\"col\":3}},{\"id\":\"sp1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr_masters\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Masters</b></span>\",\"col\":12}},{\"id\":\"card_setup\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}},{\"id\":\"card_members\",\"type\":\"card\",\"data\":{\"card_name\":\"Members\",\"col\":4}},{\"id\":\"card_trainers\",\"type\":\"card\",\"data\":{\"card_name\":\"Trainers\",\"col\":4}}]",
+ "creation": "2026-05-23 12:32:46.659934",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "healthcare",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Gym Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Gym Settings",
+   "link_count": 0,
+   "link_to": "Gym Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Membership Plan",
+   "link_count": 0,
+   "link_to": "Membership Plan",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Members",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Gym Member",
+   "link_count": 0,
+   "link_to": "Gym Member",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Gym Membership",
+   "link_count": 0,
+   "link_to": "Gym Membership",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attendance Log",
+   "link_count": 0,
+   "link_to": "Attendance Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Active Members",
+   "link_count": 0,
+   "link_to": "Active Members",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Trainers",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Gym Trainer",
+   "link_count": 0,
+   "link_to": "Gym Trainer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-05-23 12:33:36.623009",
+ "modified_by": "Administrator",
+ "module": "Gym Management",
+ "name": "Gym Management",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "Gym Member",
+   "link_to": "Gym Member",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "Gym Membership",
+   "link_to": "Gym Membership",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "label": "Attendance Log",
+   "link_to": "Attendance Log",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "label": "Membership Plan",
+   "link_to": "Membership Plan",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Gym Settings",
+   "link_to": "Gym Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "label": "Active Members",
+   "link_to": "Active Members",
+   "report_ref_doctype": "Gym Member",
+   "type": "Report"
+  }
+ ],
+ "title": "Gym Management"
+}

@@ -1,0 +1,5 @@
+[pre_model_sync]
+gym_management.patches.v1_0.rename_checkin_coord_fields
+
+[post_model_sync]
+# patches after model sync

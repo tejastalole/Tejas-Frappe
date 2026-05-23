@@ -1,0 +1,7 @@
+frappe
+erpnext
+ai_bot
+hrms
+payments
+ai_resume_parser
+gym_management

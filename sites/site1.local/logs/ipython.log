@@ -1,0 +1,182 @@
+2026-05-21 05:39:41,939 INFO ipython === bench console session ===
+2026-05-21 05:39:41,939 INFO ipython import frappe
+2026-05-21 05:39:41,939 INFO ipython hooks = frappe.get_hooks('app_include_js')
+2026-05-21 05:39:41,939 INFO ipython ai = [x for x in hooks if 'ai_bot' in x]
+2026-05-21 05:39:41,939 INFO ipython print('ai_bot js hooks:', ai)
+2026-05-21 05:39:41,939 INFO ipython css = [x for x in frappe.get_hooks('app_include_css') if 'ai_bot' in x]
+2026-05-21 05:39:41,939 INFO ipython print('ai_bot css hooks:', css)
+2026-05-21 05:39:41,939 INFO ipython print('ai_bot installed:', 'ai_bot' in frappe.get_installed_apps())
+2026-05-21 05:39:41,939 INFO ipython === session end ===
+2026-05-21 05:44:27,607 INFO ipython === bench console session ===
+2026-05-21 05:44:27,608 INFO ipython import frappe
+2026-05-21 05:44:27,608 INFO ipython print('port check from site:', frappe.conf.get('webserver_port'))
+2026-05-21 05:44:27,608 INFO ipython print('installed:', frappe.get_installed_apps())
+2026-05-21 05:44:27,608 INFO ipython js = frappe.get_hooks('app_include_js')
+2026-05-21 05:44:27,608 INFO ipython print('ai_bot in hooks:', [x for x in js if 'ai_bot' in str(x)])
+2026-05-21 05:44:27,608 INFO ipython === session end ===
+2026-05-21 09:05:26,967 INFO ipython === bench console session ===
+2026-05-21 09:05:26,968 INFO ipython import frappe
+2026-05-21 09:05:26,968 INFO ipython js = frappe.get_hooks('app_include_js')
+2026-05-21 09:05:26,968 INFO ipython css = frappe.get_hooks('app_include_css')
+2026-05-21 09:05:26,968 INFO ipython print('ai_bot js:', [x for x in js if 'ai_bot' in x])
+2026-05-21 09:05:26,968 INFO ipython print('ai_bot css:', [x for x in css if 'ai_bot' in x])
+2026-05-21 09:05:26,968 INFO ipython print('installed:', 'ai_bot' in frappe.get_installed_apps())
+2026-05-21 09:05:26,968 INFO ipython === session end ===
+2026-05-21 09:38:28,158 INFO ipython === bench console session ===
+2026-05-21 09:38:28,158 INFO ipython import frappe
+2026-05-21 09:38:28,158 INFO ipython print(frappe.get_installed_apps())
+2026-05-21 09:38:28,158 INFO ipython print('Job Applicant exists', frappe.db.exists('DocType', 'Job Applicant'))
+2026-05-21 09:38:28,158 INFO ipython === session end ===
+2026-05-21 09:50:21,359 INFO ipython === bench console session ===
+2026-05-21 09:50:21,360 INFO ipython import frappe
+2026-05-21 09:50:21,360 INFO ipython print('installed:', frappe.get_installed_apps())
+2026-05-21 09:50:21,360 INFO ipython print('Settings', frappe.db.exists('Resume Parser Settings', 'Resume Parser Settings'))
+2026-05-21 09:50:21,360 INFO ipython print('Skill Master count', frappe.db.count('Skill Master'))
+2026-05-21 09:50:21,360 INFO ipython === session end ===
+2026-05-21 09:50:36,104 INFO ipython === bench console session ===
+2026-05-21 09:50:36,104 INFO ipython import frappe
+2026-05-21 09:50:36,104 INFO ipython print('Job Applicant exists', frappe.db.exists('DocType', 'Job Applicant'))
+2026-05-21 09:50:36,104 INFO ipython if frappe.db.exists('DocType', 'Job Applicant'):
+    meta = frappe.get_meta('Job Applicant')
+    for f in ['resume', 'resume_score', 'parsing_status']:
+        print(f, meta.get_field(f))
+2026-05-21 09:50:36,104 INFO ipython === session end ===
+2026-05-21 10:00:57,941 INFO ipython === bench console session ===
+2026-05-21 10:00:57,941 INFO ipython import frappe
+2026-05-21 10:00:57,942 INFO ipython print('installed apps:', frappe.get_installed_apps())
+2026-05-21 10:00:57,942 INFO ipython print('Resume Parser Settings exists:', frappe.db.exists('DocType', 'Resume Parser Settings'))
+2026-05-21 10:00:57,942 INFO ipython === session end ===
+2026-05-21 10:06:49,463 INFO ipython === bench console session ===
+2026-05-21 10:06:49,463 INFO ipython import frappe
+2026-05-21 10:06:49,464 INFO ipython print('installed', 'ai_resume_parser' in frappe.get_installed_apps())
+2026-05-21 10:06:49,464 INFO ipython for dt in ['Resume Upload', 'Parsed Resume Data']:
+    print(dt, frappe.db.exists('DocType', dt))
+2026-05-21 10:06:49,464 INFO ipython === session end ===
+2026-05-21 10:07:18,577 INFO ipython === bench console session ===
+2026-05-21 10:07:18,577 INFO ipython import frappe
+2026-05-21 10:07:18,578 INFO ipython for dt in ['Resume Upload', 'Parsed Resume Data']:
+    print(dt, frappe.db.exists('DocType', dt))
+2026-05-21 10:07:18,578 INFO ipython === session end ===
+2026-05-22 11:28:47,025 INFO ipython === bench console session ===
+2026-05-22 11:28:47,030 INFO ipython import frappe
+2026-05-22 11:28:47,031 INFO ipython meta = frappe.get_meta('Tejas Testing')
+2026-05-22 11:28:47,031 INFO ipython f = meta.get_field('naming_series')
+2026-05-22 11:28:47,031 INFO ipython print('DB options:', repr(f.options))
+2026-05-22 11:28:47,032 INFO ipython print('default:', f.default)
+2026-05-22 11:28:47,032 INFO ipython === session end ===
+2026-05-22 11:29:14,983 INFO ipython === bench console session ===
+2026-05-22 11:29:14,984 INFO ipython import frappe
+2026-05-22 11:29:14,984 INFO ipython frappe.clear_cache(doctype='Tejas Testing')
+2026-05-22 11:29:14,984 INFO ipython f = frappe.get_meta('Tejas Testing').get_field('naming_series')
+2026-05-22 11:29:14,984 INFO ipython print('After reload:', repr(f.options))
+2026-05-22 11:29:14,984 INFO ipython === session end ===
+2026-05-22 11:29:29,963 INFO ipython === bench console session ===
+2026-05-22 11:29:29,964 INFO ipython import frappe
+2026-05-22 11:29:29,964 INFO ipython import json
+2026-05-22 11:29:29,965 INFO ipython path = frappe.get_app_path('ai_bot', 'ai_bot', 'doctype', 'tejas_testing', 'tejas_testing.json')
+2026-05-22 11:29:29,965 INFO ipython print('path', path)
+2026-05-22 11:29:29,965 INFO ipython with open(path) as f:
+    d = json.load(f)
+    for field in d['fields']:
+        if field['fieldname']=='naming_series':
+            print('file options', repr(field.get('options')))
+2026-05-22 11:29:29,965 INFO ipython === session end ===
+2026-05-22 11:29:53,075 INFO ipython === bench console session ===
+2026-05-22 11:29:53,076 INFO ipython import frappe
+2026-05-22 11:29:53,077 INFO ipython doc = frappe.get_doc('DocType', 'Tejas Testing')
+2026-05-22 11:29:53,077 INFO ipython for f in doc.fields:
+    if f.fieldname == 'naming_series':
+        f.options = 'TEJ-.YYYY.-'
+        print('updated field')
+doc.save(ignore_permissions=True)
+2026-05-22 11:29:53,077 INFO ipython frappe.db.commit()
+2026-05-22 11:29:53,077 INFO ipython frappe.clear_cache(doctype='Tejas Testing')
+2026-05-22 11:29:53,078 INFO ipython print('saved', frappe.get_meta('Tejas Testing').get_field('naming_series').options)
+2026-05-22 11:29:53,078 INFO ipython === session end ===
+2026-05-22 11:30:09,633 INFO ipython === bench console session ===
+2026-05-22 11:30:09,633 INFO ipython import frappe
+2026-05-22 11:30:09,633 INFO ipython ps = frappe.get_all('Property Setter', filters={'doc_type': 'Tejas Testing', 'field_name': 'naming_series'}, fields=['*'])
+2026-05-22 11:30:09,633 INFO ipython print('Property Setters', ps)
+2026-05-22 11:30:09,633 INFO ipython # Direct SQL on DocField
+2026-05-22 11:30:09,633 INFO ipython rows = frappe.db.sql('''select name, options from tabDocField where parent='Tejas Testing' and fieldname='naming_series' ''', as_dict=1)
+2026-05-22 11:30:09,634 INFO ipython print('DocField', rows)
+2026-05-22 11:30:09,634 INFO ipython === session end ===
+2026-05-22 11:30:25,356 INFO ipython === bench console session ===
+2026-05-22 11:30:25,356 INFO ipython import frappe
+2026-05-22 11:30:25,356 INFO ipython frappe.delete_doc('Property Setter', 'Tejas Testing-naming_series-options', force=1, ignore_permissions=True)
+2026-05-22 11:30:25,356 INFO ipython frappe.db.commit()
+2026-05-22 11:30:25,356 INFO ipython frappe.clear_cache(doctype='Tejas Testing')
+2026-05-22 11:30:25,357 INFO ipython print('options now:', repr(frappe.get_meta('Tejas Testing').get_field('naming_series').options))
+2026-05-22 11:30:25,357 INFO ipython === session end ===
+2026-05-22 12:03:40,927 INFO ipython === bench console session ===
+2026-05-22 12:03:40,928 INFO ipython import frappe
+2026-05-22 12:03:40,928 INFO ipython f = frappe.get_meta('Tejas Testing').get_field('naming_series')
+2026-05-22 12:03:40,928 INFO ipython print('hidden', f.hidden, 'options', f.options)
+2026-05-22 12:03:40,929 INFO ipython === session end ===
+2026-05-23 06:59:02,115 INFO ipython === bench console session ===
+2026-05-23 06:59:02,115 INFO ipython import frappe
+2026-05-23 06:59:02,116 INFO ipython frappe.connect()
+2026-05-23 06:59:02,116 INFO ipython for dt in ['Gym Member','Membership Plan','Gym Membership','Attendance Log','Gym Trainer','Gym Settings']:
+    print(dt, frappe.db.exists('DocType', dt))
+print('Workspace', frappe.db.exists('Workspace', 'Gym Management'))
+2026-05-23 06:59:02,116 INFO ipython print('Report', frappe.db.exists('Report', 'Active Members'))
+2026-05-23 06:59:02,116 INFO ipython === session end ===
+2026-05-23 07:00:56,549 INFO ipython === bench console session ===
+2026-05-23 07:00:56,549 INFO ipython import frappe, json
+2026-05-23 07:00:56,550 INFO ipython frappe.connect()
+2026-05-23 07:00:56,550 INFO ipython ws = frappe.get_doc('Workspace', 'Gym Management')
+2026-05-23 07:00:56,550 INFO ipython print('shortcuts', len(ws.shortcuts or []))
+2026-05-23 07:00:56,550 INFO ipython print('links', len(ws.links or []))
+2026-05-23 07:00:56,550 INFO ipython print('content len', len(ws.content or ''))
+2026-05-23 07:00:56,550 INFO ipython if ws.shortcuts:
+    print(ws.shortcuts[0].as_dict())
+2026-05-23 07:00:56,550 INFO ipython === session end ===
+2026-05-23 07:01:52,089 INFO ipython === bench console session ===
+2026-05-23 07:01:52,090 INFO ipython import frappe, json
+2026-05-23 07:01:52,090 INFO ipython frappe.connect()
+2026-05-23 07:01:52,090 INFO ipython ws = frappe.get_doc('Workspace', 'Gym Management')
+2026-05-23 07:01:52,091 INFO ipython c = json.loads(ws.content)
+2026-05-23 07:01:52,091 INFO ipython print('blocks', len(c), [x['type'] for x in c])
+2026-05-23 07:01:52,091 INFO ipython print('shortcuts', len(ws.shortcuts))
+2026-05-23 07:01:52,091 INFO ipython === session end ===
+2026-05-23 07:02:05,220 INFO ipython === bench console session ===
+2026-05-23 07:02:05,221 INFO ipython import frappe, json, os
+2026-05-23 07:02:05,221 INFO ipython frappe.connect()
+2026-05-23 07:02:05,221 INFO ipython path = frappe.get_app_path('gym_management', 'gym_management', 'workspace', 'gym_management', 'gym_management.json')
+2026-05-23 07:02:05,221 INFO ipython with open(path) as f:
+    data = json.load(f)
+ws = frappe.get_doc('Workspace', 'Gym Management')
+2026-05-23 07:02:05,221 INFO ipython ws.content = data['content']
+2026-05-23 07:02:05,221 INFO ipython ws.shortcuts = []
+2026-05-23 07:02:05,222 INFO ipython for s in data.get('shortcuts', []):
+    ws.append('shortcuts', s)
+ws.links = []
+2026-05-23 07:02:05,222 INFO ipython for link in data.get('links', []):
+    ws.append('links', link)
+ws.save(ignore_permissions=True)
+2026-05-23 07:02:05,222 INFO ipython frappe.db.commit()
+2026-05-23 07:02:05,222 INFO ipython c = json.loads(ws.content)
+2026-05-23 07:02:05,222 INFO ipython print('Updated:', len(c), 'blocks', [x['type'] for x in c])
+2026-05-23 07:02:05,223 INFO ipython print('Shortcuts:', len(ws.shortcuts))
+2026-05-23 07:02:05,223 INFO ipython === session end ===
+2026-05-23 07:02:46,863 INFO ipython === bench console session ===
+2026-05-23 07:02:46,863 INFO ipython import frappe, json
+2026-05-23 07:02:46,863 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-05-23 07:02:46,863 INFO ipython frappe.connect()
+2026-05-23 07:02:46,863 INFO ipython frappe.flags.in_import = True
+2026-05-23 07:02:46,863 INFO ipython path = frappe.get_app_path('gym_management', 'gym_management', 'workspace', 'gym_management', 'gym_management.json')
+2026-05-23 07:02:46,863 INFO ipython import_file_by_path(path, force=True)
+2026-05-23 07:02:46,863 INFO ipython frappe.db.commit()
+2026-05-23 07:02:46,863 INFO ipython frappe.flags.in_import = False
+2026-05-23 07:02:46,863 INFO ipython c = json.loads(frappe.db.get_value('Workspace', 'Gym Management', 'content'))
+2026-05-23 07:02:46,863 INFO ipython print('blocks', len(c), [x['type'] for x in c])
+2026-05-23 07:02:46,863 INFO ipython print('shortcuts', frappe.db.count('Workspace Shortcut', {'parent': 'Gym Management'}))
+2026-05-23 07:02:46,863 INFO ipython === session end ===
+2026-05-23 07:51:33,390 INFO ipython === bench console session ===
+2026-05-23 07:51:33,390 INFO ipython import frappe
+2026-05-23 07:51:33,391 INFO ipython frappe.connect()
+2026-05-23 07:51:33,391 INFO ipython meta = frappe.get_meta('Attendance Log')
+2026-05-23 07:51:33,391 INFO ipython print([f.fieldname for f in meta.fields if 'lat' in f.fieldname or 'long' in f.fieldname])
+2026-05-23 07:51:33,391 INFO ipython r = frappe.db.get_value('Attendance Log', 'ATT-00028', ['check_in_latitude','check_in_longitude','checkout_latitude'], as_dict=1)
+2026-05-23 07:51:33,391 INFO ipython print(r)
+2026-05-23 07:51:33,391 INFO ipython === session end ===

@@ -1,0 +1,14 @@
+[
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Gym Manager",
+  "role_name": "Gym Manager"
+ },
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Gym User",
+  "role_name": "Gym User"
+ }
+]

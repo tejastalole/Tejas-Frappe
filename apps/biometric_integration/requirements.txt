@@ -1,0 +1,2 @@
+# Optional: live TCP pull from devices on port 4370
+pyzk>=0.9

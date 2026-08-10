@@ -1,0 +1,227 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-08-10 15:02:00.564093",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user_id",
+  "employee",
+  "punch_time",
+  "punch_status",
+  "event_category",
+  "event_log_type",
+  "verify_mode",
+  "column_break_1",
+  "device",
+  "serial_number",
+  "source",
+  "processed",
+  "processing_status",
+  "rejection_reason",
+  "attendance_date",
+  "check_in_out",
+  "lunch_break",
+  "tea_break",
+  "employee_checkin",
+  "section_raw",
+  "raw_line"
+ ],
+ "fields": [
+  {
+   "description": "PIN / User ID on device \u2014 map via Employee.attendance_device_id",
+   "fieldname": "user_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User ID",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "punch_time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Punch Time",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "punch_status",
+   "fieldtype": "Data",
+   "label": "Punch Status"
+  },
+  {
+   "fieldname": "event_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Event Category",
+   "options": "\nCheck In Out\nLunch Break\nTea Break",
+   "read_only": 1
+  },
+  {
+   "fieldname": "event_log_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Event Log Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verify_mode",
+   "fieldtype": "Data",
+   "label": "Verify Mode"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Device",
+   "options": "Biometric Device"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Serial Number",
+   "search_index": 1
+  },
+  {
+   "default": "ADMS",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Source",
+   "options": "ADMS\nTCP Pull"
+  },
+  {
+   "default": "0",
+   "fieldname": "processed",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Processed"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "processing_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Processing Status",
+   "options": "Pending\nAccepted\nRejected\nDuplicate",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "read_only": 1
+  },
+  {
+   "fieldname": "attendance_date",
+   "fieldtype": "Date",
+   "in_standard_filter": 1,
+   "label": "Attendance Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "check_in_out",
+   "fieldtype": "Link",
+   "label": "Check In Out",
+   "options": "Biometric Check In Check Out",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lunch_break",
+   "fieldtype": "Link",
+   "label": "Lunch Break",
+   "options": "Biometric Lunch Break",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tea_break",
+   "fieldtype": "Link",
+   "label": "Tea Break",
+   "options": "Biometric Tea Break",
+   "read_only": 1
+  },
+  {
+   "fieldname": "employee_checkin",
+   "fieldtype": "Link",
+   "label": "Employee Checkin",
+   "options": "Employee Checkin",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_raw",
+   "fieldtype": "Section Break",
+   "label": "Raw"
+  },
+  {
+   "fieldname": "raw_line",
+   "fieldtype": "Small Text",
+   "label": "Raw Line"
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-10 15:38:57.749003",
+ "modified_by": "Administrator",
+ "module": "Biometric Integration",
+ "name": "Biometric Punch Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Biometric Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "punch_time",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "user_id"
+}

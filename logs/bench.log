@@ -985,3 +985,194 @@ print('Q2:', r2['reply'])
 2026-08-10 04:19:58,903 INFO /home/frappe/.local/bin/bench schedule
 2026-08-10 04:19:58,920 INFO /home/frappe/.local/bin/bench worker
 2026-08-10 04:41:13,841 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 04:45:32,828 INFO /home/frappe/.local/bin/bench pip install pyzk -q
+2026-08-10 04:45:33,216 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-10 04:45:38,902 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 04:45:40,883 INFO /home/frappe/.local/bin/bench --site site1.local execute zkteco_integration.utils.mapping.map_punch_to_log_type --args ["0"]
+2026-08-10 04:45:48,582 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 04:45:50,759 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-10 04:46:01,177 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_meta --args ["ZKTeco Device"]
+2026-08-10 04:46:02,967 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.exists --args ["DocType","ZKTeco Employee Mapping"]
+2026-08-10 04:46:04,555 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.exists --args ["DocType","ZKTeco Sync Log"]
+2026-08-10 05:42:51,662 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:42:57,386 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app zkteco_integration --yes
+2026-08-10 05:43:03,660 INFO /home/frappe/.local/bin/bench remove-app zkteco_integration --force
+2026-08-10 05:43:03,671 DEBUG cd /home/frappe/tejas && uv pip uninstall zkteco_integration --python /home/frappe/tejas/env/bin/python
+2026-08-10 05:43:03,929 INFO App moved from apps/zkteco_integration to archived/apps/zkteco_integration-2026-08-10
+2026-08-10 05:43:04,388 WARNING /home/frappe/.local/bin/bench remove-app zkteco_integration --force executed with exit code 1
+2026-08-10 05:43:13,245 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:43:14,492 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 05:43:23,989 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:44:57,221 INFO /home/frappe/.local/bin/bench pip install -e apps/zkteco_integration
+2026-08-10 05:44:58,809 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_integration
+2026-08-10 05:45:08,308 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_integration
+2026-08-10 05:45:14,081 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 05:45:16,001 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:46:10,652 INFO /home/frappe/.local/bin/bench pip install -e apps/biometric_integration
+2026-08-10 05:46:11,339 INFO /home/frappe/.local/bin/bench --site site1.local install-app biometric_integration
+2026-08-10 05:46:14,614 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 05:46:16,210 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:46:25,780 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-10 05:46:34,892 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.exists --args ["DocType","Biometric Device"]
+2026-08-10 05:46:35,985 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.exists --args ["Workspace","Biometric Integration"]
+2026-08-10 05:46:37,173 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 05:46:38,823 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:47:30,970 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app zkteco_integration --yes
+2026-08-10 05:47:37,218 INFO /home/frappe/.local/bin/bench remove-app zkteco_integration --force
+2026-08-10 05:47:37,227 DEBUG cd /home/frappe/tejas && uv pip uninstall zkteco_integration --python /home/frappe/tejas/env/bin/python
+2026-08-10 05:47:37,271 INFO App moved from apps/zkteco_integration to archived/apps/zkteco_integration-2026-08-10_1
+2026-08-10 05:47:37,649 WARNING /home/frappe/.local/bin/bench remove-app zkteco_integration --force executed with exit code 1
+2026-08-10 05:47:38,713 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 05:47:41,074 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:49:10,714 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:49:33,141 INFO /home/frappe/.local/bin/bench pip install -e apps/biometric_integration
+2026-08-10 05:49:45,876 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 05:49:59,708 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-10 05:50:01,225 INFO /home/frappe/.local/bin/bench start
+2026-08-10 05:50:01,934 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-10 05:50:01,953 INFO /home/frappe/.local/bin/bench watch
+2026-08-10 05:50:01,956 INFO /home/frappe/.local/bin/bench schedule
+2026-08-10 05:50:01,961 INFO /home/frappe/.local/bin/bench worker
+2026-08-10 05:52:52,819 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 05:53:05,391 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.client.get_list --kwargs {'doctype':'DocType','filters':[['name','like','%Biometric%']],'fields':['name','issingle']}
+2026-08-10 05:53:06,529 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SHOW TABLES LIKE '%biometric%'; SHOW TABLES LIKE '%zkteco%'; SHOW TABLES LIKE '%ZKTeco%';
+2026-08-10 05:53:14,072 INFO /home/frappe/.local/bin/bench --site site1.local mariadb
+2026-08-10 05:53:19,191 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e 
+SELECT name, deleted_doctype, deleted_name, LEFT(data, 800)
+FROM `tabDeleted Document`
+WHERE deleted_doctype IN ('ZKTeco Device','Biometric Device','ZKTeco Settings','Biometric Settings')
+ORDER BY creation DESC;
+
+2026-08-10 05:53:25,969 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e 
+SELECT data FROM `tabDeleted Document` WHERE name='gu11lh5efv';
+SELECT '---';
+SELECT data FROM `tabDeleted Document` WHERE name='rs81fju0sl';
+SELECT '---';
+SELECT data FROM `tabDeleted Document` WHERE name='l8kgalnht3';
+SELECT '---';
+SELECT name, deleted_name, LEFT(data,500) FROM `tabDeleted Document`
+WHERE deleted_doctype='ZKTeco Device' AND (data LIKE '%NYU7254601554%' OR deleted_name LIKE '%NYU%')
+ORDER BY creation DESC LIMIT 5;
+
+2026-08-10 05:53:31,478 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e 
+SELECT name, deleted_doctype, deleted_name FROM `tabDeleted Document`
+WHERE data LIKE '%NYU7254601554%' AND deleted_doctype LIKE '%Device%' LIMIT 10;
+SELECT name, deleted_doctype, deleted_name FROM `tabDeleted Document`
+WHERE deleted_name='NYU7254601554' OR data LIKE '%"serial_number": "NYU7254601554"%' LIMIT 10;
+
+2026-08-10 05:53:32,453 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e 
+SELECT name, deleted_name, creation FROM `tabDeleted Document`
+WHERE deleted_doctype='ZKTeco Device' ORDER BY creation DESC LIMIT 15;
+
+2026-08-10 05:53:38,523 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-10 05:54:09,372 INFO /home/frappe/.local/bin/bench --site site1.local execute biometric_integration.install.after_install
+2026-08-10 05:54:11,132 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SHOW TABLES LIKE '%Biometric%';
+2026-08-10 05:54:25,983 INFO /home/frappe/.local/bin/bench --site site1.local run-patch /tmp/restore_biometric.py
+2026-08-10 05:54:42,990 INFO /home/frappe/.local/bin/bench --site site1.local execute biometric_integration.restore_archived_devices.execute
+2026-08-10 05:54:52,605 INFO /home/frappe/.local/bin/bench --site site1.local execute biometric_integration.restore_archived_devices.execute
+2026-08-10 05:55:00,569 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.delete_doc --kwargs {'doctype':'Biometric Device','name':'PENDING-SN','force':1,'ignore_permissions':1}
+2026-08-10 05:55:02,060 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 05:55:03,824 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT name, device_name, serial_number, ip_address, tcp_port, enabled FROM `tabBiometric Device`; SELECT name, enabled, accept_unknown_devices, create_employee_checkin FROM `tabBiometric Settings`;
+2026-08-10 05:55:11,446 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT * FROM tabSingles WHERE doctype='Biometric Settings';
+2026-08-10 05:55:12,431 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.client.get_list --kwargs {'doctype':'Biometric Device','fields':['name','device_name','serial_number','ip_address','enabled']}
+2026-08-10 05:56:53,259 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e SELECT name, device_name, ip_address, tcp_port, connection_mode, enabled FROM `tabBiometric Device` WHERE name='NYU7254601554';
+2026-08-10 05:58:04,120 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 05:58:14,880 INFO /home/frappe/.local/bin/bench start
+2026-08-10 05:58:15,499 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-10 05:58:15,520 INFO /home/frappe/.local/bin/bench schedule
+2026-08-10 05:58:15,530 INFO /home/frappe/.local/bin/bench watch
+2026-08-10 05:58:15,531 INFO /home/frappe/.local/bin/bench worker
+2026-08-10 06:00:02,350 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-10 06:09:38,222 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.client.set_value --kwargs {'doctype':'Biometric Device','name':'NYU7254601554','fieldname':{'mac_address':'00:17:61:12:a3:df','fingerprint_algorithm':'ZKFinger VX10.0','face_algorithm':'ZKFace VX4.0','ip_address':'192.168.10.201','tcp_port':4370,'connection_mode':'ADMS Push','device_name':'SenseFace 2A','enabled':1}}
+2026-08-10 06:09:40,525 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e SELECT name, ip_address, mac_address, last_seen, connection_mode FROM `tabBiometric Device` WHERE name='NYU7254601554';
+2026-08-10 06:09:58,517 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e 
+UPDATE `tabBiometric Device` SET
+  device_name='SenseFace 2A',
+  ip_address='192.168.10.201',
+  tcp_port=4370,
+  mac_address='00:17:61:12:a3:df',
+  fingerprint_algorithm='ZKFinger VX10.0',
+  face_algorithm='ZKFace VX4.0',
+  connection_mode='ADMS Push',
+  enabled=1,
+  modified=NOW()
+WHERE name='NYU7254601554';
+SELECT name, device_name, ip_address, mac_address, last_seen, face_algorithm, fingerprint_algorithm FROM `tabBiometric Device` WHERE name='NYU7254601554';
+SELECT COUNT(*) punches FROM `tabBiometric Punch Log` WHERE serial_number='NYU7254601554';
+SELECT name, user_id, punch_time, processed, employee FROM `tabBiometric Punch Log` WHERE serial_number='NYU7254601554' ORDER BY creation DESC LIMIT 5;
+
+2026-08-10 06:14:52,154 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e SELECT name, last_seen, TIMESTAMPDIFF(SECOND, last_seen, NOW()) AS secs_ago FROM `tabBiometric Device` WHERE name='NYU7254601554'; SELECT COUNT(*) FROM `tabBiometric Punch Log` WHERE serial_number='NYU7254601554';
+2026-08-10 06:26:27,373 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e 
+SELECT name, title, module, public, content FROM tabWorkspace WHERE name LIKE '%Biometric%' OR title LIKE '%Biometric%';
+
+2026-08-10 06:26:32,726 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-10 06:26:36,473 INFO /home/frappe/.local/bin/bench start
+2026-08-10 06:26:53,072 INFO /home/frappe/.local/bin/bench start
+2026-08-10 06:26:53,678 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-10 06:26:53,689 INFO /home/frappe/.local/bin/bench schedule
+2026-08-10 06:26:53,696 INFO /home/frappe/.local/bin/bench worker
+2026-08-10 06:26:53,698 INFO /home/frappe/.local/bin/bench watch
+2026-08-10 06:27:57,534 INFO /home/frappe/.local/bin/bench --site site1.local migrate --skip-search-index
+2026-08-10 06:28:15,610 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.utils.change_log.get_change_log
+2026-08-10 06:28:19,042 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 06:28:23,981 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 06:28:32,977 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 06:28:42,953 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 06:28:44,947 INFO /home/frappe/.local/bin/bench --site site1.local clear-website-cache
+2026-08-10 06:28:46,694 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.desk.doctype.number_card.number_card.get_result --kwargs {'doc':{'name':'Active Biometric Devices','document_type':'Biometric Device','function':'Count','filters_json':'[["Biometric Device","enabled","=",1,false]]','type':'Document Type'}}
+2026-08-10 06:29:28,753 INFO /home/frappe/.local/bin/bench start
+2026-08-10 06:29:29,628 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-10 06:29:29,686 INFO /home/frappe/.local/bin/bench schedule
+2026-08-10 06:29:29,690 INFO /home/frappe/.local/bin/bench watch
+2026-08-10 06:29:29,795 INFO /home/frappe/.local/bin/bench worker
+2026-08-10 06:30:33,545 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-10 06:30:37,763 INFO /home/frappe/.local/bin/bench start
+2026-08-10 06:30:38,382 INFO /home/frappe/.local/bin/bench schedule
+2026-08-10 06:30:38,388 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-10 06:30:38,423 INFO /home/frappe/.local/bin/bench watch
+2026-08-10 06:30:38,464 INFO /home/frappe/.local/bin/bench worker
+2026-08-10 07:23:08,906 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e SELECT name, last_seen FROM `tabBiometric Device` WHERE name='NYU7254601554'; SELECT COUNT(*) FROM `tabBiometric Punch Log`;
+2026-08-10 08:36:45,454 INFO /home/frappe/.local/bin/bench --site site1.local migrate --skip-search-index
+2026-08-10 08:36:55,176 INFO /home/frappe/.local/bin/bench --site site1.local execute biometric_integration.install._seed_punch_status_mappings
+2026-08-10 08:36:56,874 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 08:36:58,655 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -N -e SELECT name FROM tabDocType WHERE name LIKE 'Biometric%' ORDER BY name; SELECT COUNT(*) mappings FROM `tabBiometric Punch Status Mapping`;
+2026-08-10 08:37:03,553 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 08:37:07,820 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 09:23:10,000 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:23:14,933 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration
+2026-08-10 09:23:20,684 INFO /home/frappe/.local/bin/bench --site site1.local set-config allow_tests true
+2026-08-10 09:23:22,500 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration
+2026-08-10 09:23:37,728 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-10 09:23:48,883 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 09:31:57,412 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:32:02,095 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-10 09:32:14,262 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-10 09:36:37,184 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:39:23,879 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:39:47,642 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:40:43,660 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:42:10,760 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:42:13,301 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 09:42:15,132 INFO /home/frappe/.local/bin/bench build --app biometric_integration
+2026-08-10 09:42:26,087 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:42:31,462 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:42:36,531 INFO /home/frappe/.local/bin/bench --site site1.local execute biometric_integration.desk.workspace.get_desktop_page --args ["{\"name\": \"Biometric Integration\", \"title\": \"Biometric Integration\", \"public\": 1}"]
+2026-08-10 09:42:41,218 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration
+2026-08-10 09:42:46,917 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:42:55,843 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:43:02,992 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:43:08,293 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:43:16,209 INFO /home/frappe/.local/bin/bench build --app biometric_integration
+2026-08-10 09:47:17,084 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 09:47:19,670 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 09:47:28,376 INFO /home/frappe/.local/bin/bench build --app biometric_integration
+2026-08-10 09:49:00,462 INFO /home/frappe/.local/bin/bench build --app biometric_integration
+2026-08-10 10:04:05,240 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 10:04:26,494 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 10:05:17,657 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 10:06:51,092 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 10:08:55,839 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 10:09:03,007 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 10:09:04,832 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-10 10:19:13,610 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 10:25:11,047 INFO /home/frappe/.local/bin/bench --site site1.local console

@@ -1647,3 +1647,512 @@ alter table `tabDocType` add column if not exists migration_hash varchar(140)
 ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
 2026-08-08 04:06:56,272 WARNING database DDL Query made to DB:
 ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)
+2026-08-10 04:45:34,536 WARNING database DDL Query made to DB:
+alter table `tabDocType` add column if not exists migration_hash varchar(140)
+2026-08-10 04:45:35,597 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
+2026-08-10 04:45:36,616 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)
+2026-08-10 04:45:38,277 WARNING database DDL Query made to DB:
+ALTER TABLE `tabZKTeco Device` ADD COLUMN `sync_enabled` int(1) not null default 1, ADD COLUMN `api_enabled` int(1) not null default 1, ADD COLUMN `status` varchar(140) default 'Offline', ADD COLUMN `timeout` int(11) not null default 5, ADD COLUMN `password` text, ADD COLUMN `sync_interval` int(11) not null default 60, ADD COLUMN `last_error` text
+2026-08-10 04:45:52,477 WARNING database DDL Query made to DB:
+alter table `tabDocType` add column if not exists migration_hash varchar(140)
+2026-08-10 04:45:53,614 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
+2026-08-10 04:45:54,722 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)
+2026-08-10 04:45:56,475 WARNING database DDL Query made to DB:
+ALTER TABLE `tabZKTeco Device` MODIFY `last_att_stamp` datetime(6), ADD UNIQUE INDEX IF NOT EXISTS device_name (`device_name`)
+2026-08-10 04:45:56,707 WARNING database DDL Query made to DB:
+create table `tabZKTeco Sync Log` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`device` varchar(140),
+`status` varchar(140) default 'Success',
+`sync_started` datetime(6),
+`sync_completed` datetime(6),
+`total_records` int(11) not null default 0,
+`new_records` int(11) not null default 0,
+`duplicate_records` int(11) not null default 0,
+`failed_records` int(11) not null default 0,
+`error_message` longtext,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 04:45:56,911 WARNING database DDL Query made to DB:
+create table `tabZKTeco Employee Mapping` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`enabled` int(1) not null default 1,
+`zkteco_device` varchar(140),
+`zkteco_user_id` varchar(140),
+`employee` varchar(140),
+`employee_name` varchar(140),
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:43:02,160 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Device`
+2026-08-10 05:43:02,204 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Employee Mapping`
+2026-08-10 05:43:02,255 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Punch Log`
+2026-08-10 05:43:02,303 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Sync Log`
+2026-08-10 05:45:10,344 WARNING database DDL Query made to DB:
+create table `tabZKTeco Device` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`enabled` int(1) not null default 1,
+`sync_enabled` int(1) not null default 1,
+`api_enabled` int(1) not null default 1,
+`status` varchar(140) default 'Offline',
+`device_name` varchar(140) unique,
+`device_id` int(11) not null default 1,
+`ip_address` varchar(140),
+`tcp_port` int(11) not null default 4370,
+`timeout` int(11) not null default 5,
+`password` text,
+`sync_interval` int(11) not null default 60,
+`last_seen` datetime(6),
+`last_sync` datetime(6),
+`last_att_stamp` datetime(6),
+`last_error` text,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:45:10,536 WARNING database DDL Query made to DB:
+create table `tabZKTeco Sync Log` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`device` varchar(140),
+`status` varchar(140) default 'Success',
+`sync_started` datetime(6),
+`sync_completed` datetime(6),
+`total_records` int(11) not null default 0,
+`new_records` int(11) not null default 0,
+`duplicate_records` int(11) not null default 0,
+`failed_records` int(11) not null default 0,
+`error_message` longtext,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:45:10,741 WARNING database DDL Query made to DB:
+create table `tabZKTeco Punch Log` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`user_id` varchar(140),
+`employee` varchar(140),
+`punch_time` datetime(6),
+`punch_status` varchar(140),
+`verify_mode` varchar(140),
+`processed` int(1) not null default 0,
+`device` varchar(140),
+`serial_number` varchar(140),
+`employee_checkin` varchar(140),
+`raw_line` text,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:45:10,912 WARNING database DDL Query made to DB:
+create table `tabZKTeco Employee Mapping` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`enabled` int(1) not null default 1,
+`zkteco_device` varchar(140),
+`zkteco_user_id` varchar(140),
+`employee` varchar(140),
+`employee_name` varchar(140),
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:46:27,074 WARNING database DDL Query made to DB:
+alter table `tabDocType` add column if not exists migration_hash varchar(140)
+2026-08-10 05:46:28,085 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
+2026-08-10 05:46:29,102 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)
+2026-08-10 05:46:30,888 WARNING database DDL Query made to DB:
+create table `tabBiometric Device` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`device_name` varchar(140),
+`serial_number` varchar(140) unique,
+`enabled` int(1) not null default 1,
+`connection_mode` varchar(140) default 'ADMS Push',
+`ip_address` varchar(140),
+`tcp_port` int(11) not null default 4370,
+`location` varchar(140),
+`last_seen` datetime(6),
+`last_att_stamp` varchar(140),
+`last_sync` datetime(6),
+`mac_address` varchar(140),
+`platform` varchar(140),
+`firmware_version` varchar(140),
+`push_service` varchar(140),
+`face_algorithm` varchar(140),
+`fingerprint_algorithm` varchar(140),
+`notes` text,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:46:31,065 WARNING database DDL Query made to DB:
+create table `tabBiometric Punch Log` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`user_id` varchar(140),
+`employee` varchar(140),
+`punch_time` datetime(6),
+`punch_status` varchar(140),
+`verify_mode` varchar(140),
+`device` varchar(140),
+`serial_number` varchar(140),
+`source` varchar(140) default 'ADMS',
+`processed` int(1) not null default 0,
+`employee_checkin` varchar(140),
+`raw_line` text,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index `user_id`(`user_id`),
+index `punch_time`(`punch_time`),
+index `serial_number`(`serial_number`),
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:46:31,242 WARNING database DDL Query made to DB:
+create table `tabBiometric Sync Log` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`status` varchar(140) default 'Running',
+`source` varchar(140) default 'ADMS',
+`started_at` datetime(6),
+`ended_at` datetime(6),
+`device` varchar(140),
+`serial_number` varchar(140),
+`downloaded` int(11) not null default 0,
+`inserted` int(11) not null default 0,
+`skipped` int(11) not null default 0,
+`errors` int(11) not null default 0,
+`error_details` longtext,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 05:47:35,645 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Sync Log`
+2026-08-10 05:47:35,689 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Punch Log`
+2026-08-10 05:47:35,742 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Device`
+2026-08-10 05:47:35,787 WARNING database DDL Query made to DB:
+DROP TABLE IF EXISTS `tabZKTeco Employee Mapping`
+2026-08-10 05:53:39,786 WARNING database DDL Query made to DB:
+alter table `tabDocType` add column if not exists migration_hash varchar(140)
+2026-08-10 05:53:40,843 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
+2026-08-10 05:53:41,870 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)
+2026-08-10 06:27:59,511 WARNING database DDL Query made to DB:
+alter table `tabDocType` add column if not exists migration_hash varchar(140)
+2026-08-10 06:28:00,920 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
+2026-08-10 06:28:02,263 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)
+2026-08-10 06:28:22,988 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Sync Log` ADD INDEX `creation`(`creation`)
+2026-08-10 08:36:46,787 WARNING database DDL Query made to DB:
+alter table `tabDocType` add column if not exists migration_hash varchar(140)
+2026-08-10 08:36:48,031 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
+2026-08-10 08:36:49,166 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)
+2026-08-10 08:36:51,047 WARNING database DDL Query made to DB:
+create table `tabBiometric Lunch Break` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`employee` varchar(140),
+`user_id` varchar(140),
+`time` datetime(6),
+`log_type` varchar(140) default 'Break Start',
+`company` varchar(140),
+`device` varchar(140),
+`serial_number` varchar(140),
+`source` varchar(140) default 'ADMS',
+`biometric_punch_log` varchar(140),
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index `time`(`time`),
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 08:36:51,246 WARNING database DDL Query made to DB:
+create table `tabBiometric Check In Out` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`employee` varchar(140),
+`user_id` varchar(140),
+`time` datetime(6),
+`log_type` varchar(140) default 'Check In',
+`company` varchar(140),
+`device` varchar(140),
+`serial_number` varchar(140),
+`source` varchar(140) default 'ADMS',
+`biometric_punch_log` varchar(140),
+`employee_checkin` varchar(140),
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index `time`(`time`),
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 08:36:51,406 WARNING database DDL Query made to DB:
+create table `tabBiometric Punch Status Mapping` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`punch_status` varchar(140),
+`event_category` varchar(140),
+`log_type` varchar(140),
+parent varchar(140),
+parentfield varchar(140),
+parenttype varchar(140),
+index parent(parent))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 08:36:51,604 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Punch Log` ADD COLUMN `event_category` varchar(140), ADD COLUMN `event_log_type` varchar(140), ADD COLUMN `check_in_out` varchar(140), ADD COLUMN `lunch_break` varchar(140), ADD COLUMN `tea_break` varchar(140)
+2026-08-10 08:36:51,765 WARNING database DDL Query made to DB:
+create table `tabBiometric Tea Break` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`employee` varchar(140),
+`user_id` varchar(140),
+`time` datetime(6),
+`log_type` varchar(140) default 'Break Start',
+`company` varchar(140),
+`device` varchar(140),
+`serial_number` varchar(140),
+`source` varchar(140) default 'ADMS',
+`biometric_punch_log` varchar(140),
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index `time`(`time`),
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 09:23:12,497 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Lunch Break` ADD COLUMN `attendance_date` date, ADD COLUMN `expected_end_time` datetime(6), ADD COLUMN `expected_duration_minutes` int(11) not null default 0, ADD COLUMN `actual_duration_minutes` int(11) not null default 0, ADD COLUMN `excess_duration_minutes` int(11) not null default 0, ADD COLUMN `break_status` varchar(140), ADD COLUMN `paired_event` varchar(140), ADD COLUMN `is_regularized` int(1) not null default 0
+2026-08-10 09:23:12,724 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Check In Out` ADD COLUMN `attendance_date` date, ADD COLUMN `late_entry` int(1) not null default 0, ADD COLUMN `late_minutes` int(11) not null default 0, ADD COLUMN `early_exit` int(1) not null default 0, ADD COLUMN `early_exit_minutes` int(11) not null default 0, ADD COLUMN `overtime_minutes` int(11) not null default 0, ADD COLUMN `is_regularized` int(1) not null default 0
+2026-08-10 09:23:13,047 WARNING database DDL Query made to DB:
+create table `tabBiometric Attendance Regularization` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`employee` varchar(140),
+`attendance_date` date,
+`event_category` varchar(140),
+`log_type` varchar(140),
+`corrected_time` datetime(6),
+`reason` text,
+`status` varchar(140) default 'Draft',
+`biometric_punch_log` varchar(140),
+`attendance_event` varchar(140),
+`corrected_by` varchar(140),
+`correction_time` datetime(6),
+`attendance_event_doctype` varchar(140),
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 09:23:13,512 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Punch Log` ADD COLUMN `processing_status` varchar(140) default 'Pending', ADD COLUMN `rejection_reason` text, ADD COLUMN `attendance_date` date
+2026-08-10 09:23:13,770 WARNING database DDL Query made to DB:
+create table `tabBiometric Attendance Day` (
+			name varchar(140) primary key,
+			creation datetime(6),
+			modified datetime(6),
+			modified_by varchar(140),
+			owner varchar(140),
+			docstatus int(1) not null default '0',
+			idx int(8) not null default '0',
+			`employee` varchar(140),
+`attendance_date` date,
+`current_state` varchar(140),
+`final_status` varchar(140),
+`company` varchar(140),
+`check_in` datetime(6),
+`check_out` datetime(6),
+`late_entry` int(1) not null default 0,
+`late_minutes` int(11) not null default 0,
+`early_exit` int(1) not null default 0,
+`early_exit_minutes` int(11) not null default 0,
+`overtime_minutes` int(11) not null default 0,
+`lunch_start` datetime(6),
+`lunch_end` datetime(6),
+`lunch_expected_duration_minutes` int(11) not null default 45,
+`lunch_actual_duration_minutes` int(11) not null default 0,
+`lunch_excess_duration_minutes` int(11) not null default 0,
+`lunch_break_status` varchar(140),
+`lunch_used` int(1) not null default 0,
+`tea_start` datetime(6),
+`tea_end` datetime(6),
+`tea_expected_duration_minutes` int(11) not null default 15,
+`tea_actual_duration_minutes` int(11) not null default 0,
+`tea_excess_duration_minutes` int(11) not null default 0,
+`tea_break_status` varchar(140),
+`tea_used` int(1) not null default 0,
+`total_elapsed_minutes` int(11) not null default 0,
+`total_break_minutes` int(11) not null default 0,
+`net_working_minutes` int(11) not null default 0,
+`_user_tags` text,
+`_comments` text,
+`_assign` text,
+`_liked_by` text,
+index modified(modified))
+			ENGINE=InnoDB
+			ROW_FORMAT=DYNAMIC
+			CHARACTER SET=utf8mb4
+			COLLATE=utf8mb4_unicode_ci
+2026-08-10 09:23:14,024 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Tea Break` ADD COLUMN `attendance_date` date, ADD COLUMN `expected_end_time` datetime(6), ADD COLUMN `expected_duration_minutes` int(11) not null default 0, ADD COLUMN `actual_duration_minutes` int(11) not null default 0, ADD COLUMN `excess_duration_minutes` int(11) not null default 0, ADD COLUMN `break_status` varchar(140), ADD COLUMN `paired_event` varchar(140), ADD COLUMN `is_regularized` int(1) not null default 0
+2026-08-10 10:08:58,734 WARNING database DDL Query made to DB:
+RENAME TABLE `tabBiometric Check In Out` TO `tabBiometric Check In Check Out`

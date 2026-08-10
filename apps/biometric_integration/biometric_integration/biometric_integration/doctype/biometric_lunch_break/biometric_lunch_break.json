@@ -1,0 +1,205 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-08-10 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "user_id",
+  "time",
+  "log_type",
+  "attendance_date",
+  "expected_end_time",
+  "expected_duration_minutes",
+  "actual_duration_minutes",
+  "excess_duration_minutes",
+  "break_status",
+  "paired_event",
+  "is_regularized",
+  "column_break_1",
+  "company",
+  "device",
+  "serial_number",
+  "source",
+  "section_links",
+  "biometric_punch_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "User ID"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Time",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "default": "Break Start",
+   "fieldname": "log_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Log Type",
+   "options": "Break Start\nBreak End",
+   "reqd": 1
+  },
+  {
+   "fieldname": "attendance_date",
+   "fieldtype": "Date",
+   "in_standard_filter": 1,
+   "label": "Attendance Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expected_end_time",
+   "fieldtype": "Datetime",
+   "label": "Expected End Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expected_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Expected Duration (Minutes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Actual Duration (Minutes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "excess_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Excess Duration (Minutes)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "break_status",
+   "fieldtype": "Select",
+   "label": "Break Status",
+   "options": "\nNormal\nOver Break\nIncomplete",
+   "read_only": 1
+  },
+  {
+   "fieldname": "paired_event",
+   "fieldtype": "Link",
+   "label": "Paired Event",
+   "options": "Biometric Lunch Break",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_regularized",
+   "fieldtype": "Check",
+   "label": "Is Regularized",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "employee.company",
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Device",
+   "options": "Biometric Device"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  },
+  {
+   "default": "ADMS",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Source",
+   "options": "ADMS\nTCP Pull\nManual"
+  },
+  {
+   "fieldname": "section_links",
+   "fieldtype": "Section Break",
+   "label": "Links"
+  },
+  {
+   "fieldname": "biometric_punch_log",
+   "fieldtype": "Link",
+   "label": "Biometric Punch Log",
+   "options": "Biometric Punch Log",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-10 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Biometric Integration",
+ "name": "Biometric Lunch Break",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Biometric Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1
+  }
+ ],
+ "sort_field": "time",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "employee"
+}

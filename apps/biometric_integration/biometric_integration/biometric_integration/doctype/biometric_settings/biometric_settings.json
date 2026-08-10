@@ -1,0 +1,237 @@
+{
+ "actions": [],
+ "creation": "2026-08-01 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "section_adms",
+  "accept_unknown_devices",
+  "create_employee_checkin",
+  "create_attendance_events",
+  "column_break_1",
+  "last_push_at",
+  "section_mapping",
+  "punch_status_mappings",
+  "section_office_policy",
+  "office_start_time",
+  "office_end_time",
+  "lunch_break_duration_minutes",
+  "lunch_window_start",
+  "lunch_window_end",
+  "tea_break_duration_minutes",
+  "tea_window_start",
+  "tea_window_end",
+  "duplicate_punch_tolerance_seconds",
+  "allow_checkout_with_incomplete_break",
+  "enable_debug_logging",
+  "section_pull",
+  "enable_tcp_pull",
+  "pull_every",
+  "column_break_2",
+  "last_pull_at",
+  "section_help",
+  "setup_instructions"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_adms",
+   "fieldtype": "Section Break",
+   "label": "ADMS Push (Cloud Server)"
+  },
+  {
+   "default": "1",
+   "description": "Auto-create Biometric Device when a new SN connects via /iclock",
+   "fieldname": "accept_unknown_devices",
+   "fieldtype": "Check",
+   "label": "Accept Unknown Devices"
+  },
+  {
+   "default": "1",
+   "description": "Create HRMS Employee Checkin when Employee is mapped",
+   "fieldname": "create_employee_checkin",
+   "fieldtype": "Check",
+   "label": "Create Employee Checkin"
+  },
+  {
+   "default": "1",
+   "description": "Create Check In Out / Lunch Break / Tea Break records from punches",
+   "fieldname": "create_attendance_events",
+   "fieldtype": "Check",
+   "label": "Create Attendance Events"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_push_at",
+   "fieldtype": "Datetime",
+   "label": "Last ADMS Push",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_mapping",
+   "fieldtype": "Section Break",
+   "label": "Punch Status Mapping"
+  },
+  {
+   "description": "Map device punch status codes to Check In Out / Lunch Break / Tea Break",
+   "fieldname": "punch_status_mappings",
+   "fieldtype": "Table",
+   "label": "Punch Status Mappings",
+   "options": "Biometric Punch Status Mapping"
+  },
+  {
+   "fieldname": "section_office_policy",
+   "fieldtype": "Section Break",
+   "label": "Office Policy"
+  },
+  {
+   "default": "09:00:00",
+   "fieldname": "office_start_time",
+   "fieldtype": "Time",
+   "label": "Office Start Time"
+  },
+  {
+   "default": "18:00:00",
+   "fieldname": "office_end_time",
+   "fieldtype": "Time",
+   "label": "Office End Time"
+  },
+  {
+   "default": "45",
+   "fieldname": "lunch_break_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Lunch Break Duration (Minutes)"
+  },
+  {
+   "default": "12:00:00",
+   "description": "Lunch Break Start and End punches must fall within this window",
+   "fieldname": "lunch_window_start",
+   "fieldtype": "Time",
+   "label": "Lunch Window Start"
+  },
+  {
+   "default": "15:00:00",
+   "description": "Lunch Break Start and End punches must fall within this window (3:00 PM)",
+   "fieldname": "lunch_window_end",
+   "fieldtype": "Time",
+   "label": "Lunch Window End"
+  },
+  {
+   "default": "15",
+   "fieldname": "tea_break_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Tea Break Duration (Minutes)"
+  },
+  {
+   "default": "16:00:00",
+   "description": "Tea Break Start and End punches must fall within this window (4:00 PM)",
+   "fieldname": "tea_window_start",
+   "fieldtype": "Time",
+   "label": "Tea Window Start"
+  },
+  {
+   "default": "18:00:00",
+   "description": "Tea Break Start and End punches must fall within this window (6:00 PM)",
+   "fieldname": "tea_window_end",
+   "fieldtype": "Time",
+   "label": "Tea Window End"
+  },
+  {
+   "default": "120",
+   "fieldname": "duplicate_punch_tolerance_seconds",
+   "fieldtype": "Int",
+   "label": "Duplicate Punch Tolerance (Seconds)"
+  },
+  {
+   "default": "0",
+   "description": "Allow Regular Check Out even if Lunch/Tea Break End is missing",
+   "fieldname": "allow_checkout_with_incomplete_break",
+   "fieldtype": "Check",
+   "label": "Allow Checkout With Incomplete Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_debug_logging",
+   "fieldtype": "Check",
+   "label": "Enable Debug Logging"
+  },
+  {
+   "fieldname": "section_pull",
+   "fieldtype": "Section Break",
+   "label": "TCP Pull (Port 4370)"
+  },
+  {
+   "default": "0",
+   "description": "Optional: poll devices over LAN using pyzk (IP:4370)",
+   "fieldname": "enable_tcp_pull",
+   "fieldtype": "Check",
+   "label": "Enable TCP Pull"
+  },
+  {
+   "default": "10",
+   "fieldname": "pull_every",
+   "fieldtype": "Int",
+   "label": "Pull Every (Minutes)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_pull_at",
+   "fieldtype": "Datetime",
+   "label": "Last TCP Pull",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_help",
+   "fieldtype": "Section Break",
+   "label": "Device Setup"
+  },
+  {
+   "fieldname": "setup_instructions",
+   "fieldtype": "HTML",
+   "options": "<div class='alert alert-info'><b>On the biometric device</b> go to <b>Cloud Server Setting</b>:<ul><li>Server Mode: <b>ADMS</b></li><li>Server Address: your Frappe server IP / hostname</li><li>Server Port: <b>80</b> (or your site HTTPS port) — firmware appends <code>/iclock/*</code></li><li>Enable Domain Name: ON if using hostname</li></ul><p>Device TCP COMM Port <b>4370</b> is used only for optional LAN pull.</p></div>"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-01 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Biometric Integration",
+ "name": "Biometric Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Biometric Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

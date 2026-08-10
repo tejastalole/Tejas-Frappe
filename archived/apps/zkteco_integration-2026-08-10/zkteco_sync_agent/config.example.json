@@ -1,0 +1,17 @@
+{
+  "erp_url": "https://erp.exacuer.com",
+  "api_key": "d3487a1f1f7323c",
+  "api_secret": "0f66b23f6e8a899",
+  "timezone": "Asia/Kolkata",
+  "sync_interval": 60,
+  "full_sync_on_start": false,
+  "devices": [
+    {
+      "name": "NYU7254601554",
+      "ip": "192.168.1.201",
+      "port": 4370,
+      "password": 0,
+      "timeout": 5
+    }
+  ]
+}

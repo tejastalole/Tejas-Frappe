@@ -180,3 +180,706 @@ ws.save(ignore_permissions=True)
 2026-05-23 07:51:33,391 INFO ipython r = frappe.db.get_value('Attendance Log', 'ATT-00028', ['check_in_latitude','check_in_longitude','checkout_latitude'], as_dict=1)
 2026-05-23 07:51:33,391 INFO ipython print(r)
 2026-05-23 07:51:33,391 INFO ipython === session end ===
+2026-05-25 04:43:10,670 INFO ipython === bench console session ===
+2026-05-25 04:43:10,670 INFO ipython import frappe; s=frappe.get_single('Gym Settings'); print('gym_name:', s.gym_name)
+2026-05-25 04:43:10,670 INFO ipython === session end ===
+2026-05-25 04:43:59,752 INFO ipython === bench console session ===
+2026-05-25 04:43:59,752 INFO ipython import frappe; s=frappe.get_single('Gym Settings'); s.gym_name='SG Fitness'; s.save(); frappe.db.commit(); print('updated:', s.gym_name)
+2026-05-25 04:43:59,752 INFO ipython === session end ===
+2026-05-25 04:47:13,101 INFO ipython === bench console session ===
+2026-05-25 04:47:13,101 INFO ipython import frappe
+2026-05-25 04:47:13,102 INFO ipython rows = frappe.get_all('Attendance Log', 
+    filters={'attendance_date': frappe.utils.today()},
+    fields=['name','gym_member','check_in_time','check_out_time','creation','modified'],
+    order_by='modified desc', limit=5)
+2026-05-25 04:47:13,102 INFO ipython for r in rows: print(r)
+2026-05-25 04:47:13,102 INFO ipython === session end ===
+2026-05-25 04:47:57,348 INFO ipython === bench console session ===
+2026-05-25 04:47:57,348 INFO ipython import frappe
+2026-05-25 04:47:57,349 INFO ipython # Server scripts / workflows
+2026-05-25 04:47:57,349 INFO ipython for dt in ['Server Script', 'Workflow']:
+    rows = frappe.get_all(dt, filters={'document_type': 'Attendance Log'}, fields=['name','script_type','workflow_state_field','is_active'])
+    print(dt, rows)
+# Custom scripts
+print('Client Script', frappe.get_all('Client Script', filters={'dt': 'Attendance Log'}, fields=['name','script']))
+2026-05-25 04:47:57,349 INFO ipython === session end ===
+2026-05-25 04:48:12,601 INFO ipython === bench console session ===
+2026-05-25 04:48:12,602 INFO ipython import frappe
+2026-05-25 04:48:12,602 INFO ipython from gym_management.gym_management.doctype.attendance_log.attendance_log import create_check_in
+2026-05-25 04:48:12,602 INFO ipython # find a member without today attendance
+2026-05-25 04:48:12,602 INFO ipython today = frappe.utils.today()
+2026-05-25 04:48:12,602 INFO ipython for m in frappe.get_all('Gym Member', filters={'status':'Active'}, pluck='name', limit=20):
+    if not frappe.db.exists('Attendance Log', {'gym_member': m, 'attendance_date': today}):
+        print('testing member', m)
+        r = create_check_in(m)
+        doc = frappe.get_doc('Attendance Log', r['name'])
+        print('result', r)
+        print('check_in', doc.check_in_time, 'check_out', doc.check_out_time)
+        doc.delete()
+        frappe.db.commit()
+        break
+2026-05-25 04:48:12,602 INFO ipython === session end ===
+2026-05-25 04:48:13,658 INFO ipython === bench console session ===
+2026-05-25 04:48:13,658 INFO ipython import frappe
+2026-05-25 04:48:13,658 INFO ipython print('Custom Fields', frappe.get_all('Custom Field', filters={'dt':'Attendance Log'}, fields=['*']))
+2026-05-25 04:48:13,658 INFO ipython print('Property Setter', frappe.get_all('Property Setter', filters={'doc_type':'Attendance Log'}, fields=['*']))
+2026-05-25 04:48:13,658 INFO ipython === session end ===
+2026-05-25 04:48:45,552 INFO ipython === bench console session ===
+2026-05-25 04:48:45,553 INFO ipython import frappe
+2026-05-25 04:48:45,553 INFO ipython from gym_management.gym_management.doctype.attendance_log.attendance_log import create_check_in
+2026-05-25 04:48:45,553 INFO ipython frappe.set_user("Administrator")
+2026-05-25 04:48:45,553 INFO ipython today = frappe.utils.today()
+2026-05-25 04:48:45,553 INFO ipython m = "MEM-00030"
+2026-05-25 04:48:45,553 INFO ipython frappe.db.delete("Attendance Log", {"gym_member": m, "attendance_date": today})
+2026-05-25 04:48:45,553 INFO ipython frappe.db.commit()
+2026-05-25 04:48:45,553 INFO ipython r = create_check_in(m, latitude=12.34, longitude=56.78)
+2026-05-25 04:48:45,553 INFO ipython doc = frappe.get_doc("Attendance Log", r["name"])
+2026-05-25 04:48:45,553 INFO ipython print("name", doc.name)
+2026-05-25 04:48:45,553 INFO ipython print("check_in_time", doc.check_in_time)
+2026-05-25 04:48:45,553 INFO ipython print("check_out_time", doc.check_out_time)
+2026-05-25 04:48:45,553 INFO ipython === session end ===
+2026-05-25 04:49:04,286 INFO ipython === bench console session ===
+2026-05-25 04:49:04,286 INFO ipython import frappe
+2026-05-25 04:49:04,286 INFO ipython from frappe.utils import nowtime
+2026-05-25 04:49:04,286 INFO ipython frappe.set_user("Administrator")
+2026-05-25 04:49:04,286 INFO ipython doc = frappe.get_doc({
+    "doctype": "Attendance Log",
+    "gym_member": "MEM-00030",
+    "attendance_date": frappe.utils.today(),
+    "check_in_time": nowtime(),
+    "status": "Present",
+})
+2026-05-25 04:49:04,287 INFO ipython print("before insert", doc.check_in_time, doc.check_out_time)
+2026-05-25 04:49:04,287 INFO ipython doc.insert()
+2026-05-25 04:49:04,287 INFO ipython print("after insert", doc.check_in_time, doc.check_out_time)
+2026-05-25 04:49:04,287 INFO ipython doc.delete()
+2026-05-25 04:49:04,287 INFO ipython frappe.db.commit()
+2026-05-25 04:49:04,287 INFO ipython === session end ===
+2026-05-25 04:49:15,085 INFO ipython === bench console session ===
+2026-05-25 04:49:15,085 INFO ipython import frappe
+2026-05-25 04:49:15,085 INFO ipython scripts = frappe.get_all('Server Script', fields=['name','script_type','reference_doctype','disabled','script'], limit=50)
+2026-05-25 04:49:15,085 INFO ipython === session end ===
+2026-05-25 04:49:42,202 INFO ipython === bench console session ===
+2026-05-25 04:49:42,202 INFO ipython import frappe
+2026-05-25 04:49:42,202 INFO ipython from frappe import get_hooks
+2026-05-25 04:49:42,203 INFO ipython events = get_hooks("doc_events")
+2026-05-25 04:49:42,203 INFO ipython for key, handlers in events.items():
+    if key == "*" or "Attendance" in key:
+        print(key, handlers)
+2026-05-25 04:49:42,203 INFO ipython # trace insert
+2026-05-25 04:49:42,203 INFO ipython from gym_management.gym_management.doctype.attendance_log.attendance_log import AttendanceLog
+2026-05-25 04:49:42,203 INFO ipython from frappe.utils import nowtime
+2026-05-25 04:49:42,203 INFO ipython orig_validate = AttendanceLog.validate
+2026-05-25 04:49:42,203 INFO ipython orig_before_insert = getattr(AttendanceLog, "before_insert", None)
+2026-05-25 04:49:42,204 INFO ipython def validate(self):
+    print("validate in:", self.check_out_time)
+    orig_validate(self)
+    print("validate out:", self.check_out_time)
+2026-05-25 04:49:42,204 INFO ipython def before_insert(self):
+    print("before_insert:", self.check_out_time)
+2026-05-25 04:49:42,204 INFO ipython AttendanceLog.validate = validate
+2026-05-25 04:49:42,204 INFO ipython AttendanceLog.before_insert = before_insert
+2026-05-25 04:49:42,204 INFO ipython doc = frappe.get_doc({
+    "doctype": "Attendance Log",
+    "gym_member": "MEM-00030",
+    "attendance_date": frappe.utils.today(),
+    "check_in_time": nowtime(),
+    "status": "Present",
+})
+2026-05-25 04:49:42,204 INFO ipython print("pre-insert doc", doc.check_out_time)
+2026-05-25 04:49:42,204 INFO ipython doc.insert()
+2026-05-25 04:49:42,204 INFO ipython print("post-insert doc", doc.check_out_time)
+2026-05-25 04:49:42,204 INFO ipython doc.delete()
+2026-05-25 04:49:42,204 INFO ipython frappe.db.commit()
+2026-05-25 04:49:42,204 INFO ipython === session end ===
+2026-05-25 04:50:29,716 INFO ipython === bench console session ===
+2026-05-25 04:50:29,716 INFO ipython import frappe
+2026-05-25 04:50:29,717 INFO ipython from frappe.utils import nowtime
+2026-05-25 04:50:29,717 INFO ipython nd = frappe.new_doc("Attendance Log", as_dict=True)
+2026-05-25 04:50:29,717 INFO ipython print("new_doc empty:", {k: nd.get(k) for k in ['check_in_time','check_out_time']})
+2026-05-25 04:50:29,717 INFO ipython doc = frappe.get_doc({
+    "doctype": "Attendance Log",
+    "gym_member": "MEM-00030",
+    "attendance_date": frappe.utils.today(),
+    "check_in_time": nowtime(),
+    "status": "Present",
+})
+2026-05-25 04:50:29,717 INFO ipython print("before _set_defaults", doc.check_out_time)
+2026-05-25 04:50:29,717 INFO ipython doc._set_defaults()
+2026-05-25 04:50:29,717 INFO ipython print("after _set_defaults", doc.check_in_time, doc.check_out_time)
+2026-05-25 04:50:29,717 INFO ipython === session end ===
+2026-05-25 04:50:49,009 INFO ipython === bench console session ===
+2026-05-25 04:50:49,010 INFO ipython import frappe
+2026-05-25 04:50:49,010 INFO ipython meta = frappe.get_meta("Attendance Log")
+2026-05-25 04:50:49,010 INFO ipython === session end ===
+2026-05-25 04:50:49,335 INFO ipython === bench console session ===
+2026-05-25 04:50:49,335 INFO ipython import frappe
+2026-05-25 04:50:49,335 INFO ipython from frappe.utils import nowtime
+2026-05-25 04:50:49,335 INFO ipython doc = frappe.get_doc({
+    "doctype": "Attendance Log",
+    "gym_member": "MEM-00030",
+    "attendance_date": frappe.utils.today(),
+    "check_in_time": nowtime(),
+    "status": "Present",
+})
+2026-05-25 04:50:49,335 INFO ipython def snap(label):
+    print(label, "in=", doc.check_in_time, "out=", doc.check_out_time)
+2026-05-25 04:50:49,335 INFO ipython snap("start")
+2026-05-25 04:50:49,335 INFO ipython doc._set_defaults()
+2026-05-25 04:50:49,336 INFO ipython snap("after _set_defaults")
+2026-05-25 04:50:49,336 INFO ipython doc.set_user_and_timestamp()
+2026-05-25 04:50:49,336 INFO ipython snap("after timestamp")
+2026-05-25 04:50:49,336 INFO ipython doc.run_method("before_insert")
+2026-05-25 04:50:49,336 INFO ipython snap("after before_insert line303")
+2026-05-25 04:50:49,336 INFO ipython doc.set_new_name()
+2026-05-25 04:50:49,336 INFO ipython snap("after set_new_name")
+2026-05-25 04:50:49,336 INFO ipython doc.validate_higher_perm_levels()
+2026-05-25 04:50:49,336 INFO ipython snap("after higher_perm")
+2026-05-25 04:50:49,336 INFO ipython doc.flags.in_insert = True
+2026-05-25 04:50:49,336 INFO ipython doc.run_before_save_methods()
+2026-05-25 04:50:49,336 INFO ipython snap("after run_before_save")
+2026-05-25 04:50:49,336 INFO ipython === session end ===
+2026-05-25 04:51:29,448 INFO ipython === bench console session ===
+2026-05-25 04:51:29,448 INFO ipython import frappe
+2026-05-25 04:51:29,448 INFO ipython from frappe.utils import nowtime
+2026-05-25 04:51:29,449 INFO ipython doc = frappe.get_doc({
+    "doctype": "Attendance Log",
+    "gym_member": "MEM-00030",
+    "attendance_date": frappe.utils.today(),
+    "check_in_time": nowtime(),
+    "status": "Present",
+})
+2026-05-25 04:51:29,449 INFO ipython new_doc = frappe.new_doc("Attendance Log", as_dict=True)
+2026-05-25 04:51:29,449 INFO ipython print("new_doc check_out", new_doc.get("check_out_time"))
+2026-05-25 04:51:29,449 INFO ipython print("doc.get check_out before", doc.get("check_out_time"))
+2026-05-25 04:51:29,449 INFO ipython for key, value in new_doc.items():
+    if "check" in key:
+        print("  key", key, "val", value, "doc.get", doc.get(key), "will_set", value is not None and doc.get(key) is None)
+doc.update_if_missing(new_doc)
+2026-05-25 04:51:29,449 INFO ipython print("after update_if_missing out", doc.check_out_time)
+2026-05-25 04:51:29,449 INFO ipython === session end ===
+2026-05-25 04:51:50,598 INFO ipython === bench console session ===
+2026-05-25 04:51:50,598 INFO ipython import frappe
+2026-05-25 04:51:50,598 INFO ipython from frappe.utils import nowtime
+2026-05-25 04:51:50,598 INFO ipython doc = frappe.get_doc({
+    "doctype": "Attendance Log",
+    "gym_member": "MEM-00030",
+    "attendance_date": frappe.utils.today(),
+    "check_in_time": nowtime(),
+    "status": "Present",
+})
+2026-05-25 04:51:50,598 INFO ipython doc.dont_update_if_missing.append("check_out_time")
+2026-05-25 04:51:50,598 INFO ipython doc.insert()
+2026-05-25 04:51:50,599 INFO ipython print("in", doc.check_in_time, "out", doc.check_out_time)
+2026-05-25 04:51:50,599 INFO ipython doc.delete()
+2026-05-25 04:51:50,599 INFO ipython frappe.db.commit()
+2026-05-25 04:51:50,599 INFO ipython === session end ===
+2026-05-25 04:52:34,129 INFO ipython === bench console session ===
+2026-05-25 04:52:34,129 INFO ipython import frappe
+2026-05-25 04:52:34,129 INFO ipython from gym_management.gym_management.doctype.attendance_log.attendance_log import create_check_in, _time_to_seconds
+2026-05-25 04:52:34,129 INFO ipython frappe.set_user("Administrator")
+2026-05-25 04:52:34,129 INFO ipython today = frappe.utils.today()
+2026-05-25 04:52:34,129 INFO ipython m = "MEM-00030"
+2026-05-25 04:52:34,129 INFO ipython # fix today's bad rows where in/out within 2s
+2026-05-25 04:52:34,129 INFO ipython fixed = 0
+2026-05-25 04:52:34,129 INFO ipython for row in frappe.get_all("Attendance Log", filters={"attendance_date": today}, fields=["name", "check_in_time", "check_out_time"]):
+    if not row.check_in_time or not row.check_out_time:
+        continue
+    cin = _time_to_seconds(row.check_in_time)
+    cout = _time_to_seconds(row.check_out_time)
+    if cin is not None and cout is not None and abs(cin - cout) <= 2:
+        frappe.db.set_value("Attendance Log", row.name, "check_out_time", None)
+        fixed += 1
+print("cleared autofilled checkout on", fixed, "records")
+2026-05-25 04:52:34,129 INFO ipython frappe.db.delete("Attendance Log", {"gym_member": m, "attendance_date": today})
+2026-05-25 04:52:34,130 INFO ipython frappe.db.commit()
+2026-05-25 04:52:34,130 INFO ipython r = create_check_in(m)
+2026-05-25 04:52:34,130 INFO ipython doc = frappe.get_doc("Attendance Log", r["name"])
+2026-05-25 04:52:34,130 INFO ipython print("new check-in test:", doc.name, "in=", doc.check_in_time, "out=", doc.check_out_time)
+2026-05-25 04:52:34,130 INFO ipython frappe.db.commit()
+2026-05-25 04:52:34,130 INFO ipython === session end ===
+2026-05-25 04:52:46,521 INFO ipython === bench console session ===
+2026-05-25 04:52:46,521 INFO ipython import frappe
+2026-05-25 04:52:46,521 INFO ipython from gym_management.gym_management.doctype.attendance_log.attendance_log import create_check_in, _time_to_seconds
+2026-05-25 04:52:46,521 INFO ipython frappe.set_user("Administrator")
+2026-05-25 04:52:46,522 INFO ipython today = frappe.utils.today()
+2026-05-25 04:52:46,522 INFO ipython m = "MEM-00030"
+2026-05-25 04:52:46,522 INFO ipython fixed = 0
+2026-05-25 04:52:46,522 INFO ipython for row in frappe.get_all("Attendance Log", filters={"attendance_date": today}, fields=["name", "check_in_time", "check_out_time"]):
+    if not row.check_in_time or not row.check_out_time:
+        continue
+    cin = _time_to_seconds(row.check_in_time)
+    cout = _time_to_seconds(row.check_out_time)
+    if cin is not None and cout is not None and abs(cin - cout) <= 2:
+        frappe.db.set_value("Attendance Log", row.name, "check_out_time", None)
+        fixed += 1
+print("cleared autofilled checkout on", fixed, "records")
+2026-05-25 04:52:46,522 INFO ipython frappe.db.delete("Attendance Log", {"gym_member": m, "attendance_date": today})
+2026-05-25 04:52:46,522 INFO ipython frappe.db.commit()
+2026-05-25 04:52:46,522 INFO ipython r = create_check_in(m)
+2026-05-25 04:52:46,522 INFO ipython doc = frappe.get_doc("Attendance Log", r["name"])
+2026-05-25 04:52:46,522 INFO ipython print("new check-in test:", doc.name, "in=", doc.check_in_time, "out=", doc.check_out_time)
+2026-05-25 04:52:46,522 INFO ipython frappe.db.commit()
+2026-05-25 04:52:46,522 INFO ipython === session end ===
+2026-05-25 04:52:50,980 INFO ipython === bench console session ===
+2026-05-25 04:52:50,980 INFO ipython import frappe
+2026-05-25 04:52:50,980 INFO ipython from gym_management.gym_management.doctype.attendance_log.attendance_log import check_out
+2026-05-25 04:52:50,980 INFO ipython frappe.set_user("Administrator")
+2026-05-25 04:52:50,980 INFO ipython r = check_out("ATT-00042")
+2026-05-25 04:52:50,980 INFO ipython doc = frappe.get_doc("Attendance Log", "ATT-00042")
+2026-05-25 04:52:50,980 INFO ipython print("checkout:", r)
+2026-05-25 04:52:50,980 INFO ipython print("in=", doc.check_in_time, "out=", doc.check_out_time)
+2026-05-25 04:52:50,981 INFO ipython frappe.db.commit()
+2026-05-25 04:52:50,981 INFO ipython === session end ===
+2026-06-20 06:27:04,638 INFO ipython === bench console session ===
+2026-06-20 06:27:04,639 INFO ipython import sales_tracking.sales_tracking as m; print(m.__file__)
+2026-06-20 06:27:04,639 INFO ipython === session end ===
+2026-06-20 06:27:07,730 INFO ipython === bench console session ===
+2026-06-20 06:27:07,731 INFO ipython import gym_management.gym_management as m; print(m.__file__)
+2026-06-20 06:27:07,731 INFO ipython === session end ===
+2026-06-20 06:27:51,631 INFO ipython === bench console session ===
+2026-06-20 06:27:51,631 INFO ipython import frappe
+2026-06-20 06:27:51,632 INFO ipython for dt in ['Sales Tracking Settings', 'Sales Tracking Session', 'Sales Person Location Log']:
+    print(dt, frappe.db.exists('DocType', dt))
+print('Roles:', frappe.get_all('Role', filters={'name': ['in', ['Sales Tracking Manager', 'Sales Tracking User']]}, pluck='name'))
+2026-06-20 06:27:51,632 INFO ipython === session end ===
+2026-06-20 06:43:02,650 INFO ipython === bench console session ===
+2026-06-20 06:43:02,651 INFO ipython import frappe
+2026-06-20 06:43:02,651 INFO ipython logs = frappe.get_all('Sales Person Location Log', fields=['name','sales_person','latitude','longitude','accuracy','log_type','captured_at'], order_by='captured_at desc', limit=5)
+2026-06-20 06:43:02,651 INFO ipython sessions = frappe.get_all('Sales Tracking Session', filters={'status':'Active'}, fields=['name','sales_person','start_time','total_logs'])
+2026-06-20 06:43:02,651 INFO ipython print('Active sessions:', sessions)
+2026-06-20 06:43:02,651 INFO ipython print('Recent logs:', logs)
+2026-06-20 06:43:02,651 INFO ipython === session end ===
+2026-06-22 08:56:39,938 INFO ipython === bench console session ===
+2026-06-22 08:56:39,940 INFO ipython import frappe
+2026-06-22 08:56:39,940 INFO ipython print('App installed:', 'sales_tracking' in frappe.get_installed_apps())
+2026-06-22 08:56:39,940 INFO ipython for dt in ['Sales Tracking Settings', 'Sales Tracking Session', 'Sales Person Location Log']:
+    print(dt, ':', 'OK' if frappe.db.exists('DocType', dt) else 'MISSING')
+roles = frappe.get_all('Role', filters={'name': ['in', ['Sales Tracking User', 'Sales Tracking Manager']]}, pluck='name')
+2026-06-22 08:56:39,940 INFO ipython print('Roles:', roles)
+2026-06-22 08:56:39,940 INFO ipython sales_persons = frappe.get_all('Sales Person', filters={'enabled': 1, 'is_group': 0}, fields=['name','sales_person_name','tracking_user','employee'], limit=5)
+2026-06-22 08:56:39,940 INFO ipython print('Sales Persons:', sales_persons)
+2026-06-22 08:56:39,940 INFO ipython users = frappe.get_all('User', filters={'enabled': 1, 'name': ['not in', ['Guest','Administrator']]}, fields=['name','full_name'], limit=5)
+2026-06-22 08:56:39,940 INFO ipython print('Users:', users)
+2026-06-22 08:56:39,940 INFO ipython active = frappe.get_all('Sales Tracking Session', filters={'status': 'Active'}, fields=['name','sales_person','user','total_logs'])
+2026-06-22 08:56:39,940 INFO ipython print('Active sessions:', active)
+2026-06-22 08:56:39,940 INFO ipython logs = frappe.db.count('Sales Person Location Log')
+2026-06-22 08:56:39,940 INFO ipython print('Total location logs:', logs)
+2026-06-22 08:56:39,940 INFO ipython === session end ===
+2026-06-22 09:15:41,138 INFO ipython === bench console session ===
+2026-06-22 09:15:41,138 INFO ipython import frappe
+2026-06-22 09:15:41,138 INFO ipython for dt in ['DWB Approval Rule','DWB Approval Request','DWB Approval Delegation','DWB Approval Log']:
+    print(dt, frappe.db.exists('DocType', dt))
+print('Roles', frappe.get_all('Role', filters={'name': ['in', ['Approval Manager','Approver','Approval Employee']]}, pluck='name'))
+2026-06-22 09:15:41,139 INFO ipython === session end ===
+2026-06-22 09:30:30,809 INFO ipython === bench console session ===
+2026-06-22 09:30:30,809 INFO ipython import frappe
+2026-06-22 09:30:30,809 INFO ipython print('Installed:', 'frappe_flow' in frappe.get_installed_apps())
+2026-06-22 09:30:30,810 INFO ipython for dt in ['FF Flow Automation','FF Flow Execution','FF Flow Template','FF Flow Webhook','FF Flow Credential','FF Flow Schedule','FF Flow Delay Queue']:
+    print(dt, 'OK' if frappe.db.exists('DocType', dt) else 'MISSING')
+print('Templates:', frappe.get_all('FF Flow Template', pluck='template_name'))
+2026-06-22 09:30:30,810 INFO ipython print('Roles:', frappe.get_all('Role', filters={'name': ['in', ['Flow Admin','Flow Designer','Flow User']]}, pluck='name'))
+2026-06-22 09:30:30,810 INFO ipython === session end ===
+2026-06-22 10:31:04,576 INFO ipython === bench console session ===
+2026-06-22 10:31:04,578 INFO ipython import frappe
+2026-06-22 10:31:04,579 INFO ipython for u in ['Administrator', 'tejastalole7@gmail.com']:
+    print(u, frappe.db.get_value('User', u, ['email','enabled'], as_dict=True))
+2026-06-22 10:31:04,579 INFO ipython === session end ===
+2026-06-22 10:31:18,735 INFO ipython === bench console session ===
+2026-06-22 10:31:18,735 INFO ipython from frappe_flow.engine.utils import resolve_email_recipients
+2026-06-22 10:31:18,735 INFO ipython print(resolve_email_recipients('Administrator'))
+2026-06-22 10:31:18,735 INFO ipython print(resolve_email_recipients('Administrator, Guest'))
+2026-06-22 10:31:18,735 INFO ipython === session end ===
+2026-06-22 10:47:43,910 INFO ipython === bench console session ===
+2026-06-22 10:47:43,910 INFO ipython import frappe, json
+2026-06-22 10:47:43,910 INFO ipython creds = frappe.get_all('FF Flow Credential', fields=['name','provider','credential_name'])
+2026-06-22 10:47:43,910 INFO ipython print('Credentials:', creds)
+2026-06-22 10:47:43,910 INFO ipython flows = frappe.get_all('FF Flow Automation', filters={'is_active': 1}, fields=['name','document_type','trigger_event'])
+2026-06-22 10:47:43,910 INFO ipython print('Active flows:', flows)
+2026-06-22 10:47:43,910 INFO ipython execs = frappe.get_all('FF Flow Execution', fields=['name','flow_automation','status','execution_log'], order_by='creation desc', limit=3)
+2026-06-22 10:47:43,911 INFO ipython for e in execs:
+    print('Exec:', e.name, e.status)
+    if e.execution_log:
+        print(e.execution_log[:500])
+2026-06-22 10:47:43,911 INFO ipython === session end ===
+2026-06-22 10:47:51,137 INFO ipython === bench console session ===
+2026-06-22 10:47:51,137 INFO ipython import frappe, json
+2026-06-22 10:47:51,137 INFO ipython creds = frappe.get_all('FF Flow Credential', fields=['name','provider','credential_name'])
+2026-06-22 10:47:51,137 INFO ipython print('Credentials:', creds)
+2026-06-22 10:47:51,137 INFO ipython flows = frappe.db.sql('''SELECT name, document_type, trigger_event, is_active, status FROM `tabFF Flow Automation`''', as_dict=1)
+2026-06-22 10:47:51,138 INFO ipython print('Flows:', flows)
+2026-06-22 10:47:51,138 INFO ipython for f in flows[:2]:
+    doc = frappe.get_doc('FF Flow Automation', f.name)
+    graph = json.loads(doc.flow_json) if isinstance(doc.flow_json, str) else doc.flow_json
+    wa = [n for n in (graph or {}).get('nodes',[]) if n.get('type')=='send_whatsapp']
+    print(f.name, 'whatsapp nodes:', wa)
+execs = frappe.get_all('FF Flow Execution', fields=['name','flow','status','error_log'], order_by='creation desc', limit=5)
+2026-06-22 10:47:51,138 INFO ipython print('Executions:', execs)
+2026-06-22 10:47:51,138 INFO ipython === session end ===
+2026-06-22 10:48:21,762 INFO ipython === bench console session ===
+2026-06-22 10:48:21,763 INFO ipython import frappe, json
+2026-06-22 10:48:21,763 INFO ipython doc = frappe.get_doc('FF Flow Automation', 'CRM Lead Welcome Pack')
+2026-06-22 10:48:21,763 INFO ipython graph = json.loads(doc.flow_json) if isinstance(doc.flow_json, str) else doc.flow_json
+2026-06-22 10:48:21,763 INFO ipython print('nodes:', len(graph['nodes']))
+2026-06-22 10:48:21,764 INFO ipython print('edges:', json.dumps(graph['edges'], indent=2))
+2026-06-22 10:48:21,764 INFO ipython for n in graph['nodes']:
+    print(n['id'], n['type'], n.get('label'))
+2026-06-22 10:48:21,764 INFO ipython === session end ===
+2026-06-22 10:48:47,210 INFO ipython === bench console session ===
+2026-06-22 10:48:47,210 INFO ipython import frappe, json
+2026-06-22 10:48:47,210 INFO ipython doc = frappe.get_doc('FF Flow Automation', 'CRM Lead Welcome Pack')
+2026-06-22 10:48:47,210 INFO ipython graph = json.loads(doc.flow_json) if isinstance(doc.flow_json, str) else doc.flow_json
+2026-06-22 10:48:47,210 INFO ipython print(json.dumps(graph['edges'], indent=2))
+2026-06-22 10:48:47,211 INFO ipython === session end ===
+2026-06-22 10:50:46,403 INFO ipython === bench console session ===
+2026-06-22 10:50:46,403 INFO ipython from frappe_flow.engine.whatsapp import normalize_phone
+2026-06-22 10:50:46,404 INFO ipython print(normalize_phone('7249583805'))
+2026-06-22 10:50:46,404 INFO ipython print(normalize_phone('+91 72495 83805'))
+2026-06-22 10:50:46,404 INFO ipython try:
+    from frappe_flow.engine.whatsapp import send_whatsapp_message
+    send_whatsapp_message('7249583805', 'test', credential_name=None)
+except Exception as e:
+    print('Expected error:', str(e)[:120])
+2026-06-22 10:50:46,404 INFO ipython === session end ===
+2026-06-22 11:09:14,295 INFO ipython === bench console session ===
+2026-06-22 11:09:14,296 INFO ipython import frappe
+2026-06-22 11:09:14,296 INFO ipython meta = frappe.get_meta('FF Flow Credential')
+2026-06-22 11:09:14,296 INFO ipython print('fields:', [f.fieldname for f in meta.fields])
+2026-06-22 11:09:14,296 INFO ipython print('module:', meta.module)
+2026-06-22 11:09:14,296 INFO ipython === session end ===
+2026-06-22 11:10:38,574 INFO ipython === bench console session ===
+2026-06-22 11:10:38,574 INFO ipython import frappe
+2026-06-22 11:10:38,575 INFO ipython # check customize form
+2026-06-22 11:10:38,575 INFO ipython cf = frappe.db.exists('Customize Form', {'doc_type': 'FF Flow Credential'})
+2026-06-22 11:10:38,575 INFO ipython print('customize form:', cf)
+2026-06-22 11:10:38,575 INFO ipython # check property setter hiding fields
+2026-06-22 11:10:38,575 INFO ipython ps = frappe.get_all('Property Setter', filters={'doc_type': 'FF Flow Credential'}, fields=['*'])
+2026-06-22 11:10:38,576 INFO ipython print('property setters:', ps)
+2026-06-22 11:10:38,576 INFO ipython # render test
+2026-06-22 11:10:38,576 INFO ipython from frappe.desk.form.load import getdoc
+2026-06-22 11:10:38,576 INFO ipython frappe.set_user('Administrator')
+2026-06-22 11:10:38,576 INFO ipython frappe.local.form_dict = frappe._dict(doctype='FF Flow Credential', name='new')
+2026-06-22 11:10:38,576 INFO ipython === session end ===
+2026-06-22 11:12:21,351 INFO ipython === bench console session ===
+2026-06-22 11:12:21,351 INFO ipython import frappe, json
+2026-06-22 11:12:21,351 INFO ipython from frappe.desk.form.load import getdoctype
+2026-06-22 11:12:21,351 INFO ipython frappe.set_user('Administrator')
+2026-06-22 11:12:21,351 INFO ipython frappe.response = {}
+2026-06-22 11:12:21,352 INFO ipython getdoctype('FF Flow Credential')
+2026-06-22 11:12:21,352 INFO ipython print('keys', frappe.response.keys())
+2026-06-22 11:12:21,352 INFO ipython meta = [d for d in frappe.response.get('docs',[]) if d.get('name')=='FF Flow Credential']
+2026-06-22 11:12:21,353 INFO ipython print('fields count', len(meta[0].get('fields',[])) if meta else 0)
+2026-06-22 11:12:21,353 INFO ipython === session end ===
+2026-06-22 11:12:36,940 INFO ipython === bench console session ===
+2026-06-22 11:12:36,941 INFO ipython import frappe
+2026-06-22 11:12:36,941 INFO ipython dt = frappe.get_doc('DocType', 'FF Flow Credential')
+2026-06-22 11:12:36,941 INFO ipython print('fields', len(dt.fields), [f.fieldname for f in dt.fields])
+2026-06-22 11:12:36,941 INFO ipython print('custom', dt.custom)
+2026-06-22 11:12:36,941 INFO ipython print('module', dt.module)
+2026-06-22 11:12:36,941 INFO ipython # check if doctype is in tabDocType
+2026-06-22 11:12:36,941 INFO ipython print('exists', frappe.db.exists('DocType', 'FF Flow Credential'))
+2026-06-22 11:12:36,941 INFO ipython === session end ===
+2026-06-25 04:40:35,228 INFO ipython === bench console session ===
+2026-06-25 04:40:35,228 INFO ipython import frappe
+2026-06-25 04:40:35,228 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-06-25 04:40:35,228 INFO ipython path = frappe.get_app_path("smart_attendance_hub", "smart_attendance_hub", "workspace", "smart_attendance_hub", "smart_attendance_hub.json")
+2026-06-25 04:40:35,228 INFO ipython import_file_by_path(path, force=True, ignore_version=True)
+2026-06-25 04:40:35,228 INFO ipython frappe.db.commit()
+2026-06-25 04:40:35,228 INFO ipython print("Workspace synced:", frappe.db.get_value("Workspace", "Smart Attendance Hub", ["parent_page", "public", "is_hidden"], as_dict=True))
+2026-06-25 04:40:35,228 INFO ipython === session end ===
+2026-06-25 04:43:27,480 INFO ipython === bench console session ===
+2026-06-25 04:43:27,480 INFO ipython import frappe
+2026-06-25 04:43:27,480 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-06-25 04:43:27,480 INFO ipython path = frappe.get_app_path("smart_attendance_hub", "smart_attendance_hub", "workspace", "smart_attendance_hub", "smart_attendance_hub.json")
+2026-06-25 04:43:27,481 INFO ipython import_file_by_path(path, force=True, ignore_version=True)
+2026-06-25 04:43:27,481 INFO ipython frappe.db.commit()
+2026-06-25 04:43:27,481 INFO ipython ws = frappe.get_doc("Workspace", "Smart Attendance Hub")
+2026-06-25 04:43:27,481 INFO ipython print("Shortcuts:", [s.label for s in ws.shortcuts])
+2026-06-25 04:43:27,481 INFO ipython === session end ===
+2026-06-29 07:21:06,014 INFO ipython === bench console session ===
+2026-06-29 07:21:06,014 INFO ipython import frappe
+2026-06-29 07:21:06,014 INFO ipython print("Installed:", "boq_management" in frappe.get_installed_apps())
+2026-06-29 07:21:06,014 INFO ipython print("Categories:", frappe.db.count("BOQ Category"))
+2026-06-29 07:21:06,014 INFO ipython print("Items:", frappe.db.count("BOQ Item Master"))
+2026-06-29 07:21:06,015 INFO ipython === session end ===
+2026-06-29 07:21:13,687 INFO ipython === bench console session ===
+2026-06-29 07:21:13,687 INFO ipython import traceback
+2026-06-29 07:21:13,687 INFO ipython import boq_management.install as inst
+2026-06-29 07:21:13,687 INFO ipython === session end ===
+2026-06-29 07:21:57,087 INFO ipython === bench console session ===
+2026-06-29 07:21:57,088 INFO ipython import frappe
+2026-06-29 07:21:57,088 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-06-29 07:21:57,088 INFO ipython # cleanup partial seed
+2026-06-29 07:21:57,088 INFO ipython frappe.db.delete("BOQ Sub Category", {"name": "Flashing"})
+2026-06-29 07:21:57,088 INFO ipython frappe.db.delete("BOQ Category")
+2026-06-29 07:21:57,088 INFO ipython frappe.db.commit()
+2026-06-29 07:21:57,088 INFO ipython for dt in ("boq_sub_category", "boq_item_master"):
+    path = frappe.get_app_path("boq_management", "boq_management", "doctype", dt, f"{dt}.json")
+    import_file_by_path(path, force=True, ignore_version=True)
+2026-06-29 07:21:57,088 INFO ipython from boq_management.install import after_install
+2026-06-29 07:21:57,088 INFO ipython after_install()
+2026-06-29 07:21:57,088 INFO ipython frappe.db.commit()
+2026-06-29 07:21:57,089 INFO ipython print("Categories", frappe.db.count("BOQ Category"))
+2026-06-29 07:21:57,089 INFO ipython print("Sub", frappe.db.count("BOQ Sub Category"))
+2026-06-29 07:21:57,089 INFO ipython print("Items", frappe.db.count("BOQ Item Master"))
+2026-06-29 07:21:57,089 INFO ipython === session end ===
+2026-06-29 12:33:10,145 INFO ipython === bench console session ===
+2026-06-29 12:33:10,149 INFO ipython import frappe
+2026-06-29 12:33:10,149 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-06-29 12:33:10,149 INFO ipython for dt in ("boq", "boq_item", "boq_settings"):
+    path = frappe.get_app_path("boq_management", "boq_management", "doctype", dt, f"{dt}.json")
+    import_file_by_path(path, force=True, ignore_version=True)
+2026-06-29 12:33:10,149 INFO ipython from boq_management.install import _seed_uoms, _seed_settings
+2026-06-29 12:33:10,149 INFO ipython _seed_uoms()
+2026-06-29 12:33:10,149 INFO ipython _seed_settings()
+2026-06-29 12:33:10,149 INFO ipython frappe.db.commit()
+2026-06-29 12:33:10,149 INFO ipython print("UOMs:", frappe.get_all("UOM", filters={"name": ["in", ["m2", "Set", "LS"]]}, pluck="name"))
+2026-06-29 12:33:10,150 INFO ipython === session end ===
+2026-07-15 12:43:49,809 INFO ipython === bench console session ===
+2026-07-15 12:43:49,809 INFO ipython import frappe
+2026-07-15 12:43:49,809 INFO ipython doc = frappe.get_single("WhatsApp Settings")
+2026-07-15 12:43:49,810 INFO ipython doc.app_id = "2217545872434599"
+2026-07-15 12:43:49,810 INFO ipython doc.api_base_url = "https://graph.facebook.com"
+2026-07-15 12:43:49,810 INFO ipython doc.api_version = "v21.0"
+2026-07-15 12:43:49,810 INFO ipython doc.default_country_code = "91"
+2026-07-15 12:43:49,810 INFO ipython doc.webhook_verify_token = "tejas_whatsapp_verify"
+2026-07-15 12:43:49,810 INFO ipython doc.access_token = "EAAfg2KHZC5acBRxTMcQwGAR6T2djCbqtg60lZAsmZCZCwBZCvBJlv9ZBF1ZC2naCA5da4gE7ZCGIW5AoznQaKnPu8yziYdx49ZBUotHpKMaH7dGCoZB73I9qPHttKQiJuH2sWcCC4cf5FRGWEtGIZAG4erUv5IIYyUvBAcs3RBhKCaFkDNbXT2goGpxXV5zppE8tzjtiWJrVO3ZCbZCbRLuUg2TD2AO9H7j5LgZC8krZA4YTcjNG7SCiBCUq3ivYf7DOxKfqjh6ZBj2tKacPZCoKeAUOOutDD"
+2026-07-15 12:43:49,810 INFO ipython # Keep disabled until Phone Number ID is set
+2026-07-15 12:43:49,810 INFO ipython doc.enabled = 0
+2026-07-15 12:43:49,810 INFO ipython doc.save(ignore_permissions=True)
+2026-07-15 12:43:49,810 INFO ipython frappe.db.commit()
+2026-07-15 12:43:49,810 INFO ipython print("Saved settings")
+2026-07-15 12:43:49,810 INFO ipython print("has_token", bool(doc.get_password("access_token")))
+2026-07-15 12:43:49,810 INFO ipython print("app_id", doc.app_id)
+2026-07-15 12:43:49,810 INFO ipython print("webhook_verify_token", doc.webhook_verify_token)
+2026-07-15 12:43:49,810 INFO ipython print("enabled", doc.enabled)
+2026-07-15 12:43:49,811 INFO ipython === session end ===
+2026-07-15 13:25:17,175 INFO ipython === bench console session ===
+2026-07-15 13:25:17,178 INFO ipython import frappe
+2026-07-15 13:25:17,178 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-07-15 13:25:17,178 INFO ipython path = "/home/frappe/tejas/apps/whatsapp_integration/whatsapp_integration/whatsapp_integration/workspace/whatsapp_integration/whatsapp_integration.json"
+2026-07-15 13:25:17,178 INFO ipython import_file_by_path(path, force=True)
+2026-07-15 13:25:17,178 INFO ipython frappe.db.commit()
+2026-07-15 13:25:17,178 INFO ipython print("imported")
+2026-07-15 13:25:17,178 INFO ipython print(frappe.get_all("Workspace", filters={"module": "WhatsApp Integration"}, fields=["name","label","public","is_hidden","sequence_id"]))
+2026-07-15 13:25:17,178 INFO ipython === session end ===
+2026-07-29 06:36:04,493 INFO ipython === bench console session ===
+2026-07-29 06:36:04,494 INFO ipython import frappe
+2026-07-29 06:36:04,495 INFO ipython print("installed:", frappe.get_installed_apps())
+2026-07-29 06:36:04,495 INFO ipython print("Employee Checkin:", frappe.db.exists("DocType", "Employee Checkin"))
+2026-07-29 06:36:04,495 INFO ipython print("Module HR:", frappe.db.exists("Module Def", "HR"))
+2026-07-29 06:36:04,495 INFO ipython print("hrms in apps:", "hrms" in frappe.get_all_apps())
+2026-07-29 06:36:04,495 INFO ipython === session end ===
+2026-07-29 06:36:23,005 INFO ipython === bench console session ===
+2026-07-29 06:36:23,006 INFO ipython import frappe
+2026-07-29 06:36:23,006 INFO ipython print("installed:", frappe.get_installed_apps())
+2026-07-29 06:36:23,006 INFO ipython print("Employee Checkin:", frappe.db.exists("DocType", "Employee Checkin"))
+2026-07-29 06:36:23,006 INFO ipython print("Employee:", frappe.db.exists("DocType", "Employee"))
+2026-07-29 06:36:23,006 INFO ipython === session end ===
+2026-07-29 06:36:58,546 INFO ipython === bench console session ===
+2026-07-29 06:36:58,546 INFO ipython import frappe
+2026-07-29 06:36:58,546 INFO ipython for dt in ["eSSL Integration Settings", "eSSL Device", "eSSL Device Item", "Biometric Log", "eSSL Sync Log"]:
+    print(dt, "->", bool(frappe.db.exists("DocType", dt)))
+print("app installed:", "essl_integration" in frappe.get_installed_apps())
+2026-07-29 06:36:58,546 INFO ipython print("role:", frappe.db.exists("Role", "eSSL Manager"))
+2026-07-29 06:36:58,548 INFO ipython print("Branch:", frappe.db.exists("DocType", "Branch"))
+2026-07-29 06:36:58,548 INFO ipython print("attendance_device_id field:", frappe.db.has_column("tabEmployee", "attendance_device_id"))
+2026-07-29 06:36:58,548 INFO ipython === session end ===
+2026-07-29 06:37:06,925 INFO ipython === bench console session ===
+2026-07-29 06:37:06,926 INFO ipython import frappe
+2026-07-29 06:37:06,926 INFO ipython print("cols:", "attendance_device_id" in frappe.db.get_table_columns("Employee"))
+2026-07-29 06:37:06,926 INFO ipython from essl_integration.api import sync_now, test_connection, run_sync
+2026-07-29 06:37:06,926 INFO ipython from essl_integration.scheduler import sync_logs
+2026-07-29 06:37:06,926 INFO ipython from essl_integration.utils import normalize_logs, resolve_employee
+2026-07-29 06:37:06,926 INFO ipython print("imports ok")
+2026-07-29 06:37:06,926 INFO ipython print(normalize_logs([{"emp_code":"1","punch_time":"2026-07-29 09:01:10","device":"TBDD241200738"}]))
+2026-07-29 06:37:06,926 INFO ipython === session end ===
+2026-07-29 06:37:17,113 INFO ipython === bench console session ===
+2026-07-29 06:37:17,113 INFO ipython import frappe
+2026-07-29 06:37:17,113 INFO ipython from frappe.model.base_document import get_controller
+2026-07-29 06:37:17,113 INFO ipython === session end ===
+2026-08-01 07:28:31,729 INFO ipython === bench console session ===
+2026-08-01 07:28:31,729 INFO ipython import frappe
+2026-08-01 07:28:31,729 INFO ipython from biometric_integration.adms import parse_attlog, handle_request
+2026-08-01 07:28:31,729 INFO ipython from biometric_integration.renderers import ZKTecoADMSRenderer
+2026-08-01 07:28:31,729 INFO ipython from werkzeug.test import EnvironBuilder
+2026-08-01 07:28:31,730 INFO ipython from werkzeug.wrappers import Request
+2026-08-01 07:28:31,730 INFO ipython for dt in ["Biometric Settings", "Biometric Device", "Biometric Punch Log", "Biometric Sync Log"]:
+    print(dt, bool(frappe.db.exists("DocType", dt)))
+2026-08-01 07:28:31,730 INFO ipython print("devices:", frappe.get_all("Biometric Device", fields=["name","device_name","ip_address","tcp_port","serial_number","mac_address","platform"]))
+2026-08-01 07:28:31,730 INFO ipython print("role:", frappe.db.exists("Role", "Biometric Manager"))
+2026-08-01 07:28:31,731 INFO ipython rows = parse_attlog("1\t2026-08-01 09:01:10\t0\t1\t0\n2\t2026-08-01 09:05:00\t1\t1")
+2026-08-01 07:28:31,731 INFO ipython print("parsed:", rows)
+2026-08-01 07:28:31,731 INFO ipython from biometric_integration.sync import process_attendance_rows
+2026-08-01 07:28:31,731 INFO ipython # process without employee mapping — should still create punch logs
+2026-08-01 07:28:31,731 INFO ipython counts = process_attendance_rows(rows, device_name="PENDING-SN", serial_number="PENDING-SN", source="ADMS")
+2026-08-01 07:28:31,731 INFO ipython print("process:", counts, "logs:", frappe.db.count("Biometric Punch Log"))
+2026-08-01 07:28:31,731 INFO ipython frappe.db.rollback()
+2026-08-01 07:28:31,731 INFO ipython print("imports ok")
+2026-08-01 07:28:31,731 INFO ipython === session end ===
+2026-08-01 08:36:39,949 INFO ipython === bench console session ===
+2026-08-01 08:36:39,951 INFO ipython import frappe
+2026-08-01 08:36:39,951 INFO ipython print("hrms installed:", "hrms" in frappe.get_installed_apps())
+2026-08-01 08:36:39,951 INFO ipython print("Employee Checkin:", bool(frappe.db.exists("DocType", "Employee Checkin")))
+2026-08-01 08:36:39,951 INFO ipython print("Attendance:", bool(frappe.db.exists("DocType", "Attendance")))
+2026-08-01 08:36:39,951 INFO ipython print("Shift Type:", bool(frappe.db.exists("DocType", "Shift Type")))
+2026-08-01 08:36:39,951 INFO ipython === session end ===
+2026-08-03 10:54:46,493 INFO ipython === bench console session ===
+2026-08-03 10:54:46,495 INFO ipython import frappe
+2026-08-03 10:54:46,495 INFO ipython for dt in ["Bulk Data Tool", "Bulk Data Operation Log", "Bulk Protected DocType"]:
+    print(dt, bool(frappe.db.exists("DocType", dt)))
+print("app:", "bulk_data_tools" in frappe.get_installed_apps())
+2026-08-03 10:54:46,495 INFO ipython from bulk_data_tools.api import run_action
+2026-08-03 10:54:46,495 INFO ipython r = run_action("count_records", "ToDo", "[]", "All")
+2026-08-03 10:54:46,495 INFO ipython print("count todo:", r)
+2026-08-03 10:54:46,496 INFO ipython === session end ===
+2026-08-03 10:54:56,138 INFO ipython === bench console session ===
+2026-08-03 10:54:56,138 INFO ipython import frappe
+2026-08-03 10:54:56,138 INFO ipython print("Module Def:", frappe.db.exists("Module Def", "Bulk Data Tools"))
+2026-08-03 10:54:56,138 INFO ipython print("modules.txt:", open("apps/bulk_data_tools/bulk_data_tools/modules.txt").read())
+2026-08-03 10:54:56,138 INFO ipython print("doctype files:")
+2026-08-03 10:54:56,138 INFO ipython import os
+2026-08-03 10:54:56,139 INFO ipython base="apps/bulk_data_tools/bulk_data_tools/bulk_data_tools/doctype"
+2026-08-03 10:54:56,139 INFO ipython === session end ===
+2026-08-03 10:55:11,626 INFO ipython === bench console session ===
+2026-08-03 10:55:11,626 INFO ipython import frappe
+2026-08-03 10:55:11,626 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-08-03 10:55:11,626 INFO ipython import glob
+2026-08-03 10:55:11,626 INFO ipython paths = glob.glob("/home/frappe/tejas/apps/bulk_data_tools/bulk_data_tools/bulk_data_tools/doctype/*/*.json")
+2026-08-03 10:55:11,626 INFO ipython print("json files", len(paths), paths)
+2026-08-03 10:55:11,626 INFO ipython for p in paths:
+    # skip if not doctype json named like folder
+    import_file_by_path(p, force=True, ignore_version=True)
+    print("imported", p)
+frappe.db.commit()
+2026-08-03 10:55:11,626 INFO ipython === session end ===
+2026-08-03 10:55:43,504 INFO ipython === bench console session ===
+2026-08-03 10:55:43,505 INFO ipython import frappe
+2026-08-03 10:55:43,505 INFO ipython print("Module app:", frappe.db.get_value("Module Def", "Bulk Data Tools", "app_name"))
+2026-08-03 10:55:43,505 INFO ipython for dt in ["Bulk Data Tool", "Bulk Data Operation Log", "Bulk Protected DocType"]:
+    print(dt, "exists", bool(frappe.db.exists("DocType", dt)), "module", frappe.db.get_value("DocType", dt, "module") if frappe.db.exists("DocType", dt) else None)
+2026-08-03 10:55:43,506 INFO ipython # fix module app if wrong
+2026-08-03 10:55:43,506 INFO ipython if frappe.db.get_value("Module Def", "Bulk Data Tools", "app_name") != "bulk_data_tools":
+    frappe.db.set_value("Module Def", "Bulk Data Tools", "app_name", "bulk_data_tools")
+    print("fixed module app_name")
+2026-08-03 10:55:43,506 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-08-03 10:55:43,506 INFO ipython import_file_by_path("/home/frappe/tejas/apps/bulk_data_tools/bulk_data_tools/bulk_data_tools/workspace/bulk_data_tools/bulk_data_tools.json", force=True, ignore_version=True)
+2026-08-03 10:55:43,506 INFO ipython frappe.db.commit()
+2026-08-03 10:55:43,506 INFO ipython from bulk_data_tools.api import run_action
+2026-08-03 10:55:43,506 INFO ipython r = run_action(action="count_records", target_doctype="ToDo", filters_json="[]", docstatus_filter="All")
+2026-08-03 10:55:43,506 INFO ipython print("count result:", r)
+2026-08-03 10:55:43,507 INFO ipython # dry run delete
+2026-08-03 10:55:43,507 INFO ipython r2 = run_action(action="delete_records", target_doctype="ToDo", filters_json="[]", docstatus_filter="All", dry_run=1, confirm_text="")
+2026-08-03 10:55:43,507 INFO ipython print("dry delete:", r2.get("message"), "count", r2.get("count"))
+2026-08-03 10:55:43,507 INFO ipython === session end ===
+2026-08-03 11:32:15,656 INFO ipython === bench console session ===
+2026-08-03 11:32:15,657 INFO ipython import frappe
+2026-08-03 11:32:15,657 INFO ipython print("sah installed:", "smart_attendance_hub" in frappe.get_installed_apps())
+2026-08-03 11:32:15,657 INFO ipython === session end ===
+2026-08-03 11:32:26,844 INFO ipython === bench console session ===
+2026-08-03 11:32:26,844 INFO ipython import frappe, glob
+2026-08-03 11:32:26,844 INFO ipython from frappe.modules.import_file import import_file_by_path
+2026-08-03 11:32:26,844 INFO ipython for dt in ["Biometric Device", "Biometric Settings", "Biometric Punch Log", "Biometric Sync Log", "Biometric Device Item"]:
+    exists = bool(frappe.db.exists("DocType", dt))
+    module = frappe.db.get_value("DocType", dt, "module") if exists else None
+    print(f"{dt}: exists={exists} module={module}")
+2026-08-03 11:32:26,844 INFO ipython # Re-import all biometric_integration doctypes
+2026-08-03 11:32:26,844 INFO ipython paths = sorted(glob.glob("/home/frappe/tejas/apps/biometric_integration/biometric_integration/biometric_integration/doctype/*/*.json"))
+2026-08-03 11:32:26,844 INFO ipython print("files:", len(paths))
+2026-08-03 11:32:26,845 INFO ipython for p in paths:
+    import_file_by_path(p, force=True, ignore_version=True)
+    print("imported", p.split("/")[-1])
+frappe.db.commit()
+2026-08-03 11:32:26,845 INFO ipython === session end ===
+2026-08-03 11:32:35,403 INFO ipython === bench console session ===
+2026-08-03 11:32:35,403 INFO ipython import frappe
+2026-08-03 11:32:35,403 INFO ipython print("Biometric Device:", bool(frappe.db.exists("DocType", "Biometric Device")))
+2026-08-03 11:32:35,403 INFO ipython print("device count:", frappe.db.count("Biometric Device") if frappe.db.exists("DocType", "Biometric Device") else 0)
+2026-08-03 11:32:35,403 INFO ipython # re-seed default device if empty
+2026-08-03 11:32:35,403 INFO ipython if frappe.db.exists("DocType", "Biometric Device") and not frappe.db.count("Biometric Device"):
+    from biometric_integration.install import _seed_default_device
+    _seed_default_device()
+    frappe.db.commit()
+    print("re-seeded device")
+print("devices:", frappe.get_all("Biometric Device", fields=["name","device_name","ip_address"]))
+2026-08-03 11:32:35,404 INFO ipython === session end ===
+2026-08-06 06:20:58,559 INFO ipython === bench console session ===
+2026-08-06 06:20:58,559 INFO ipython import frappe
+2026-08-06 06:20:58,560 INFO ipython print(frappe.get_installed_apps())
+2026-08-06 06:20:58,560 INFO ipython print(frappe.db.sql("select name from `tabModule Def` where name like '%zkteco%' or name like '%Zkteco%'", as_dict=1))
+2026-08-06 06:20:58,560 INFO ipython print(frappe.db.sql("select * from `tabInstalled Application` where app_name like '%zk%'", as_dict=1))
+2026-08-06 06:20:58,560 INFO ipython === session end ===
+2026-08-07 09:50:27,172 INFO ipython === bench console session ===
+2026-08-07 09:50:27,174 INFO ipython import frappe
+2026-08-07 09:50:27,174 INFO ipython from zkteco_integration.attendance import auto_out_open_checkins, next_log_type
+2026-08-07 09:50:27,174 INFO ipython print("today", frappe.utils.nowdate())
+2026-08-07 09:50:27,174 INFO ipython print("next", next_log_type("HR-EMP-00001", "2026-08-07 16:00:00"))
+2026-08-07 09:50:27,174 INFO ipython print("auto", auto_out_open_checkins("19:00:00"))
+2026-08-07 09:50:27,174 INFO ipython print(frappe.db.sql("select name, employee, log_type, time, device_id from `tabEmployee Checkin` order by time desc limit 8", as_dict=1))
+2026-08-07 09:50:27,174 INFO ipython === session end ===
+2026-08-07 09:50:54,207 INFO ipython === bench console session ===
+2026-08-07 09:50:54,207 INFO ipython import frappe
+2026-08-07 09:50:54,208 INFO ipython from zkteco_integration.attendance import process_attendance_rows, auto_out_open_checkins, next_log_type
+2026-08-07 09:50:54,208 INFO ipython # ensure settings fields exist
+2026-08-07 09:50:54,208 INFO ipython frappe.reload_doc("zkteco_integration", "doctype", "zkteco_settings")
+2026-08-07 09:50:54,208 INFO ipython s = frappe.get_single("ZKTeco Settings")
+2026-08-07 09:50:54,208 INFO ipython s.auto_out_enabled = 1
+2026-08-07 09:50:54,208 INFO ipython s.auto_out_time = "19:00:00"
+2026-08-07 09:50:54,208 INFO ipython s.create_employee_checkin = 1
+2026-08-07 09:50:54,209 INFO ipython s.enabled = 1
+2026-08-07 09:50:54,209 INFO ipython s.save(ignore_permissions=True)
+2026-08-07 09:50:54,209 INFO ipython frappe.db.commit()
+2026-08-07 09:50:54,209 INFO ipython emp = frappe.db.get_value("Employee", {"employee_name": ("like", "%Tejas%")}, "name") or "HR-EMP-00001"
+2026-08-07 09:50:54,209 INFO ipython print("employee", emp, "attendance_device_id", frappe.db.get_value("Employee", emp, "attendance_device_id"))
+2026-08-07 09:50:54,211 INFO ipython # map PIN 2 if needed
+2026-08-07 09:50:54,211 INFO ipython frappe.db.set_value("Employee", emp, "attendance_device_id", "2")
+2026-08-07 09:50:54,211 INFO ipython # clear today's checkins for clean test? don't delete user data - use unique times
+2026-08-07 09:50:54,211 INFO ipython from frappe.utils import now_datetime
+2026-08-07 09:50:54,211 INFO ipython print("next before", next_log_type(emp, "2026-08-07 10:00:00"))
+2026-08-07 09:50:54,211 INFO ipython r1 = process_attendance_rows([{"user_id":"2","punch_time":"2026-08-07 10:00:00","punch_status":"0","raw_line":"test1"}], serial_number="TEST-SN")
+2026-08-07 09:50:54,212 INFO ipython print("punch1", r1, "next", next_log_type(emp, "2026-08-07 13:00:00"))
+2026-08-07 09:50:54,212 INFO ipython r2 = process_attendance_rows([{"user_id":"2","punch_time":"2026-08-07 13:00:00","punch_status":"0","raw_line":"test2"}], serial_number="TEST-SN")
+2026-08-07 09:50:54,212 INFO ipython print("punch2", r2, "next", next_log_type(emp, "2026-08-07 15:00:00"))
+2026-08-07 09:50:54,212 INFO ipython r3 = process_attendance_rows([{"user_id":"2","punch_time":"2026-08-07 15:00:00","punch_status":"0","raw_line":"test3"}], serial_number="TEST-SN")
+2026-08-07 09:50:54,212 INFO ipython print("punch3", r3)
+2026-08-07 09:50:54,212 INFO ipython print("auto", auto_out_open_checkins("19:00:00"))
+2026-08-07 09:50:54,212 INFO ipython print(frappe.db.sql("""select employee, log_type, time, device_id from `tabEmployee Checkin` where employee=%s and date(time)='2026-08-07' order by time""", emp, as_dict=1))
+2026-08-07 09:50:54,212 INFO ipython frappe.db.commit()
+2026-08-07 09:50:54,212 INFO ipython === session end ===
+2026-08-08 03:58:33,795 INFO ipython === bench console session ===
+2026-08-08 03:58:33,795 INFO ipython import frappe
+2026-08-08 03:58:33,795 INFO ipython # Remove scheduled job
+2026-08-08 03:58:33,795 INFO ipython for name in frappe.get_all("Scheduled Job Type", filters={"method": ["like", "%zkteco%auto_out%"]}, pluck="name"):
+	frappe.delete_doc("Scheduled Job Type", name, force=1, ignore_permissions=True)
+	print("deleted job", name)
+2026-08-08 03:58:33,796 INFO ipython # Delete AUTO-OUT checkins
+2026-08-08 03:58:33,796 INFO ipython outs = frappe.get_all("Employee Checkin", filters={"device_id": "AUTO-OUT"}, pluck="name")
+2026-08-08 03:58:33,796 INFO ipython for name in outs:
+	frappe.delete_doc("Employee Checkin", name, force=1, ignore_permissions=True)
+	print("deleted checkin", name)
+2026-08-08 03:58:33,796 INFO ipython frappe.db.commit()
+2026-08-08 03:58:33,796 INFO ipython print("done", "jobs left", frappe.get_all("Scheduled Job Type", filters={"method": ["like", "%zkteco%"]}, fields=["name","method"]))
+2026-08-08 03:58:33,796 INFO ipython === session end ===
+2026-08-08 04:04:03,044 INFO ipython === bench console session ===
+2026-08-08 04:04:03,045 INFO ipython import frappe
+2026-08-08 04:04:03,046 INFO ipython frappe.reload_doc("zkteco_integration", "doctype", "zkteco_device")
+2026-08-08 04:04:03,046 INFO ipython # Show Location fields on Employee Checkin form
+2026-08-08 04:04:03,046 INFO ipython frappe.db.set_single_value("HR Settings", "allow_geolocation_tracking", 1)
+2026-08-08 04:04:03,046 INFO ipython # Set location on known devices if empty (user can edit)
+2026-08-08 04:04:03,046 INFO ipython devices = frappe.get_all("ZKTeco Device", fields=["name", "latitude", "longitude", "serial_number"])
+2026-08-08 04:04:03,046 INFO ipython print("devices", devices)
+2026-08-08 04:04:03,046 INFO ipython # Prefer device matching NYU7254601554 from the checkin screenshot
+2026-08-08 04:04:03,047 INFO ipython for d in devices:
+	doc = frappe.get_doc("ZKTeco Device", d.name)
+	print("device", doc.name, "lat", doc.latitude, "lng", doc.longitude)
+2026-08-08 04:04:03,047 INFO ipython frappe.db.commit()
+2026-08-08 04:04:03,047 INFO ipython print("geolocation tracking", frappe.db.get_single_value("HR Settings", "allow_geolocation_tracking"))
+2026-08-08 04:04:03,047 INFO ipython print("meta fields", [f.fieldname for f in frappe.get_meta("ZKTeco Device").fields if f.fieldname in ("latitude","longitude","geolocation")])
+2026-08-08 04:04:03,047 INFO ipython === session end ===
+2026-08-08 04:06:51,825 INFO ipython === bench console session ===
+2026-08-08 04:06:51,826 INFO ipython import frappe
+2026-08-08 04:06:51,826 INFO ipython frappe.db.set_single_value("HR Settings", "allow_geolocation_tracking", 0)
+2026-08-08 04:06:51,826 INFO ipython frappe.reload_doc("zkteco_integration", "doctype", "zkteco_device")
+2026-08-08 04:06:51,826 INFO ipython frappe.db.commit()
+2026-08-08 04:06:51,826 INFO ipython print("reverted geolocation tracking", frappe.db.get_single_value("HR Settings", "allow_geolocation_tracking"))
+2026-08-08 04:06:51,826 INFO ipython === session end ===

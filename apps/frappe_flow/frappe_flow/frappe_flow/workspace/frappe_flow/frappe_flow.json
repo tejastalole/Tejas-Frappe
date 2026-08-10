@@ -1,0 +1,152 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"hdr\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Frappe Flow</b></span>\",\"col\":12}},{\"id\":\"sc_center\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Automation Center\",\"col\":3}},{\"id\":\"sc_builder\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Flow Builder\",\"col\":3}},{\"id\":\"sc_flow\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"FF Flow Automation\",\"col\":3}},{\"id\":\"sc_exec\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"FF Flow Execution\",\"col\":3}}]",
+ "creation": "2026-06-22 00:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "upload-lg",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Frappe Flow",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Automations",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Automation Center",
+   "link_count": 0,
+   "link_to": "automation-center",
+   "link_type": "Page",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Flow Builder",
+   "link_count": 0,
+   "link_to": "flow-builder",
+   "link_type": "Page",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FF Flow Automation",
+   "link_count": 0,
+   "link_to": "FF Flow Automation",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FF Flow Execution",
+   "link_count": 0,
+   "link_to": "FF Flow Execution",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FF Flow Template",
+   "link_count": 0,
+   "link_to": "FF Flow Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FF Flow Webhook",
+   "link_count": 0,
+   "link_to": "FF Flow Webhook",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FF Flow Credential",
+   "link_count": 0,
+   "link_to": "FF Flow Credential",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FF Flow Schedule",
+   "link_count": 0,
+   "link_to": "FF Flow Schedule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-03 17:02:46.068784",
+ "modified_by": "Administrator",
+ "module": "Frappe Flow",
+ "name": "Frappe Flow",
+ "number_cards": [],
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 2.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "label": "Automation Center",
+   "link_to": "automation-center",
+   "type": "Page"
+  },
+  {
+   "color": "Purple",
+   "label": "Flow Builder",
+   "link_to": "flow-builder",
+   "type": "Page"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "FF Flow Automation",
+   "link_to": "FF Flow Automation",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "label": "FF Flow Execution",
+   "link_to": "FF Flow Execution",
+   "type": "DocType"
+  }
+ ],
+ "title": "Frappe Flow"
+}

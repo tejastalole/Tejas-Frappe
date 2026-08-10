@@ -1,7 +1,7 @@
 {
-  "name": "Gym Management",
-  "short_name": "Gym",
-  "description": "Gym member check-in and attendance",
+  "name": "SG Fitness",
+  "short_name": "SG Fitness",
+  "description": "SG Fitness member check-in and check-out",
   "start_url": "/gym-app",
   "scope": "/gym-app",
   "display": "standalone",

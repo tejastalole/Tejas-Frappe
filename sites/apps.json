@@ -44,5 +44,12 @@
         "required": [],
         "idx": 5,
         "version": "0.0.1"
+    },
+    "zkteco_integration": {
+        "is_repo": false,
+        "resolution": "not a repo",
+        "required": [],
+        "idx": 6,
+        "version": "0.0.1"
     }
 }

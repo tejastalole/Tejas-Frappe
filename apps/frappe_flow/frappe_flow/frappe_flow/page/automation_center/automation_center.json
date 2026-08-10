@@ -1,0 +1,12 @@
+{
+ "creation": "2026-06-22 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "fa fa-bolt",
+ "module": "Frappe Flow",
+ "name": "automation-center",
+ "page_name": "automation-center",
+ "roles": [{"role": "System Manager"}, {"role": "Flow Admin"}, {"role": "Flow Designer"}, {"role": "Flow User"}],
+ "standard": "Yes",
+ "title": "Automation Center"
+}

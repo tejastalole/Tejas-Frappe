@@ -29,7 +29,7 @@ def get_app_config():
 	settings = frappe.get_cached_doc("Gym Settings", "Gym Settings")
 	return {
 		"user": frappe.session.user,
-		"gym_name": settings.gym_name or "Gym Management",
+		"gym_name": settings.gym_name or "SG Fitness",
 		"today": today(),
 	}
 
@@ -86,11 +86,12 @@ def get_members(search=None, limit=30):
 		today_attendance = frappe.db.get_value(
 			"Attendance Log",
 			{"gym_member": member.name, "attendance_date": today()},
-			["check_in_time", "check_out_time"],
+			["name", "check_in_time", "check_out_time"],
 			as_dict=True,
 		)
 		member["checked_in_today"] = bool(today_attendance and today_attendance.check_in_time)
 		if today_attendance:
+			member["today_attendance_log"] = today_attendance.name
 			member["today_check_in_time"] = today_attendance.check_in_time
 			member["today_check_out_time"] = today_attendance.check_out_time
 		member["active_membership"] = frappe.db.get_value(
@@ -249,6 +250,19 @@ def check_in(gym_member, latitude=None, longitude=None):
 	from gym_management.gym_management.doctype.attendance_log.attendance_log import create_check_in
 
 	return create_check_in(gym_member, latitude=latitude, longitude=longitude)
+
+
+@frappe.whitelist()
+def check_out(attendance_log, latitude=None, longitude=None):
+	_ensure_access()
+	if not frappe.has_permission("Attendance Log", "write"):
+		frappe.throw(_("Not permitted to update attendance."), frappe.PermissionError)
+
+	from gym_management.gym_management.doctype.attendance_log.attendance_log import (
+		check_out as do_check_out,
+	)
+
+	return do_check_out(attendance_log, latitude=latitude, longitude=longitude)
 
 
 @frappe.whitelist()

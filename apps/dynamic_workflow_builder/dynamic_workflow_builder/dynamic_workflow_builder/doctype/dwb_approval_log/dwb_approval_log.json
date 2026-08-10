@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "autoname": "format:DWB-AL-{#####}",
+ "creation": "2026-06-22 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "approval_request",
+  "reference_doctype",
+  "reference_name",
+  "user",
+  "action",
+  "comments",
+  "timestamp"
+ ],
+ "fields": [
+  {
+   "fieldname": "approval_request",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Approval Request",
+   "options": "DWB Approval Request"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Reference DocType",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Reference Name",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "action",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Action",
+   "options": "Assigned\nApproved\nRejected\nDelegated\nEscalated\nReopened\nRequest Changes\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Timestamp",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "modified": "2026-06-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow Builder",
+ "name": "DWB Approval Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Approval Manager"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Approver"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Approval Employee"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

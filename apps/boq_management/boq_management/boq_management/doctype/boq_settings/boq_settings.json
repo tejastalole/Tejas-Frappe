@@ -1,0 +1,108 @@
+{
+ "issingle": 1,
+ "class_name": "BOQSettings",
+  "field_order": [
+  "default_company",
+  "boq_naming_series",
+  "enable_project_mandatory",
+  "section_break_defaults",
+  "default_uom_area",
+  "default_uom_length",
+  "default_uom_weight",
+  "section_break_costing",
+  "default_overhead_percent",
+  "default_contractor_profit_percent",
+  "default_final_rate_uom"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_company",
+   "fieldtype": "Link",
+   "label": "Default Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "boq_naming_series",
+   "fieldtype": "Select",
+   "label": "BOQ Naming Series",
+   "options": "BOQ-.YYYY.-.#####",
+   "default": "BOQ-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "enable_project_mandatory",
+   "fieldtype": "Check",
+   "label": "Project Mandatory on BOQ",
+   "default": "1"
+  },
+  {
+   "fieldname": "section_break_defaults",
+   "fieldtype": "Section Break",
+   "label": "Default UOM"
+  },
+  {
+   "fieldname": "default_uom_area",
+   "fieldtype": "Link",
+   "label": "Default Area UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "default_uom_length",
+   "fieldtype": "Link",
+   "label": "Default Length UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "default_uom_weight",
+   "fieldtype": "Link",
+   "label": "Default Weight UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "section_break_costing",
+   "fieldtype": "Section Break",
+   "label": "Default Costing"
+  },
+  {
+   "fieldname": "default_overhead_percent",
+   "fieldtype": "Percent",
+   "label": "Default Overheads (%)",
+   "default": "10"
+  },
+  {
+   "fieldname": "default_contractor_profit_percent",
+   "fieldtype": "Percent",
+   "label": "Default Contractor Profit (%)",
+   "default": "15"
+  },
+  {
+   "fieldname": "default_final_rate_uom",
+   "fieldtype": "Link",
+   "label": "Default Final Rate UOM",
+   "options": "UOM"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "BOQ Manager",
+   "read": 1,
+   "write": 1
+  }
+ ],
+ "doctype": "DocType",
+ "module": "BOQ Management",
+ "name": "BOQ Settings",
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "creation": "2026-06-25 00:00:00.000000",
+ "modified": "2026-06-25 00:00:00.000000",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "track_changes": 1
+}

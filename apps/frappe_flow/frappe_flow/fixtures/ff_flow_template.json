@@ -1,0 +1,69 @@
+ [
+  {
+   "name": "CRM Lead Welcome Pack",
+   "category": "CRM",
+  "description": "When a Lead is created, assign to sales executive and send welcome email.",
+  "doctype": "FF Flow Template",
+  "flow_json": {
+   "edges": [
+    {"source": "trigger", "target": "assign"},
+    {"source": "assign", "target": "email"},
+    {"source": "email", "target": "end"}
+   ],
+   "nodes": [
+    {"id": "trigger", "label": "Lead Created", "type": "trigger", "x": 80, "y": 60},
+    {"config": {"assigned_to": "{{doc.lead_owner}}"}, "id": "assign", "label": "Assign Sales Executive", "type": "assign_user", "x": 80, "y": 160},
+    {"config": {"message": "Welcome {{doc.lead_name}}!", "subject": "Welcome", "to": "{{doc.email_id}}"}, "id": "email", "label": "Send Welcome Email", "type": "send_email", "x": 80, "y": 260},
+    {"id": "end", "label": "Complete", "type": "end", "x": 80, "y": 360}
+   ]
+  },
+  "is_published": 1,
+  "template_name": "CRM Lead Welcome Pack"
+ },
+ {
+  "name": "Sales Quotation Follow-up Pack",
+  "category": "Sales",
+  "description": "Quotation submitted above threshold: WhatsApp customer, email manager, create follow-up.",
+  "doctype": "FF Flow Template",
+  "flow_json": {
+   "edges": [
+    {"source": "trigger", "target": "cond"},
+    {"source": "cond", "target": "wa"},
+    {"source": "wa", "target": "email"},
+    {"source": "email", "target": "delay"},
+    {"source": "delay", "target": "task"},
+    {"source": "task", "target": "end"}
+   ],
+   "nodes": [
+    {"id": "trigger", "label": "Quotation Submitted", "type": "trigger", "x": 80, "y": 60},
+    {"config": {"field_name": "grand_total", "operator": ">", "value": "100000"}, "id": "cond", "label": "grand_total > 100000", "type": "condition", "x": 80, "y": 160},
+    {"config": {"message": "Hello {{doc.customer_name}}, your quotation {{doc.name}} is submitted."}, "id": "wa", "label": "WhatsApp Customer", "type": "send_whatsapp", "x": 80, "y": 260},
+    {"config": {"message": "Quotation {{doc.name}} needs review.", "subject": "Quotation Submitted", "to": "{{doc.owner}}"}, "id": "email", "label": "Email Manager", "type": "send_email", "x": 80, "y": 360},
+    {"config": {"amount": 3, "unit": "days"}, "id": "delay", "label": "Wait 3 days", "type": "delay", "x": 80, "y": 460},
+    {"config": {"description": "Follow up on {{doc.name}}", "due_days": 3}, "id": "task", "label": "Create Follow-up", "type": "create_task", "x": 80, "y": 560},
+    {"id": "end", "label": "Complete", "type": "end", "x": 80, "y": 660}
+   ]
+  },
+  "is_published": 1,
+  "template_name": "Sales Quotation Follow-up Pack"
+ },
+ {
+  "name": "HR Employee Onboarding Pack",
+  "category": "HR",
+  "description": "When employee is created, assign onboarding checklist task.",
+  "doctype": "FF Flow Template",
+  "flow_json": {
+   "edges": [
+    {"source": "trigger", "target": "task"},
+    {"source": "task", "target": "end"}
+   ],
+   "nodes": [
+    {"id": "trigger", "label": "Employee Created", "type": "trigger", "x": 80, "y": 60},
+    {"config": {"description": "Onboarding checklist for {{doc.employee_name}}", "due_days": 7, "subject": "Employee Onboarding"}, "id": "task", "label": "Create Checklist Task", "type": "create_task", "x": 80, "y": 160},
+    {"id": "end", "label": "Complete", "type": "end", "x": 80, "y": 260}
+   ]
+  },
+  "is_published": 1,
+  "template_name": "HR Employee Onboarding Pack"
+ }
+]

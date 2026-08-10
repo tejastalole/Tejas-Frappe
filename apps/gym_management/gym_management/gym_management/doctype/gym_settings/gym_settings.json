@@ -13,7 +13,7 @@
  ],
  "fields": [
   {
-   "default": "My Gym",
+   "default": "SG Fitness",
    "fieldname": "gym_name",
    "fieldtype": "Data",
    "label": "Gym Name",

@@ -1,0 +1,29 @@
+{
+ "actions": [],
+ "autoname": "field:template_name",
+ "creation": "2026-06-22 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["template_name", "category", "description", "is_published", "flow_json"],
+ "fields": [
+  {"fieldname": "template_name", "fieldtype": "Data", "in_list_view": 1, "label": "Template Name", "reqd": 1, "unique": 1},
+  {"fieldname": "category", "fieldtype": "Select", "in_list_view": 1, "label": "Category", "options": "CRM\nSales\nHR\nFinance\nCustom\nGeneral"},
+  {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
+  {"default": "1", "fieldname": "is_published", "fieldtype": "Check", "label": "Published"},
+  {"fieldname": "flow_json", "fieldtype": "JSON", "label": "Flow JSON", "reqd": 1}
+ ],
+ "modified": "2026-06-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Flow",
+ "name": "FF Flow Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "role": "System Manager", "write": 1},
+  {"create": 1, "delete": 1, "read": 1, "role": "Flow Admin", "write": 1},
+  {"read": 1, "role": "Flow Designer"}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

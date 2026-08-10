@@ -1,0 +1,20 @@
+[
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Approval Manager",
+  "role_name": "Approval Manager"
+ },
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Approver",
+  "role_name": "Approver"
+ },
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Approval Employee",
+  "role_name": "Approval Employee"
+ }
+]

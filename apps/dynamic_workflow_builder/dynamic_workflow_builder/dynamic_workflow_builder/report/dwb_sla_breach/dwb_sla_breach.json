@@ -1,0 +1,33 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {"fieldname": "name", "fieldtype": "Link", "label": "Request", "options": "DWB Approval Request", "width": 140},
+  {"fieldname": "reference_doctype", "fieldtype": "Data", "label": "DocType", "width": 120},
+  {"fieldname": "reference_name", "fieldtype": "Data", "label": "Document", "width": 120},
+  {"fieldname": "assigned_to", "fieldtype": "Link", "label": "Assigned To", "options": "User", "width": 120},
+  {"fieldname": "due_date", "fieldtype": "Datetime", "label": "Due Date", "width": 150},
+  {"fieldname": "sla_status", "fieldtype": "Data", "label": "SLA Status", "width": 110}
+ ],
+ "creation": "2026-06-22 00:00:00.000000",
+ "disabled": 0,
+ "doctype": "Report",
+ "filters": [
+  {"fieldname": "from_date", "fieldtype": "Date", "label": "From Date"},
+  {"fieldname": "to_date", "fieldtype": "Date", "label": "To Date"}
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2026-06-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow Builder",
+ "name": "DWB SLA Breach",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "DWB Approval Request",
+ "report_name": "DWB SLA Breach",
+ "report_type": "Script Report",
+ "roles": [
+  {"role": "System Manager"},
+  {"role": "Approval Manager"}
+ ]
+}

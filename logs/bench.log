@@ -412,3 +412,576 @@ print('Q2:', r2['reply'])
 2026-05-23 09:08:33,875 INFO /home/frappe/.local/bin/bench build --app gym_management
 2026-05-23 09:11:30,417 INFO /home/frappe/.local/bin/bench build --app gym_management
 2026-05-23 09:26:36,865 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-25 04:38:25,774 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-25 04:38:35,214 INFO /home/frappe/.local/bin/bench use site1.local
+2026-05-25 04:38:50,630 INFO /home/frappe/.local/bin/bench start
+2026-05-25 04:38:51,203 INFO /home/frappe/.local/bin/bench watch
+2026-05-25 04:38:51,205 INFO /home/frappe/.local/bin/bench schedule
+2026-05-25 04:38:51,206 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-05-25 04:38:51,240 INFO /home/frappe/.local/bin/bench worker
+2026-05-25 04:43:09,440 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:43:58,620 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:44:04,473 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-25 04:44:32,912 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-25 04:47:12,211 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:47:56,060 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:48:11,611 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:48:12,465 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:48:37,579 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e DESCRIBE `tabAttendance Log`
+2026-05-25 04:48:43,919 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:49:01,695 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:49:14,154 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:49:39,568 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:49:41,838 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT DATABASE() -N
+2026-05-25 04:49:43,694 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SHOW TRIGGERS FROM `_8ab0834450224295` WHERE `Table` LIKE '%Attendance%'
+2026-05-25 04:50:28,440 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:50:46,796 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:50:47,166 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:51:08,264 INFO /home/frappe/.local/bin/bench --site site1.local execute gym_management.gym_management.doctype.attendance_log.debug_insert.trace_insert
+2026-05-25 04:51:28,372 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:51:45,907 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:52:32,839 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:52:45,435 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:52:49,899 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-05-25 04:58:38,293 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-25 05:19:38,114 INFO /home/frappe/.local/bin/bench build --app gym_management
+2026-05-25 06:00:07,573 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-25 12:00:09,104 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-26 06:00:08,598 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-26 12:00:07,818 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-27 06:00:05,694 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-27 12:00:05,616 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-28 06:00:08,042 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-28 12:00:04,904 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-29 06:00:08,251 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-05-29 12:00:07,890 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-02 12:00:01,243 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-03 06:00:02,003 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-03 12:00:00,784 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-04 12:00:02,184 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-05 06:00:02,493 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-05 12:00:02,521 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-05 18:00:01,912 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-05 19:14:09,065 INFO /home/frappe/.local/bin/bench --version
+2026-06-05 19:14:11,334 INFO /home/frappe/.local/bin/bench setup nginx
+2026-06-05 19:15:26,387 INFO /home/frappe/.local/bin/bench use site1.local
+2026-06-08 06:00:01,471 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-09 06:00:01,391 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-09 11:59:59,704 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-10 10:00:10,560 INFO /home/frappe/.local/bin/bench use site1.local
+2026-06-10 10:00:22,748 INFO /home/frappe/.local/bin/bench start
+2026-06-10 10:00:23,249 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-10 10:00:23,252 INFO /home/frappe/.local/bin/bench watch
+2026-06-10 10:00:23,259 INFO /home/frappe/.local/bin/bench worker
+2026-06-10 10:00:23,259 INFO /home/frappe/.local/bin/bench schedule
+2026-06-10 10:03:04,578 INFO /home/frappe/.local/bin/bench start
+2026-06-10 10:03:05,031 INFO /home/frappe/.local/bin/bench worker
+2026-06-10 10:03:05,031 INFO /home/frappe/.local/bin/bench watch
+2026-06-10 10:03:05,036 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-10 10:03:05,037 INFO /home/frappe/.local/bin/bench schedule
+2026-06-10 12:00:03,259 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-11 06:00:01,939 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-11 12:00:00,944 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-12 06:00:01,737 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-12 12:00:00,944 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-13 06:00:02,246 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-15 06:00:08,000 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-15 12:00:07,886 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-16 12:00:00,979 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-17 06:00:02,245 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-17 12:00:01,827 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-20 06:21:17,529 INFO /home/frappe/.local/bin/bench site1.locla
+2026-06-20 06:21:28,526 INFO /home/frappe/.local/bin/bench use site1.local
+2026-06-20 06:21:32,098 INFO /home/frappe/.local/bin/bench start
+2026-06-20 06:21:32,619 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-20 06:21:32,626 INFO /home/frappe/.local/bin/bench watch
+2026-06-20 06:21:32,639 INFO /home/frappe/.local/bin/bench worker
+2026-06-20 06:21:32,660 INFO /home/frappe/.local/bin/bench schedule
+2026-06-20 06:21:34,681 INFO /home/frappe/.local/bin/bench new-app sales_tracking --no-git
+2026-06-20 06:21:34,686 LOG creating new app sales_tracking
+2026-06-20 06:22:37,571 WARNING /home/frappe/.local/bin/bench new-app sales_tracking --no-git executed with exit code 1
+2026-06-20 06:22:37,847 INFO A newer version of bench is available: 5.29.1 → 5.31.0
+2026-06-20 06:25:40,317 INFO /home/frappe/.local/bin/bench --site site1.local install-app sales_tracking
+2026-06-20 06:25:49,738 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-20 06:27:03,765 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-20 06:27:06,851 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-20 06:27:13,819 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-20 06:27:37,086 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-20 06:27:45,778 INFO /home/frappe/.local/bin/bench build --app sales_tracking
+2026-06-20 06:27:50,553 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-20 06:32:04,189 INFO /home/frappe/.local/bin/bench start
+2026-06-20 06:32:04,564 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-20 06:32:04,565 INFO /home/frappe/.local/bin/bench worker
+2026-06-20 06:32:04,565 INFO /home/frappe/.local/bin/bench watch
+2026-06-20 06:32:04,575 INFO /home/frappe/.local/bin/bench schedule
+2026-06-20 06:39:49,411 INFO /home/frappe/.local/bin/bench build --app sales_tracking
+2026-06-20 06:43:01,766 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-20 06:43:54,366 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-20 06:44:02,401 INFO /home/frappe/.local/bin/bench build --app sales_tracking
+2026-06-20 07:11:16,800 INFO /home/frappe/.local/bin/bench build --app sales_tracking
+2026-06-20 07:11:34,885 INFO /home/frappe/.local/bin/bench start
+2026-06-20 07:11:35,245 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-20 07:11:35,250 INFO /home/frappe/.local/bin/bench worker
+2026-06-20 07:11:35,259 INFO /home/frappe/.local/bin/bench watch
+2026-06-20 07:11:35,263 INFO /home/frappe/.local/bin/bench schedule
+2026-06-20 07:27:21,305 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-20 07:27:39,732 INFO /home/frappe/.local/bin/bench build --app sales_tracking
+2026-06-22 06:15:56,382 INFO /home/frappe/.local/bin/bench use tejas
+2026-06-22 06:16:02,909 INFO /home/frappe/.local/bin/bench start
+2026-06-22 06:16:03,598 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-22 06:16:03,601 INFO /home/frappe/.local/bin/bench schedule
+2026-06-22 06:16:03,601 INFO /home/frappe/.local/bin/bench watch
+2026-06-22 06:16:03,612 INFO /home/frappe/.local/bin/bench worker
+2026-06-22 06:16:37,201 INFO /home/frappe/.local/bin/bench build
+2026-06-22 06:20:56,421 INFO /home/frappe/.local/bin/bench build --app sales_tracking
+2026-06-22 06:28:34,031 INFO /home/frappe/.local/bin/bench start
+2026-06-22 06:28:34,521 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-22 06:28:34,526 INFO /home/frappe/.local/bin/bench watch
+2026-06-22 06:28:34,531 INFO /home/frappe/.local/bin/bench worker
+2026-06-22 06:28:34,538 INFO /home/frappe/.local/bin/bench schedule
+2026-06-22 06:31:53,442 INFO /home/frappe/.local/bin/bench start
+2026-06-22 06:31:53,888 INFO /home/frappe/.local/bin/bench watch
+2026-06-22 06:31:53,896 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-22 06:31:53,896 INFO /home/frappe/.local/bin/bench worker
+2026-06-22 06:31:53,905 INFO /home/frappe/.local/bin/bench schedule
+2026-06-22 06:48:31,225 INFO /home/frappe/.local/bin/bench start
+2026-06-22 06:48:31,701 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-22 06:48:31,705 INFO /home/frappe/.local/bin/bench schedule
+2026-06-22 06:48:31,725 INFO /home/frappe/.local/bin/bench watch
+2026-06-22 06:48:31,734 INFO /home/frappe/.local/bin/bench worker
+2026-06-22 08:56:38,297 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 09:15:05,439 INFO /home/frappe/.local/bin/bench --site site1.local install-app dynamic_workflow_builder
+2026-06-22 09:15:07,729 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-22 09:15:28,132 INFO /home/frappe/.local/bin/bench build --app dynamic_workflow_builder
+2026-06-22 09:15:39,585 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 09:16:32,638 INFO /home/frappe/.local/bin/bench start
+2026-06-22 09:16:33,190 INFO /home/frappe/.local/bin/bench schedule
+2026-06-22 09:16:33,192 INFO /home/frappe/.local/bin/bench worker
+2026-06-22 09:16:33,192 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-22 09:16:33,199 INFO /home/frappe/.local/bin/bench watch
+2026-06-22 09:29:45,138 INFO /home/frappe/.local/bin/bench --site site1.local install-app frappe_flow
+2026-06-22 09:29:56,829 INFO /home/frappe/.local/bin/bench --site site1.local install-app frappe_flow
+2026-06-22 09:29:58,577 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-22 09:30:10,509 INFO /home/frappe/.local/bin/bench build --app frappe_flow
+2026-06-22 09:30:29,537 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 09:46:05,897 INFO /home/frappe/.local/bin/bench start
+2026-06-22 09:46:06,364 INFO /home/frappe/.local/bin/bench watch
+2026-06-22 09:46:06,370 INFO /home/frappe/.local/bin/bench worker
+2026-06-22 09:46:06,372 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-22 09:46:06,373 INFO /home/frappe/.local/bin/bench schedule
+2026-06-22 10:31:03,188 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 10:31:17,589 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 10:37:03,544 INFO /home/frappe/.local/bin/bench build --app frappe_flow
+2026-06-22 10:47:42,373 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 10:47:52,577 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 10:48:23,259 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 10:48:46,301 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 10:50:31,403 INFO /home/frappe/.local/bin/bench build --app frappe_flow
+2026-06-22 10:50:45,363 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 10:57:35,636 INFO /home/frappe/.local/bin/bench build --app frappe_flow
+2026-06-22 11:09:12,275 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 11:10:36,790 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 11:12:18,252 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.desk.form.load.getdoctype --args ["FF Flow Credential"]
+2026-06-22 11:12:19,818 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 11:12:35,806 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-22 11:14:29,687 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-22 11:14:39,204 INFO /home/frappe/.local/bin/bench build --app frappe_flow
+2026-06-22 12:00:02,189 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-23 06:00:02,454 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-24 06:00:02,190 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-24 06:04:17,184 INFO /home/frappe/.local/bin/bench --version
+2026-06-24 06:06:08,776 INFO /home/frappe/.local/bin/bench new-app smart_attendance_hub --no-git
+2026-06-24 06:06:08,791 LOG creating new app smart_attendance_hub
+2026-06-24 06:06:38,329 INFO /home/frappe/.local/bin/bench new-app smart_attendance_hub --no-git
+2026-06-24 06:06:38,336 LOG creating new app smart_attendance_hub
+2026-06-24 06:07:38,255 WARNING /home/frappe/.local/bin/bench new-app smart_attendance_hub --no-git executed with exit code 1
+2026-06-24 06:07:38,260 INFO /home/frappe/.local/bin/bench new-app smart_attendance_hub --no-git
+2026-06-24 06:07:38,266 LOG creating new app smart_attendance_hub
+2026-06-24 06:07:38,535 INFO A newer version of bench is available: 5.29.1 → 5.31.0
+2026-06-24 06:07:54,954 WARNING /home/frappe/.local/bin/bench new-app smart_attendance_hub --no-git executed with exit code 1
+2026-06-24 06:07:55,159 INFO A newer version of bench is available: 5.29.1 → 5.31.0
+2026-06-24 06:07:58,176 INFO /home/frappe/.local/bin/bench new-app --help
+2026-06-24 06:07:58,390 INFO A newer version of bench is available: 5.29.1 → 5.31.0
+2026-06-24 06:14:20,896 INFO /home/frappe/.local/bin/bench --site site1.local install-app smart_attendance_hub
+2026-06-24 06:14:35,430 INFO /home/frappe/.local/bin/bench --site site1.local install-app smart_attendance_hub
+2026-06-24 06:14:40,798 INFO /home/frappe/.local/bin/bench --site site1.local install-app smart_attendance_hub
+2026-06-24 06:14:57,594 INFO /home/frappe/.local/bin/bench --site site1.local install-app smart_attendance_hub
+2026-06-24 06:15:21,065 INFO /home/frappe/.local/bin/bench --site site1.local install-app smart_attendance_hub
+2026-06-24 06:15:23,208 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-24 12:00:01,480 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-25 04:26:22,986 INFO /home/frappe/.local/bin/bench use tejas
+2026-06-25 04:26:27,556 INFO /home/frappe/.local/bin/bench start
+2026-06-25 04:26:27,999 INFO /home/frappe/.local/bin/bench watch
+2026-06-25 04:26:28,000 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-25 04:26:28,003 INFO /home/frappe/.local/bin/bench schedule
+2026-06-25 04:26:28,006 INFO /home/frappe/.local/bin/bench worker
+2026-06-25 04:40:10,339 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-25 04:40:27,651 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.set_value('Workspace', 'Smart Attendance Hub', {'parent_page': '', 'public': 1, 'sequence_id': 2, 'is_hidden': 0}); frappe.db.commit(); print('Workspace updated')
+2026-06-25 04:40:32,389 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --module smart_attendance_hub
+2026-06-25 04:40:33,521 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-25 04:40:35,973 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-06-25 04:43:26,269 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-25 04:43:27,949 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-06-25 06:00:01,921 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-25 12:00:02,206 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-29 06:00:01,881 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-29 07:20:12,485 INFO /home/frappe/.local/bin/bench --site site1.local install-app boq_management
+2026-06-29 07:20:55,333 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-06-29 07:20:56,434 INFO /home/frappe/.local/bin/bench build --app boq_management
+2026-06-29 07:20:57,959 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-06-29 07:21:04,689 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-29 07:21:12,767 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-29 07:21:19,447 INFO /home/frappe/.local/bin/bench --site site1.local execute boq_management.api.seed.run_seed
+2026-06-29 07:21:34,364 INFO /home/frappe/.local/bin/bench --site site1.local reload-doc boq_management boq_management doctype boq_sub_category
+2026-06-29 07:21:35,593 INFO /home/frappe/.local/bin/bench --site site1.local reload-doc boq_management boq_management doctype boq_item_master
+2026-06-29 07:21:36,466 INFO /home/frappe/.local/bin/bench --site site1.local execute boq_management.api.seed.run_seed
+2026-06-29 07:21:56,437 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-29 07:22:17,138 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-06-29 07:26:51,784 INFO /home/frappe/.local/bin/bench use tejas
+2026-06-29 07:26:57,283 INFO /home/frappe/.local/bin/bench start
+2026-06-29 07:26:57,691 INFO /home/frappe/.local/bin/bench watch
+2026-06-29 07:26:57,697 INFO /home/frappe/.local/bin/bench worker
+2026-06-29 07:26:57,701 INFO /home/frappe/.local/bin/bench schedule
+2026-06-29 07:26:57,705 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-29 08:58:25,689 INFO /home/frappe/.local/bin/bench use tejas
+2026-06-29 08:58:30,976 INFO /home/frappe/.local/bin/bench start
+2026-06-29 08:58:31,365 INFO /home/frappe/.local/bin/bench watch
+2026-06-29 08:58:31,368 INFO /home/frappe/.local/bin/bench worker
+2026-06-29 08:58:31,370 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-29 08:58:31,375 INFO /home/frappe/.local/bin/bench schedule
+2026-06-29 09:11:34,633 INFO /home/frappe/.local/bin/bench use tejas
+2026-06-29 09:11:39,998 INFO /home/frappe/.local/bin/bench start
+2026-06-29 09:11:40,607 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-29 09:11:40,613 INFO /home/frappe/.local/bin/bench schedule
+2026-06-29 09:11:40,621 INFO /home/frappe/.local/bin/bench watch
+2026-06-29 09:11:40,625 INFO /home/frappe/.local/bin/bench worker
+2026-06-29 12:00:02,449 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-06-29 12:16:38,824 INFO /home/frappe/.local/bin/bench use tejas
+2026-06-29 12:16:44,335 INFO /home/frappe/.local/bin/bench start
+2026-06-29 12:16:44,864 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-29 12:16:44,869 INFO /home/frappe/.local/bin/bench schedule
+2026-06-29 12:16:44,877 INFO /home/frappe/.local/bin/bench watch
+2026-06-29 12:16:44,888 INFO /home/frappe/.local/bin/bench worker
+2026-06-29 12:17:19,985 INFO /home/frappe/.local/bin/bench build
+2026-06-29 12:27:45,564 INFO /home/frappe/.local/bin/bench start
+2026-06-29 12:27:46,285 INFO /home/frappe/.local/bin/bench schedule
+2026-06-29 12:27:46,297 INFO /home/frappe/.local/bin/bench watch
+2026-06-29 12:27:46,298 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-06-29 12:27:46,309 INFO /home/frappe/.local/bin/bench worker
+2026-06-29 12:33:06,782 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-06-29 12:33:10,774 INFO /home/frappe/.local/bin/bench build --app boq_management
+2026-06-29 12:33:14,481 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-06-30 12:00:02,086 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-01 06:00:02,371 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-01 12:00:02,075 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-02 06:12:30,562 INFO /home/frappe/.local/bin/bench use tejas
+2026-07-02 06:12:35,394 INFO /home/frappe/.local/bin/bench start
+2026-07-02 06:12:35,973 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-07-02 06:12:35,981 INFO /home/frappe/.local/bin/bench schedule
+2026-07-02 06:12:35,982 INFO /home/frappe/.local/bin/bench watch
+2026-07-02 06:12:35,983 INFO /home/frappe/.local/bin/bench worker
+2026-07-02 12:00:01,872 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-06 12:00:02,753 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-10 12:00:02,536 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-14 06:00:01,890 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-14 12:00:01,972 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-15 12:00:00,933 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-15 12:41:52,184 INFO /home/frappe/.local/bin/bench version
+2026-07-15 12:43:28,760 INFO /home/frappe/.local/bin/bench --site site1.local install-app whatsapp_integration
+2026-07-15 12:43:36,331 INFO /home/frappe/.local/bin/bench --site site1.local install-app whatsapp_integration
+2026-07-15 12:43:47,594 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-07-15 12:43:57,742 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-07-15 12:43:58,832 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.client.get --kwargs {'doctype':'WhatsApp Settings'}
+2026-07-15 12:43:59,896 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT field,value FROM tabSingles WHERE doctype='WhatsApp Settings';
+2026-07-15 13:22:26,473 INFO /home/frappe/.local/bin/bench use tejas
+2026-07-15 13:22:32,079 INFO /home/frappe/.local/bin/bench start
+2026-07-15 13:22:32,689 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-07-15 13:22:32,691 INFO /home/frappe/.local/bin/bench schedule
+2026-07-15 13:22:32,692 INFO /home/frappe/.local/bin/bench watch
+2026-07-15 13:22:32,714 INFO /home/frappe/.local/bin/bench worker
+2026-07-15 13:24:59,074 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-07-15 13:25:13,096 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT name,label,module,public,is_hidden FROM tabWorkspace WHERE name LIKE '%WhatsApp%' OR label LIKE '%WhatsApp%' OR module LIKE '%WhatsApp%';
+2026-07-15 13:25:14,867 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-07-15 13:25:46,078 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-07-15 13:25:49,342 INFO /home/frappe/.local/bin/bench --site site1.local clear-website-cache
+2026-07-17 10:39:18,173 INFO /home/frappe/.local/bin/bench use tejas
+2026-07-17 10:39:24,296 INFO /home/frappe/.local/bin/bench start
+2026-07-17 10:39:24,931 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-07-17 10:39:24,948 INFO /home/frappe/.local/bin/bench watch
+2026-07-17 10:39:24,950 INFO /home/frappe/.local/bin/bench schedule
+2026-07-17 10:39:24,952 INFO /home/frappe/.local/bin/bench worker
+2026-07-17 12:00:02,081 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-27 12:00:01,981 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-29 05:57:22,128 INFO /home/frappe/.local/bin/bench use site1.local
+2026-07-29 05:57:48,010 INFO /home/frappe/.local/bin/bench start
+2026-07-29 05:57:51,511 INFO /home/frappe/.local/bin/bench worker
+2026-07-29 05:57:51,555 INFO /home/frappe/.local/bin/bench schedule
+2026-07-29 05:57:51,726 INFO /home/frappe/.local/bin/bench watch
+2026-07-29 05:57:51,761 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-07-29 06:00:02,937 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-29 06:30:52,644 INFO /home/frappe/.local/bin/bench use site1.local
+2026-07-29 06:30:53,245 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-07-29 06:35:48,976 INFO /home/frappe/.local/bin/bench --site site1.local install-app essl_integration
+2026-07-29 06:36:03,237 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-07-29 06:36:11,849 INFO /home/frappe/.local/bin/bench --site site1.local install-app hrms --force
+2026-07-29 06:36:22,167 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-07-29 06:36:48,469 INFO /home/frappe/.local/bin/bench --site site1.local install-app essl_integration
+2026-07-29 06:36:57,233 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-07-29 06:36:57,442 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-07-29 06:37:04,880 INFO /home/frappe/.local/bin/bench --site site1.local execute essl_integration.utils.get_settings
+2026-07-29 06:37:05,833 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-07-29 06:37:16,260 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-07-29 06:37:39,610 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.model.base_document.get_controller --kwargs {'doctype': 'eSSL Integration Settings'}
+2026-07-29 06:37:40,504 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e select name from `tabDocType` where module='eSSL Integration';
+2026-07-29 06:38:28,054 INFO /home/frappe/.local/bin/bench start
+2026-07-29 06:38:28,531 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-07-29 06:38:28,536 INFO /home/frappe/.local/bin/bench watch
+2026-07-29 06:38:28,542 INFO /home/frappe/.local/bin/bench worker
+2026-07-29 06:38:28,549 INFO /home/frappe/.local/bin/bench schedule
+2026-07-29 09:53:24,181 INFO /home/frappe/.local/bin/bench use site1.local
+2026-07-29 09:53:27,632 INFO /home/frappe/.local/bin/bench start
+2026-07-29 09:53:28,080 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-07-29 09:53:28,082 INFO /home/frappe/.local/bin/bench watch
+2026-07-29 09:53:28,087 INFO /home/frappe/.local/bin/bench worker
+2026-07-29 09:53:28,103 INFO /home/frappe/.local/bin/bench schedule
+2026-07-29 12:00:00,522 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-07-30 08:43:16,560 INFO /home/frappe/.local/bin/bench use site1.local
+2026-07-30 08:43:20,309 INFO /home/frappe/.local/bin/bench start
+2026-07-30 08:43:20,761 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-07-30 08:43:20,761 INFO /home/frappe/.local/bin/bench schedule
+2026-07-30 08:43:20,763 INFO /home/frappe/.local/bin/bench worker
+2026-07-30 08:43:20,766 INFO /home/frappe/.local/bin/bench watch
+2026-07-30 12:00:02,298 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-01 07:21:32,314 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app essl_integration --yes
+2026-08-01 07:21:52,882 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app essl_integration --yes --force
+2026-08-01 07:22:09,126 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-01 07:25:37,181 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-01 07:28:19,337 INFO /home/frappe/.local/bin/bench --site site1.local install-app biometric_integration
+2026-08-01 07:28:29,745 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-01 08:22:17,694 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-01 08:22:39,341 INFO /home/frappe/.local/bin/bench start
+2026-08-01 08:22:54,332 INFO /home/frappe/.local/bin/bench start
+2026-08-01 08:22:54,704 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-01 08:22:54,706 INFO /home/frappe/.local/bin/bench watch
+2026-08-01 08:22:54,709 INFO /home/frappe/.local/bin/bench schedule
+2026-08-01 08:22:54,710 INFO /home/frappe/.local/bin/bench worker
+2026-08-01 08:34:09,615 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-01 08:35:30,246 INFO /home/frappe/.local/bin/bench --site site1.local install-app hrms --force
+2026-08-01 08:36:37,722 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-01 08:36:38,670 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 04:06:28,853 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-03 04:06:34,562 INFO /home/frappe/.local/bin/bench start
+2026-08-03 04:06:35,055 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-03 04:06:35,060 INFO /home/frappe/.local/bin/bench watch
+2026-08-03 04:06:35,063 INFO /home/frappe/.local/bin/bench schedule
+2026-08-03 04:06:35,064 INFO /home/frappe/.local/bin/bench worker
+2026-08-03 06:00:01,582 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-03 08:43:46,354 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-03 10:52:18,462 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-03 10:54:35,237 INFO /home/frappe/.local/bin/bench --site site1.local install-app bulk_data_tools
+2026-08-03 10:54:43,214 INFO /home/frappe/.local/bin/bench --site site1.local migrate --app bulk_data_tools
+2026-08-03 10:54:44,226 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 10:54:54,991 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 10:54:56,686 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-03 10:55:11,859 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 10:55:41,883 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 10:55:47,946 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-03 10:59:51,810 INFO /home/frappe/.local/bin/bench start
+2026-08-03 10:59:52,821 INFO /home/frappe/.local/bin/bench watch
+2026-08-03 10:59:52,826 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-03 10:59:52,842 INFO /home/frappe/.local/bin/bench schedule
+2026-08-03 10:59:52,883 INFO /home/frappe/.local/bin/bench worker
+2026-08-03 11:32:03,957 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app smart_attendance_hub --yes --force
+2026-08-03 11:32:14,642 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 11:32:24,712 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 11:32:34,088 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-03 11:32:35,991 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-03 12:00:01,934 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-04 06:00:02,063 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-04 10:41:12,804 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-04 10:41:14,694 INFO /home/frappe/.local/bin/bench start
+2026-08-04 10:41:15,160 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-04 10:41:15,175 INFO /home/frappe/.local/bin/bench watch
+2026-08-04 10:41:15,183 INFO /home/frappe/.local/bin/bench schedule
+2026-08-04 10:41:15,191 INFO /home/frappe/.local/bin/bench worker
+2026-08-04 12:00:01,595 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-04 12:19:24,857 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-06 04:24:51,300 INFO /home/frappe/.local/bin/bench get-app --branch version-16 https://github.com/navariltd/zkteco-biometric-integration.git
+2026-08-06 04:24:51,319 LOG Getting zkteco-biometric-integration
+2026-08-06 04:24:51,320 DEBUG cd ./apps && git clone https://github.com/navariltd/zkteco-biometric-integration.git --branch version-16 --depth 1 --origin upstream
+2026-08-06 04:25:06,412 LOG Installing zkteco_biometric_integration
+2026-08-06 04:25:06,418 DEBUG cd /home/frappe/tejas && uv pip install --quiet -e /home/frappe/tejas/apps/zkteco_biometric_integration  --python /home/frappe/tejas/env/bin/python
+2026-08-06 04:25:07,081 DEBUG bench build --app zkteco_biometric_integration
+2026-08-06 04:25:07,208 INFO /home/frappe/.local/bin/bench build --app zkteco_biometric_integration
+2026-08-06 04:25:22,201 DEBUG cd /home/frappe/tejas && sudo supervisorctl restart frappe:
+2026-08-06 04:25:22,392 WARNING cd /home/frappe/tejas && sudo supervisorctl restart frappe: executed with exit code 2
+2026-08-06 04:25:22,393 WARNING restarting supervisor group `frappe:` failed. Use `bench restart` to retry.
+2026-08-06 04:25:50,300 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_biometric_integration
+2026-08-06 04:26:06,870 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_biometric_integration
+2026-08-06 04:26:17,926 INFO /home/frappe/.local/bin/bench start
+2026-08-06 04:26:18,395 INFO /home/frappe/.local/bin/bench watch
+2026-08-06 04:26:18,403 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-06 04:26:18,410 INFO /home/frappe/.local/bin/bench schedule
+2026-08-06 04:26:18,421 INFO /home/frappe/.local/bin/bench worker
+2026-08-06 06:00:01,455 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-06 06:20:03,724 INFO /home/frappe/.local/bin/bench --site all list-apps
+2026-08-06 06:20:09,747 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app zkteco_biometric_integration --yes
+2026-08-06 06:20:15,714 INFO /home/frappe/.local/bin/bench remove-app zkteco_biometric_integration --yes
+2026-08-06 06:20:15,724 WARNING /home/frappe/.local/bin/bench remove-app zkteco_biometric_integration --yes executed with exit code 2
+2026-08-06 06:20:31,614 INFO /home/frappe/.local/bin/bench remove-app --help
+2026-08-06 06:20:32,220 INFO /home/frappe/.local/bin/bench remove-app zkteco_biometric_integration
+2026-08-06 06:20:32,362 INFO /home/frappe/.local/bin/bench --site all list-apps --format json
+2026-08-06 06:20:32,693 WARNING /home/frappe/.local/bin/bench remove-app zkteco_biometric_integration executed with exit code 1
+2026-08-06 06:20:37,787 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 06:20:43,579 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app zkteco_biometric_integration --yes
+2026-08-06 06:20:44,505 INFO /home/frappe/.local/bin/bench remove-app zkteco_biometric_integration --force
+2026-08-06 06:20:44,512 DEBUG cd /home/frappe/tejas && uv pip uninstall zkteco_biometric_integration --python /home/frappe/tejas/env/bin/python
+2026-08-06 06:20:44,826 INFO App moved from apps/zkteco_biometric_integration to archived/apps/zkteco_biometric_integration-2026-08-06
+2026-08-06 06:20:45,224 WARNING /home/frappe/.local/bin/bench remove-app zkteco_biometric_integration --force executed with exit code 1
+2026-08-06 06:20:51,349 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 06:20:57,682 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-06 06:21:05,126 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.client.delete --kwargs {'doctype': 'Installed Application', 'name': '31o1fgug99'}
+2026-08-06 06:21:09,401 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 06:24:12,746 INFO /home/frappe/.local/bin/bench --version
+2026-08-06 06:24:12,974 INFO /home/frappe/.local/bin/bench new-app --help
+2026-08-06 06:24:25,618 INFO /home/frappe/.local/bin/bench new-app zkteco_integration --no-git
+2026-08-06 06:24:25,626 LOG creating new app zkteco_integration
+2026-08-06 06:24:45,863 LOG Installing zkteco_integration
+2026-08-06 06:24:45,866 DEBUG cd /home/frappe/tejas && uv pip install --quiet -e /home/frappe/tejas/apps/zkteco_integration  --python /home/frappe/tejas/env/bin/python
+2026-08-06 06:24:46,670 DEBUG bench build --app zkteco_integration
+2026-08-06 06:24:46,814 INFO /home/frappe/.local/bin/bench build --app zkteco_integration
+2026-08-06 06:24:49,368 WARNING /home/frappe/.local/bin/bench new-app zkteco_integration --no-git executed with exit code 1
+2026-08-06 06:26:07,140 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_integration
+2026-08-06 06:26:23,048 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_integration
+2026-08-06 06:26:34,758 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 06:26:35,739 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-06 06:26:37,075 INFO /home/frappe/.local/bin/bench --site site1.local execute zkteco_integration.parser.parse_attlog --kwargs {"body": "1\t2026-08-06 09:00:00\t0\t1"}
+2026-08-06 09:34:25,079 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-06 09:34:28,747 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 09:34:31,207 INFO /home/frappe/.local/bin/bench start
+2026-08-06 09:34:38,428 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app biometric_integration --yes
+2026-08-06 09:34:56,956 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 09:35:01,434 INFO /home/frappe/.local/bin/bench use site1.localclear
+2026-08-06 09:35:05,084 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-06 09:35:06,611 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app biometric_integration --yes
+2026-08-06 09:35:10,650 INFO /home/frappe/.local/bin/bench start
+2026-08-06 09:35:14,049 INFO /home/frappe/.local/bin/bench --site site1.local uninstall-app zkteco_integration --yes
+2026-08-06 09:35:22,078 INFO /home/frappe/.local/bin/bench remove-app biometric_integration --force
+2026-08-06 09:35:22,088 DEBUG cd /home/frappe/tejas && uv pip uninstall biometric_integration --python /home/frappe/tejas/env/bin/python
+2026-08-06 09:35:22,289 INFO App moved from apps/biometric_integration to archived/apps/biometric_integration-2026-08-06
+2026-08-06 09:35:22,979 WARNING /home/frappe/.local/bin/bench remove-app biometric_integration --force executed with exit code 1
+2026-08-06 09:35:24,147 INFO /home/frappe/.local/bin/bench start
+2026-08-06 09:35:34,143 INFO /home/frappe/.local/bin/bench remove-app zkteco_integration --force
+2026-08-06 09:35:34,157 DEBUG cd /home/frappe/tejas && uv pip uninstall zkteco_integration --python /home/frappe/tejas/env/bin/python
+2026-08-06 09:35:34,223 INFO App moved from apps/zkteco_integration to archived/apps/zkteco_integration-2026-08-06
+2026-08-06 09:35:34,841 WARNING /home/frappe/.local/bin/bench remove-app zkteco_integration --force executed with exit code 1
+2026-08-06 09:35:36,500 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 09:36:29,507 INFO /home/frappe/.local/bin/bench start
+2026-08-06 09:36:30,769 INFO /home/frappe/.local/bin/bench worker
+2026-08-06 09:36:30,776 INFO /home/frappe/.local/bin/bench watch
+2026-08-06 09:36:30,794 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-06 09:36:30,876 INFO /home/frappe/.local/bin/bench schedule
+2026-08-06 09:39:43,326 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 09:39:50,986 INFO /home/frappe/.local/bin/bench new-app zkteco_integration --no-git
+2026-08-06 09:39:50,992 LOG creating new app zkteco_integration
+2026-08-06 09:39:54,283 LOG Installing zkteco_integration
+2026-08-06 09:39:54,286 DEBUG cd /home/frappe/tejas && uv pip install --quiet -e /home/frappe/tejas/apps/zkteco_integration  --python /home/frappe/tejas/env/bin/python
+2026-08-06 09:39:55,704 DEBUG bench build --app zkteco_integration
+2026-08-06 09:39:55,889 INFO /home/frappe/.local/bin/bench build --app zkteco_integration
+2026-08-06 09:39:56,116 WARNING /home/frappe/.local/bin/bench new-app zkteco_integration --no-git executed with exit code 1
+2026-08-06 09:40:43,860 INFO /home/frappe/.local/bin/bench start
+2026-08-06 09:40:44,612 INFO /home/frappe/.local/bin/bench watch
+2026-08-06 09:40:44,617 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-06 09:40:44,629 INFO /home/frappe/.local/bin/bench schedule
+2026-08-06 09:40:44,644 INFO /home/frappe/.local/bin/bench worker
+2026-08-06 09:41:59,475 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_integration
+2026-08-06 09:42:16,888 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-06 09:42:19,472 INFO /home/frappe/.local/bin/bench --site site1.local list-apps
+2026-08-06 09:42:21,280 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.exists --args ["DocType","ZKTeco Settings"]
+2026-08-06 09:42:24,530 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.count --args ["ZKTeco Device"]
+2026-08-06 09:42:26,748 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.count --args ["ZKTeco Punch Log"]
+2026-08-06 12:00:01,896 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-07 03:43:02,739 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-07 03:43:12,369 INFO /home/frappe/.local/bin/bench start
+2026-08-07 03:43:07,135 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-07 03:43:07,141 INFO /home/frappe/.local/bin/bench watch
+2026-08-07 03:43:07,146 INFO /home/frappe/.local/bin/bench schedule
+2026-08-07 03:43:07,154 INFO /home/frappe/.local/bin/bench worker
+2026-08-07 06:00:01,257 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-07 07:13:43,275 INFO /home/frappe/.local/bin/bench use tejas
+2026-08-07 07:13:52,235 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-07 07:13:55,645 INFO /home/frappe/.local/bin/bench start
+2026-08-07 07:13:56,186 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-07 07:13:56,186 INFO /home/frappe/.local/bin/bench schedule
+2026-08-07 07:13:56,188 INFO /home/frappe/.local/bin/bench watch
+2026-08-07 07:13:56,192 INFO /home/frappe/.local/bin/bench worker
+2026-08-07 08:21:34,574 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-07 08:21:43,559 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-07 08:21:45,615 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.exists --args ["Workspace","ZKTeco Integration"]
+2026-08-07 08:21:47,842 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_doc('Workspace','ZKTeco Integration').as_dict()
+2026-08-07 08:34:52,058 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.count --args ["ZKTeco Punch Log"]
+2026-08-07 08:34:52,058 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_single --args ["ZKTeco Settings"]
+2026-08-07 08:34:53,361 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.count --args ["Employee Checkin"]
+2026-08-07 08:34:53,367 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"ZKTeco Device","fields":["name","serial_number","ip_address","last_seen","last_sync","enabled"]}
+2026-08-07 08:34:54,693 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"ZKTeco Punch Log","fields":["name","user_id","employee","punch_time","processed","punch_status","serial_number"],"order_by":"creation desc","limit":10}
+2026-08-07 08:34:59,985 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"Employee","fields":["name","employee_name","attendance_device_id","status"],"filters":{"status":"Active"}}
+2026-08-07 08:35:01,228 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"Employee Checkin","fields":["name","employee","time","log_type","device_id","creation"],"order_by":"creation desc","limit":5}
+2026-08-07 08:35:16,710 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"ZKTeco Punch Log","fields":["name","user_id","employee","punch_time","processed","employee_checkin"],"order_by":"creation desc","limit":3}
+2026-08-07 08:35:17,862 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"Employee Checkin","fields":["name","employee","time","log_type","device_id"],"order_by":"creation desc","limit":3}
+2026-08-07 08:39:45,118 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"ZKTeco Punch Log","fields":["name","user_id","employee","punch_time","creation"],"order_by":"creation desc","limit":5}
+2026-08-07 08:39:46,209 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"ZKTeco Device","fields":["name","serial_number","ip_address","last_seen","last_sync"],"order_by":"modified desc"}
+2026-08-07 08:39:47,236 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.get_single_value --args ["ZKTeco Settings","last_push_at"]
+2026-08-07 08:39:55,226 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.count --args ["ZKTeco Punch Log"]
+2026-08-07 08:39:56,276 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.count --args ["Employee Checkin"]
+2026-08-07 08:56:38,569 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-07 08:56:43,085 INFO /home/frappe/.local/bin/bench start
+2026-08-07 08:56:43,561 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-07 08:56:43,571 INFO /home/frappe/.local/bin/bench watch
+2026-08-07 08:56:43,582 INFO /home/frappe/.local/bin/bench schedule
+2026-08-07 08:56:43,586 INFO /home/frappe/.local/bin/bench worker
+2026-08-07 09:49:46,576 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-07 09:49:55,344 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-07 09:49:57,416 INFO /home/frappe/.local/bin/bench --site site1.local execute zkteco_integration.attendance.next_log_type --kwargs {"employee":"HR-EMP-00001","punch_time":"2026-08-07 15:30:00"}
+2026-08-07 09:49:59,116 INFO /home/frappe/.local/bin/bench --site site1.local execute zkteco_integration.attendance.auto_out_open_checkins --kwargs {"out_time":"19:00:00"}
+2026-08-07 09:50:22,909 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.utils.nowdate
+2026-08-07 09:50:24,255 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.sql --kwargs {"query":"select employee, log_type, time from `tabEmployee Checkin` where date(time)=curdate() order by time","as_dict":1}
+2026-08-07 09:50:25,541 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-07 09:50:43,554 INFO /home/frappe/.local/bin/bench --site site1.local migrate --skip-failing
+2026-08-07 09:50:51,457 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-07 09:51:10,251 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-07 09:51:12,055 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.core.doctype.scheduled_job_type.scheduled_job_type.sync_jobs
+2026-08-07 09:51:15,156 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.get_all --kwargs {"doctype":"Scheduled Job Type","filters":{"method":["like","%zkteco%"]},"fields":["name","method","cron_format","stopped"]}
+2026-08-07 12:00:02,189 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-08 03:54:40,471 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-08 03:54:44,463 INFO /home/frappe/.local/bin/bench start
+2026-08-08 03:54:44,978 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-08 03:54:44,979 INFO /home/frappe/.local/bin/bench schedule
+2026-08-08 03:54:44,991 INFO /home/frappe/.local/bin/bench watch
+2026-08-08 03:54:44,996 INFO /home/frappe/.local/bin/bench worker
+2026-08-08 03:58:32,259 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-08 03:58:34,286 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-08 03:58:41,582 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-08 04:03:54,103 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-08 04:04:01,635 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-08 04:04:03,624 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-08 04:06:49,967 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-08 04:06:52,512 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-08 04:07:01,701 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-08 04:36:27,455 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-08 04:36:34,102 INFO /home/frappe/.local/bin/bench start
+2026-08-08 04:36:34,234 INFO /home/frappe/.local/bin/bench schedule
+2026-08-08 04:36:34,253 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-08 04:36:34,257 INFO /home/frappe/.local/bin/bench watch
+2026-08-08 04:36:34,264 INFO /home/frappe/.local/bin/bench worker
+2026-08-08 05:19:50,119 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.db.get_single_value --args ["System Settings","time_zone"]
+2026-08-08 05:19:51,580 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.utils.now_datetime
+2026-08-08 05:19:52,804 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-08 05:22:44,002 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-08 06:00:01,151 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-10 04:19:41,985 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-10 04:19:58,363 INFO /home/frappe/.local/bin/bench start
+2026-08-10 04:19:58,887 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-10 04:19:58,894 INFO /home/frappe/.local/bin/bench watch
+2026-08-10 04:19:58,903 INFO /home/frappe/.local/bin/bench schedule
+2026-08-10 04:19:58,920 INFO /home/frappe/.local/bin/bench worker
+2026-08-10 04:41:13,841 INFO /home/frappe/.local/bin/bench --site site1.local list-apps

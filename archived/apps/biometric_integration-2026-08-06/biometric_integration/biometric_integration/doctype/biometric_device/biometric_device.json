@@ -1,0 +1,205 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:serial_number",
+ "creation": "2026-08-01 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "device_name",
+  "serial_number",
+  "enabled",
+  "connection_mode",
+  "column_break_1",
+  "ip_address",
+  "tcp_port",
+  "location",
+  "section_status",
+  "last_seen",
+  "last_att_stamp",
+  "column_break_2",
+  "last_sync",
+  "section_hardware",
+  "mac_address",
+  "platform",
+  "firmware_version",
+  "column_break_3",
+  "push_service",
+  "face_algorithm",
+  "fingerprint_algorithm",
+  "section_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "device_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Device Name",
+   "reqd": 1
+  },
+  {
+   "description": "Device Serial Number (SN) used by ADMS. Required for push matching.",
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Serial Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "default": "ADMS Push",
+   "fieldname": "connection_mode",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Connection Mode",
+   "options": "ADMS Push\nTCP Pull\nBoth"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "LAN IP for optional TCP pull (device Ethernet setting)",
+   "fieldname": "ip_address",
+   "fieldtype": "Data",
+   "label": "IP Address"
+  },
+  {
+   "default": "4370",
+   "description": "TCP COMM.Port on device",
+   "fieldname": "tcp_port",
+   "fieldtype": "Int",
+   "label": "TCP Port"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Branch"
+  },
+  {
+   "fieldname": "section_status",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "last_seen",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Last Seen",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_att_stamp",
+   "fieldtype": "Data",
+   "label": "Last ATT Stamp",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_sync",
+   "fieldtype": "Datetime",
+   "label": "Last Sync",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_hardware",
+   "fieldtype": "Section Break",
+   "label": "Hardware Info"
+  },
+  {
+   "fieldname": "mac_address",
+   "fieldtype": "Data",
+   "label": "MAC Address"
+  },
+  {
+   "fieldname": "platform",
+   "fieldtype": "Data",
+   "label": "Platform"
+  },
+  {
+   "fieldname": "firmware_version",
+   "fieldtype": "Data",
+   "label": "Firmware Version"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "push_service",
+   "fieldtype": "Data",
+   "label": "Push Service"
+  },
+  {
+   "fieldname": "face_algorithm",
+   "fieldtype": "Data",
+   "label": "Face Algorithm"
+  },
+  {
+   "fieldname": "fingerprint_algorithm",
+   "fieldtype": "Data",
+   "label": "Fingerprint Algorithm"
+  },
+  {
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-01 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Biometric Integration",
+ "name": "Biometric Device",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Biometric Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "device_name,serial_number,ip_address,mac_address",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "device_name",
+ "track_changes": 1
+}

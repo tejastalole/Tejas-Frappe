@@ -34,4 +34,5 @@ fixtures = [
 doctype_js = {
 	"Gym Member": "public/js/gym_member.js",
 	"Attendance Log": "public/js/attendance_log.js",
+	"Sales Order": "public/js/sales_order.js",
 }

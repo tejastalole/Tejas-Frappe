@@ -1,7 +1,14 @@
 frappe
+whatsapp_integration
+zkteco_integration
 erpnext
-ai_bot
-hrms
-payments
 ai_resume_parser
+sales_tracking
+ai_bot
+dynamic_workflow_builder
+hrms
 gym_management
+frappe_flow
+payments
+bulk_data_tools
+boq_management

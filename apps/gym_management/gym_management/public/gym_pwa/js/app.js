@@ -245,7 +245,7 @@
 				<div class="stat-card"><div class="stat-icon">📋</div><div class="value">${stats.active_memberships}</div><div class="label">Active Plans</div></div>
 				<div class="stat-card"><div class="stat-icon">⏳</div><div class="value">${stats.expiring_soon}</div><div class="label">Expiring Soon</div></div>
 			</div>
-			<p class="section-title">Quick check-in</p>
+			<p class="section-title">Quick check-in / check-out</p>
 			<div class="search-box"><input type="search" class="search-input" id="home-search" placeholder="Search name or mobile…" /></div>
 			<div id="home-members" class="member-list"></div>
 		`;
@@ -265,12 +265,30 @@
 		await load();
 	}
 
-	function memberRowHtml(m, showCheckIn) {
-		const badge = m.checked_in_today
-			? `<span class="badge">${m.today_check_in_time ? formatTime(m.today_check_in_time) : "In"}</span>`
-			: showCheckIn
-				? `<button type="button" class="btn btn-primary btn-sm" data-checkin="${m.name}">Check In</button>`
-				: `<span class="badge done">Active</span>`;
+	function memberActionHtml(m, showActions) {
+		if (!showActions) {
+			if (m.checked_in_today && !m.today_check_out_time) {
+				return `<span class="badge">${m.today_check_in_time ? formatTime(m.today_check_in_time) : "In"}</span>`;
+			}
+			if (m.today_check_out_time) {
+				return `<span class="badge done">Done</span>`;
+			}
+			return `<span class="badge done">Active</span>`;
+		}
+		if (!m.checked_in_today) {
+			return `<button type="button" class="btn btn-primary btn-sm" data-checkin="${m.name}">Check In</button>`;
+		}
+		if (m.today_check_out_time) {
+			return `<span class="badge done">Done</span>`;
+		}
+		if (m.today_attendance_log) {
+			return `<button type="button" class="btn btn-checkout btn-sm" data-checkout="${m.today_attendance_log}" data-member="${m.name}">Check Out</button>`;
+		}
+		return `<span class="badge">${m.today_check_in_time ? formatTime(m.today_check_in_time) : "In"}</span>`;
+	}
+
+	function memberRowHtml(m, showActions) {
+		const action = memberActionHtml(m, showActions);
 		return `
 			<div class="member-card" data-member="${m.name}">
 				<div class="avatar">${memberAvatar(m)}</div>
@@ -279,7 +297,7 @@
 					<p>${escapeHtml(m.mobile_no || m.name)}</p>
 					${memberMetaLine(m)}
 				</div>
-				${badge}
+				${action}
 			</div>
 		`;
 	}
@@ -467,9 +485,22 @@
 			</div>
 			<div class="detail-actions">
 				${
-					m.checked_in_today
-						? `<button class="btn btn-secondary btn-block" disabled>Already checked in today</button>`
-						: `<button class="btn btn-primary btn-block" id="btn-checkin">Check In with GPS</button>`
+					!m.checked_in_today
+						? `<button class="btn btn-primary btn-block" id="btn-checkin">Check In</button>`
+						: ""
+				}
+				${
+					m.checked_in_today &&
+					m.today_attendance &&
+					m.today_attendance.check_in_time &&
+					!m.today_attendance.check_out_time
+						? `<button class="btn btn-checkout btn-block" id="btn-checkout">Check Out</button>`
+						: ""
+				}
+				${
+					m.today_attendance && m.today_attendance.check_out_time
+						? `<button class="btn btn-secondary btn-block" disabled>Completed for today</button>`
+						: ""
 				}
 			</div>
 			${todayAttHtml}
@@ -482,8 +513,13 @@
 			${attendanceHtml}
 		`;
 		$("#btn-back").onclick = () => showView(state.view);
-		const btn = $("#btn-checkin");
-		if (btn) btn.onclick = () => doCheckIn(name);
+		const checkInBtn = $("#btn-checkin");
+		if (checkInBtn) checkInBtn.onclick = () => doCheckIn(name);
+		const checkOutBtn = $("#btn-checkout");
+		if (checkOutBtn) {
+			checkOutBtn.onclick = () =>
+				doCheckOut(m.today_attendance.name, name);
+		}
 	}
 
 	async function doCheckIn(gymMember) {
@@ -505,6 +541,25 @@
 		}
 	}
 
+	async function doCheckOut(attendanceLog, gymMember) {
+		const coords = await getLocation();
+		if (!coords) showToast("GPS unavailable — saving without location", "warn");
+		try {
+			const r = await api("gym_management.api.mobile.check_out", {
+				attendance_log: attendanceLog,
+				...coords,
+			});
+			showToast(r.message || "Checked out!", "success");
+			if (state.memberDetail?.name === gymMember) {
+				renderMemberDetail(gymMember);
+			} else {
+				showView(state.view);
+			}
+		} catch (e) {
+			showToast(e.message, "warn");
+		}
+	}
+
 	function bindMemberClicks(containerSel) {
 		const el = document.querySelector(containerSel);
 		el.querySelectorAll(".member-card").forEach((card) => {
@@ -512,6 +567,12 @@
 				if (e.target.closest("[data-checkin]")) {
 					e.stopPropagation();
 					doCheckIn(e.target.closest("[data-checkin]").dataset.checkin);
+					return;
+				}
+				if (e.target.closest("[data-checkout]")) {
+					e.stopPropagation();
+					const btn = e.target.closest("[data-checkout]");
+					doCheckOut(btn.dataset.checkout, btn.dataset.member);
 					return;
 				}
 				renderMemberDetail(card.dataset.member);

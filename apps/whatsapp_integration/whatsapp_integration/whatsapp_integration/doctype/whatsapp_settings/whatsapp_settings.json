@@ -1,0 +1,131 @@
+{
+ "actions": [],
+ "creation": "2026-07-15 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "section_credentials",
+  "access_token",
+  "phone_number_id",
+  "column_break_1",
+  "business_account_id",
+  "app_id",
+  "section_api",
+  "api_base_url",
+  "api_version",
+  "column_break_2",
+  "webhook_verify_token",
+  "section_defaults",
+  "default_country_code"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_credentials",
+   "fieldtype": "Section Break",
+   "label": "Meta Credentials"
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Password",
+   "label": "Access Token"
+  },
+  {
+   "description": "WhatsApp Business Phone Number ID from Meta Developer Console",
+   "fieldname": "phone_number_id",
+   "fieldtype": "Data",
+   "label": "Phone Number ID"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "WhatsApp Business Account (WABA) ID",
+   "fieldname": "business_account_id",
+   "fieldtype": "Data",
+   "label": "Business Account ID"
+  },
+  {
+   "fieldname": "app_id",
+   "fieldtype": "Data",
+   "label": "Meta App ID"
+  },
+  {
+   "fieldname": "section_api",
+   "fieldtype": "Section Break",
+   "label": "API"
+  },
+  {
+   "default": "https://graph.facebook.com",
+   "fieldname": "api_base_url",
+   "fieldtype": "Data",
+   "label": "API Base URL"
+  },
+  {
+   "default": "v21.0",
+   "fieldname": "api_version",
+   "fieldtype": "Data",
+   "label": "API Version"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Same token must be configured in Meta Webhook Verify Token",
+   "fieldname": "webhook_verify_token",
+   "fieldtype": "Data",
+   "label": "Webhook Verify Token"
+  },
+  {
+   "fieldname": "section_defaults",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
+  {
+   "default": "91",
+   "description": "Used when recipient number has no country code",
+   "fieldname": "default_country_code",
+   "fieldtype": "Data",
+   "label": "Default Country Code"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-07-15 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "WhatsApp Integration",
+ "name": "WhatsApp Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "WhatsApp Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

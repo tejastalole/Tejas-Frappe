@@ -1,0 +1,88 @@
+.ff-flow-toolbar {
+	margin-bottom: 12px;
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	align-items: flex-end;
+}
+
+.ff-palette {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin-bottom: 12px;
+}
+
+.ff-palette button {
+	font-size: 12px;
+	padding: 6px 10px;
+}
+
+.ff-flow-canvas {
+	position: relative;
+	min-height: 560px;
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	background:
+		linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+		linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+	background-size: 24px 24px;
+	overflow: auto;
+}
+
+.ff-flow-node {
+	position: absolute;
+	min-width: 170px;
+	padding: 10px 12px;
+	border-radius: 10px;
+	border: 2px solid var(--border-color);
+	background: var(--card-bg);
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+	cursor: grab;
+}
+
+.ff-flow-node.trigger { border-color: #16a34a; }
+.ff-flow-node.condition { border-color: #2563eb; }
+.ff-flow-node.send_email,
+.ff-flow-node.send_whatsapp,
+.ff-flow-node.create_task,
+.ff-flow-node.action { border-color: #ea580c; }
+.ff-flow-node.delay { border-color: #7c3aed; }
+.ff-flow-node.approval { border-color: #db2777; }
+.ff-flow-node.ai { border-color: #0891b2; }
+.ff-flow-node.end { border-color: #64748b; }
+
+.ff-flow-hint {
+	margin: -4px 0 10px;
+}
+
+.ff-flow-node.is-selected {
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
+.ff-flow-node.is-connect-source {
+	box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.45);
+	border-color: #16a34a;
+}
+
+.ff-flow-node__type {
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+.ff-flow-node__label {
+	font-size: 13px;
+	font-weight: 600;
+	margin-top: 2px;
+}
+
+.ff-flow-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}

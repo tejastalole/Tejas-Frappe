@@ -1,0 +1,123 @@
+{
+ "actions": [],
+ "autoname": "field:flow_name",
+ "creation": "2026-06-22 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "flow_name",
+  "is_active",
+  "status",
+  "category",
+  "column_break_1",
+  "trigger_type",
+  "document_type",
+  "trigger_event",
+  "section_break_trigger",
+  "trigger_json",
+  "section_break_flow",
+  "flow_json",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "flow_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Flow Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nActive\nDisabled"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Category",
+   "options": "CRM\nSales\nHR\nFinance\nCustom\nGeneral"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Document Event",
+   "fieldname": "trigger_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Trigger Type",
+   "options": "Document Event\nSchedule\nWebhook\nAPI"
+  },
+  {
+   "depends_on": "eval:doc.trigger_type=='Document Event'",
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "label": "DocType",
+   "options": "DocType"
+  },
+  {
+   "depends_on": "eval:doc.trigger_type=='Document Event'",
+   "fieldname": "trigger_event",
+   "fieldtype": "Select",
+   "label": "Trigger Event",
+   "options": "after_insert\non_update\non_submit\non_cancel"
+  },
+  {
+   "fieldname": "section_break_trigger",
+   "fieldtype": "Section Break",
+   "label": "Trigger Config"
+  },
+  {
+   "fieldname": "trigger_json",
+   "fieldtype": "JSON",
+   "label": "Trigger JSON"
+  },
+  {
+   "fieldname": "section_break_flow",
+   "fieldtype": "Section Break",
+   "label": "Flow Graph"
+  },
+  {
+   "fieldname": "flow_json",
+   "fieldtype": "JSON",
+   "label": "Flow JSON"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Flow",
+ "name": "FF Flow Automation",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "export": 1, "print": 1, "read": 1, "report": 1, "role": "System Manager", "share": 1, "write": 1},
+  {"create": 1, "delete": 1, "read": 1, "report": 1, "role": "Flow Admin", "write": 1},
+  {"create": 1, "read": 1, "report": 1, "role": "Flow Designer", "write": 1},
+  {"read": 1, "role": "Flow User"}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

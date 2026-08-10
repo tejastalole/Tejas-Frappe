@@ -1,0 +1,14 @@
+[project]
+name = "dynamic_workflow_builder"
+authors = [{ name = "Tejas", email = "hello@tejas.com" }]
+description = "Dynamic configurable approval workflows for any DocType"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+
+[tool.flit.module]
+name = "dynamic_workflow_builder"
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"

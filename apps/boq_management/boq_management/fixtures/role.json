@@ -1,0 +1,12 @@
+[
+ {
+  "doctype": "Role",
+  "role_name": "BOQ Manager",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "role_name": "BOQ User",
+  "desk_access": 1
+ }
+]

@@ -1,0 +1,119 @@
+{
+ "autoname": "format:{boq_category}-{item_name}",
+ "naming_rule": "Expression",
+ "class_name": "BOQItemMaster",
+ "field_order": [
+  "item_name",
+  "boq_category",
+  "boq_sub_category",
+  "specification",
+  "default_uom",
+  "default_rate",
+  "is_active"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "boq_category",
+   "fieldtype": "Link",
+   "label": "BOQ Category",
+   "options": "BOQ Category",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "boq_sub_category",
+   "fieldtype": "Link",
+   "label": "BOQ Sub Category",
+   "options": "BOQ Sub Category",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "specification",
+   "fieldtype": "Small Text",
+   "label": "Specification",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "default_uom",
+   "fieldtype": "Link",
+   "label": "Default UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_rate",
+   "fieldtype": "Currency",
+   "label": "Default Rate"
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "default": "1"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1,
+   "write": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "BOQ Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1,
+   "write": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "BOQ User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1,
+   "write": 1
+  }
+ ],
+ "doctype": "DocType",
+ "module": "BOQ Management",
+ "name": "BOQ Item Master",
+ "owner": "Administrator",
+ "modified_by": "Administrator",
+ "creation": "2026-06-25 00:00:00.000000",
+ "modified": "2026-06-25 00:00:00.000000",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "engine": "InnoDB",
+ "track_changes": 1
+}

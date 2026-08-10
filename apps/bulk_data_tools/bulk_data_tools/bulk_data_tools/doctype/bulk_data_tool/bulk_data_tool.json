@@ -1,0 +1,169 @@
+{
+ "actions": [],
+ "creation": "2026-08-03 14:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_target",
+  "target_doctype",
+  "record_count",
+  "column_break_1",
+  "docstatus_filter",
+  "batch_size",
+  "section_filters",
+  "filters_json",
+  "section_options",
+  "force_delete",
+  "delete_permanently",
+  "dry_run",
+  "column_break_2",
+  "confirm_text",
+  "section_protected",
+  "extra_protected_doctypes",
+  "section_result",
+  "last_result"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_target",
+   "fieldtype": "Section Break",
+   "label": "Target"
+  },
+  {
+   "description": "Select the DocType whose records you want to count or delete",
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "record_count",
+   "fieldtype": "Int",
+   "label": "Record Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "All",
+   "description": "For submittable DocTypes only",
+   "fieldname": "docstatus_filter",
+   "fieldtype": "Select",
+   "label": "Document Status",
+   "options": "All\nDraft (0)\nSubmitted (1)\nCancelled (2)"
+  },
+  {
+   "default": "100",
+   "description": "How many documents to delete per batch (safer for large tables)",
+   "fieldname": "batch_size",
+   "fieldtype": "Int",
+   "label": "Batch Size"
+  },
+  {
+   "fieldname": "section_filters",
+   "fieldtype": "Section Break",
+   "label": "Optional Filters"
+  },
+  {
+   "description": "JSON list of filters, example: [[\"status\", \"=\", \"Draft\"], [\"company\", \"=\", \"My Company\"]]. Leave empty to affect all records.",
+   "fieldname": "filters_json",
+   "fieldtype": "Code",
+   "label": "Filters (JSON)",
+   "options": "JSON"
+  },
+  {
+   "fieldname": "section_options",
+   "fieldtype": "Section Break",
+   "label": "Options"
+  },
+  {
+   "default": "0",
+   "description": "Ignore link validation while deleting (dangerous)",
+   "fieldname": "force_delete",
+   "fieldtype": "Check",
+   "label": "Force Delete (ignore links)"
+  },
+  {
+   "default": "0",
+   "description": "Skip Recycle Bin and delete permanently",
+   "fieldname": "delete_permanently",
+   "fieldtype": "Check",
+   "label": "Delete Permanently"
+  },
+  {
+   "default": "1",
+   "description": "Only count / preview — do not delete yet",
+   "fieldname": "dry_run",
+   "fieldtype": "Check",
+   "label": "Dry Run"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Type DELETE to confirm a real delete (not needed for Dry Run / Count)",
+   "fieldname": "confirm_text",
+   "fieldtype": "Data",
+   "label": "Type DELETE to Confirm"
+  },
+  {
+   "fieldname": "section_protected",
+   "fieldtype": "Section Break",
+   "label": "Extra Protected DocTypes"
+  },
+  {
+   "description": "These DocTypes cannot be bulk-deleted (in addition to system protected list)",
+   "fieldname": "extra_protected_doctypes",
+   "fieldtype": "Table",
+   "label": "Extra Protected DocTypes",
+   "options": "Bulk Protected DocType"
+  },
+  {
+   "fieldname": "section_result",
+   "fieldtype": "Section Break",
+   "label": "Last Result"
+  },
+  {
+   "fieldname": "last_result",
+   "fieldtype": "Long Text",
+   "label": "Last Result",
+   "read_only": 1
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-03 14:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Bulk Data Tools",
+ "name": "Bulk Data Tool",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Bulk Data Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

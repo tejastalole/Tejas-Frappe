@@ -1,0 +1,27 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-06-22 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["flow", "frequency", "run_time", "day_of_week", "is_active"],
+ "fields": [
+  {"fieldname": "flow", "fieldtype": "Link", "in_list_view": 1, "label": "Flow", "options": "FF Flow Automation", "reqd": 1},
+  {"fieldname": "frequency", "fieldtype": "Select", "in_list_view": 1, "label": "Frequency", "options": "Hourly\nDaily\nWeekly\nMonthly", "reqd": 1},
+  {"fieldname": "run_time", "fieldtype": "Time", "label": "Run Time"},
+  {"fieldname": "day_of_week", "fieldtype": "Select", "label": "Day of Week", "options": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday"},
+  {"default": "1", "fieldname": "is_active", "fieldtype": "Check", "label": "Is Active"}
+ ],
+ "modified": "2026-06-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Flow",
+ "name": "FF Flow Schedule",
+ "owner": "Administrator",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "role": "System Manager", "write": 1},
+  {"create": 1, "delete": 1, "read": 1, "role": "Flow Admin", "write": 1}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -99,37 +99,27 @@ body {
 }
 
 .login-logo {
-	width: 88px;
-	height: 88px;
-	border-radius: 28px;
-	background: linear-gradient(135deg, var(--accent) 0%, #9ae622 100%);
-	padding: 18px;
-	box-shadow: 0 16px 48px var(--accent-glow);
-	margin-bottom: 24px;
+	width: min(140px, 48vw);
+	height: min(140px, 48vw);
+	margin-bottom: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .login-logo img {
 	width: 100%;
 	height: 100%;
 	display: block;
-	filter: brightness(0.2);
+	object-fit: contain;
+	filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.45));
 }
 
-.login-hero h1 {
+.login-tagline {
 	margin: 0;
-	font-size: 2.5rem;
-	font-weight: 800;
-	letter-spacing: -0.03em;
-}
-
-.login-hero h1 span {
-	color: var(--accent);
-}
-
-.login-hero p {
-	margin: 8px 0 0;
 	color: var(--muted);
 	font-size: 1rem;
+	font-weight: 500;
 }
 
 .login-card {
@@ -314,6 +304,12 @@ body {
 	background: var(--surface-hover);
 	color: var(--text);
 	border: 1px solid var(--border);
+}
+
+.btn-checkout {
+	background: linear-gradient(135deg, var(--orange) 0%, #e85a2a 100%);
+	color: #fff;
+	box-shadow: 0 8px 24px rgba(255, 107, 53, 0.35);
 }
 
 .btn-sm {
@@ -529,6 +525,9 @@ body {
 }
 
 .detail-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 	margin: 0 0 20px;
 }
 

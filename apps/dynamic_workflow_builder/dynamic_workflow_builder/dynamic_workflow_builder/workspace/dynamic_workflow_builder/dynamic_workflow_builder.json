@@ -1,0 +1,153 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"hdr\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Approval Center</b></span>\",\"col\":12}},{\"id\":\"sc_center\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approval Center\",\"col\":3}},{\"id\":\"sc_builder\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Workflow Builder\",\"col\":3}},{\"id\":\"sc_rule\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DWB Approval Rule\",\"col\":3}},{\"id\":\"sc_pending\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"DWB Pending Approvals\",\"col\":3}}]",
+ "creation": "2026-06-22 00:00:00",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "solid-error",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Dynamic Workflow Builder",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Approvals",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Approval Center",
+   "link_count": 0,
+   "link_to": "approval-center",
+   "link_type": "Page",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Workflow Builder",
+   "link_count": 0,
+   "link_to": "workflow-builder",
+   "link_type": "Page",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "DWB Approval Rule",
+   "link_count": 0,
+   "link_to": "DWB Approval Rule",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "DWB Approval Request",
+   "link_count": 0,
+   "link_to": "DWB Approval Request",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "DWB Approval Delegation",
+   "link_count": 0,
+   "link_to": "DWB Approval Delegation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "DWB Approval Log",
+   "link_count": 0,
+   "link_to": "DWB Approval Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "DWB Pending Approvals",
+   "link_count": 0,
+   "link_to": "DWB Pending Approvals",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "DWB SLA Breach",
+   "link_count": 0,
+   "link_to": "DWB SLA Breach",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-03 17:02:46.312022",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow Builder",
+ "name": "Dynamic Workflow Builder",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 6.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "label": "Approval Center",
+   "link_to": "approval-center",
+   "type": "Page"
+  },
+  {
+   "color": "Purple",
+   "label": "Workflow Builder",
+   "link_to": "workflow-builder",
+   "type": "Page"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "label": "DWB Approval Rule",
+   "link_to": "DWB Approval Rule",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "label": "DWB Pending Approvals",
+   "link_to": "DWB Pending Approvals",
+   "report_ref_doctype": "DWB Approval Request",
+   "type": "Report"
+  }
+ ],
+ "title": "Dynamic Workflow Builder"
+}

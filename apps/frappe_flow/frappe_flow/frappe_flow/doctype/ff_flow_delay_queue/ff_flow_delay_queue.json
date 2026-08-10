@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "autoname": "format:FF-DL-{#####}",
+ "creation": "2026-06-22 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "flow",
+  "execution",
+  "resume_node_id",
+  "reference_doctype",
+  "reference_name",
+  "run_at",
+  "status",
+  "context_json"
+ ],
+ "fields": [
+  {"fieldname": "flow", "fieldtype": "Link", "label": "Flow", "options": "FF Flow Automation", "reqd": 1},
+  {"fieldname": "execution", "fieldtype": "Link", "label": "Execution", "options": "FF Flow Execution"},
+  {"fieldname": "resume_node_id", "fieldtype": "Data", "label": "Resume Node ID", "reqd": 1},
+  {"fieldname": "reference_doctype", "fieldtype": "Link", "label": "Reference DocType", "options": "DocType"},
+  {"fieldname": "reference_name", "fieldtype": "Dynamic Link", "label": "Reference Name", "options": "reference_doctype"},
+  {"fieldname": "run_at", "fieldtype": "Datetime", "in_list_view": 1, "label": "Run At", "reqd": 1},
+  {"default": "Pending", "fieldname": "status", "fieldtype": "Select", "in_list_view": 1, "label": "Status", "options": "Pending\nCompleted\nCancelled"},
+  {"fieldname": "context_json", "fieldtype": "JSON", "label": "Context JSON"}
+ ],
+ "modified": "2026-06-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Flow",
+ "name": "FF Flow Delay Queue",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "role": "System Manager", "write": 1},
+  {"read": 1, "role": "Flow Admin"}
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

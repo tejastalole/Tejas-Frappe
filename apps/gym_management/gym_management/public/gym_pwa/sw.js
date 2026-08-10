@@ -1,8 +1,9 @@
-const CACHE = "gym-pwa-v4";
+const CACHE = "gym-pwa-v5";
 const ASSETS = [
 	"/gym-app",
 	"/assets/gym_management/gym_pwa/css/app.css",
 	"/assets/gym_management/gym_pwa/js/app.js",
+	"/assets/gym_management/gym_pwa/sg-fitness-logo.png",
 	"/assets/gym_management/gym_pwa/icon.svg",
 	"/assets/gym_management/gym_pwa/icon-192.png",
 	"/assets/gym_management/gym_pwa/manifest.webmanifest",

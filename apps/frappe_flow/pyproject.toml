@@ -1,0 +1,14 @@
+[project]
+name = "frappe_flow"
+authors = [{ name = "Tejas", email = "hello@tejas.com" }]
+description = "No-code automation builder for Frappe and ERPNext"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+
+[tool.flit.module]
+name = "frappe_flow"
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"

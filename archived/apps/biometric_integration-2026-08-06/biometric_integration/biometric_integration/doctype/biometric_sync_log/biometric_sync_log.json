@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "autoname": "BIO-SYNC-.YYYY.-.#####",
+ "creation": "2026-08-01 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "source",
+  "started_at",
+  "ended_at",
+  "column_break_1",
+  "device",
+  "serial_number",
+  "section_counts",
+  "downloaded",
+  "inserted",
+  "skipped",
+  "column_break_2",
+  "errors",
+  "section_error",
+  "error_details"
+ ],
+ "fields": [
+  {
+   "default": "Running",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Running\nSuccess\nPartial\nFailed",
+   "reqd": 1
+  },
+  {
+   "default": "ADMS",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Source",
+   "options": "ADMS\nTCP Pull"
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Started At",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ended_at",
+   "fieldtype": "Datetime",
+   "label": "Ended At"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Device",
+   "options": "Biometric Device"
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Data",
+   "label": "Serial Number"
+  },
+  {
+   "fieldname": "section_counts",
+   "fieldtype": "Section Break",
+   "label": "Counts"
+  },
+  {
+   "default": "0",
+   "fieldname": "downloaded",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Downloaded"
+  },
+  {
+   "default": "0",
+   "fieldname": "inserted",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Inserted"
+  },
+  {
+   "default": "0",
+   "fieldname": "skipped",
+   "fieldtype": "Int",
+   "label": "Skipped"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "errors",
+   "fieldtype": "Int",
+   "label": "Errors"
+  },
+  {
+   "fieldname": "section_error",
+   "fieldtype": "Section Break",
+   "label": "Errors"
+  },
+  {
+   "fieldname": "error_details",
+   "fieldtype": "Long Text",
+   "label": "Error Details"
+  }
+ ],
+ "links": [],
+ "modified": "2026-08-01 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Biometric Integration",
+ "name": "Biometric Sync Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Biometric Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

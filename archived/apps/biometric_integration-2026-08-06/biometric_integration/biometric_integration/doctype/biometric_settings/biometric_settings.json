@@ -1,0 +1,127 @@
+{
+ "actions": [],
+ "creation": "2026-08-01 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "section_adms",
+  "accept_unknown_devices",
+  "create_employee_checkin",
+  "column_break_1",
+  "last_push_at",
+  "section_pull",
+  "enable_tcp_pull",
+  "pull_every",
+  "column_break_2",
+  "last_pull_at",
+  "section_help",
+  "setup_instructions"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_adms",
+   "fieldtype": "Section Break",
+   "label": "ADMS Push (Cloud Server)"
+  },
+  {
+   "default": "1",
+   "description": "Auto-create Biometric Device when a new SN connects via /iclock",
+   "fieldname": "accept_unknown_devices",
+   "fieldtype": "Check",
+   "label": "Accept Unknown Devices"
+  },
+  {
+   "default": "1",
+   "description": "Create HRMS Employee Checkin when Employee is mapped",
+   "fieldname": "create_employee_checkin",
+   "fieldtype": "Check",
+   "label": "Create Employee Checkin"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_push_at",
+   "fieldtype": "Datetime",
+   "label": "Last ADMS Push",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_pull",
+   "fieldtype": "Section Break",
+   "label": "TCP Pull (Port 4370)"
+  },
+  {
+   "default": "0",
+   "description": "Optional: poll devices over LAN using pyzk (IP:4370)",
+   "fieldname": "enable_tcp_pull",
+   "fieldtype": "Check",
+   "label": "Enable TCP Pull"
+  },
+  {
+   "default": "10",
+   "fieldname": "pull_every",
+   "fieldtype": "Int",
+   "label": "Pull Every (Minutes)"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_pull_at",
+   "fieldtype": "Datetime",
+   "label": "Last TCP Pull",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_help",
+   "fieldtype": "Section Break",
+   "label": "Device Setup"
+  },
+  {
+   "fieldname": "setup_instructions",
+   "fieldtype": "HTML",
+   "options": "<div class='alert alert-info'><b>On the biometric device</b> go to <b>Cloud Server Setting</b>:<ul><li>Server Mode: <b>ADMS</b></li><li>Server Address: your Frappe server IP / hostname</li><li>Server Port: <b>80</b> (or your site HTTPS port) — firmware appends <code>/iclock/*</code></li><li>Enable Domain Name: ON if using hostname</li></ul><p>Device TCP COMM Port <b>4370</b> is used only for optional LAN pull.</p></div>"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-01 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Biometric Integration",
+ "name": "Biometric Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Biometric Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

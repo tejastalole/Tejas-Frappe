@@ -1,0 +1,51 @@
+.boq-rate-summary {
+	margin-top: 0.5rem;
+	border-radius: 10px;
+	overflow: hidden;
+	border: 1px solid var(--border-color, #2d2d2d);
+	font-size: 13px;
+}
+
+.boq-rate-summary table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0;
+}
+
+.boq-rate-summary th,
+.boq-rate-summary td {
+	padding: 10px 14px;
+	text-align: left;
+	border-bottom: 1px solid var(--border-color, #333);
+}
+
+.boq-rate-summary th {
+	background: var(--fg-color, #1a1a1a);
+	color: var(--text-muted, #aaa);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: 0.04em;
+}
+
+.boq-rate-summary td.num,
+.boq-rate-summary th.num {
+	text-align: right;
+}
+
+.boq-rate-summary tr.summary-row td {
+	font-weight: 600;
+	background: var(--subtle-fg, #111);
+}
+
+.boq-rate-summary tr.final-row td {
+	font-weight: 700;
+	font-size: 14px;
+	background: var(--fg-color, #1a1a1a);
+}
+
+.boq-rate-summary .per-unit {
+	color: var(--text-muted, #999);
+	font-weight: 500;
+	font-size: 12px;
+}

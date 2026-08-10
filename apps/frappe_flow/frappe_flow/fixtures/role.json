@@ -1,0 +1,20 @@
+[
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Flow Admin",
+  "role_name": "Flow Admin"
+ },
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Flow Designer",
+  "role_name": "Flow Designer"
+ },
+ {
+  "desk_access": 1,
+  "doctype": "Role",
+  "name": "Flow User",
+  "role_name": "Flow User"
+ }
+]

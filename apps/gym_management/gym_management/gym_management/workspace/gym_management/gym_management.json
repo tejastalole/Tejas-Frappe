@@ -7,7 +7,7 @@
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
- "icon": "healthcare",
+ "icon": "solid-success",
  "idx": 0,
  "indicator_color": "",
  "is_hidden": 0,
@@ -108,7 +108,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-05-23 12:33:36.623009",
+ "modified": "2026-08-03 17:02:46.141914",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Management",
@@ -118,7 +118,7 @@
  "public": 1,
  "quick_lists": [],
  "roles": [],
- "sequence_id": 1.0,
+ "sequence_id": 3.0,
  "shortcuts": [
   {
    "color": "Green",

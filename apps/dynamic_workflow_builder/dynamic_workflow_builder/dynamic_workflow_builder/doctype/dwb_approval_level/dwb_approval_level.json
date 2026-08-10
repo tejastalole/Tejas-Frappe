@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "creation": "2026-06-22 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "level",
+  "approver_type",
+  "user",
+  "role",
+  "department",
+  "column_break_1",
+  "sla_hours",
+  "can_delegate",
+  "escalation_action"
+ ],
+ "fields": [
+  {
+   "fieldname": "level",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Level",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approver_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Approver Type",
+   "options": "Specific User\nRole Based\nDepartment Head\nDocument Owner Manager",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.approver_type=='Specific User'",
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "depends_on": "eval:doc.approver_type=='Role Based'",
+   "fieldname": "role",
+   "fieldtype": "Link",
+   "label": "Role",
+   "options": "Role"
+  },
+  {
+   "depends_on": "eval:doc.approver_type=='Department Head'",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "24",
+   "fieldname": "sla_hours",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "SLA Hours"
+  },
+  {
+   "default": "1",
+   "fieldname": "can_delegate",
+   "fieldtype": "Check",
+   "label": "Can Delegate"
+  },
+  {
+   "default": "Notify",
+   "fieldname": "escalation_action",
+   "fieldtype": "Select",
+   "label": "Escalation Action",
+   "options": "Notify\nEscalate Next\nEscalate Admin\nAuto Reject"
+  }
+ ],
+ "istable": 1,
+ "modified": "2026-06-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Dynamic Workflow Builder",
+ "name": "DWB Approval Level",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

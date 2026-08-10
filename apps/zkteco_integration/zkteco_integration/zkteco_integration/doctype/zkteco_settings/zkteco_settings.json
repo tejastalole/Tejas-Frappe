@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-06 15:10:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "create_employee_checkin",
+  "accept_unknown_devices",
+  "column_break_1",
+  "last_push_at",
+  "section_help",
+  "setup_notes"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "default": "1",
+   "description": "Create HRMS Employee Checkin from each punch",
+   "fieldname": "create_employee_checkin",
+   "fieldtype": "Check",
+   "label": "Create Employee Checkin"
+  },
+  {
+   "default": "1",
+   "description": "Auto-create ZKTeco Device when a new serial number connects via ADMS",
+   "fieldname": "accept_unknown_devices",
+   "fieldtype": "Check",
+   "label": "Accept Unknown Devices"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_push_at",
+   "fieldtype": "Datetime",
+   "label": "Last Push At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_help",
+   "fieldtype": "Section Break",
+   "label": "SenseFace 2A Setup"
+  },
+  {
+   "fieldname": "setup_notes",
+   "fieldtype": "HTML",
+   "options": "<p><b>Device Cloud Server Settings</b></p><ul><li>Server Mode: <b>ADMS</b></li><li>Server Address: your Frappe host IP (e.g. 192.168.1.10)</li><li>Server Port: <b>8081</b> (Nginx) or <b>8007</b> (bench direct)</li></ul><p>Set each Employee <b>Attendance Device ID</b> to the PIN on the device.</p><p>ADMS URL path: <code>/iclock/cdata</code></p>"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-06 15:10:00.000000",
+ "modified_by": "Administrator",
+ "module": "ZKTeco Integration",
+ "name": "ZKTeco Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 0,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "share": 0,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

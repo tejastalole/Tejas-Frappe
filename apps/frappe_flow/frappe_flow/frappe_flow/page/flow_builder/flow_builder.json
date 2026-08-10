@@ -1,0 +1,12 @@
+{
+ "creation": "2026-06-22 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "fa fa-random",
+ "module": "Frappe Flow",
+ "name": "flow-builder",
+ "page_name": "flow-builder",
+ "roles": [{"role": "System Manager"}, {"role": "Flow Admin"}, {"role": "Flow Designer"}],
+ "standard": "Yes",
+ "title": "Flow Builder"
+}

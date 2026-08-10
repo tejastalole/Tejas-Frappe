@@ -1,0 +1,14 @@
+[project]
+name = "boq_management"
+authors = [{ name = "Tejas", email = "hello@tejas.com" }]
+description = "Project-based BOQ for EPC roofing and façade contracting"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+
+[tool.flit.module]
+name = "boq_management"
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"

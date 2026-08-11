@@ -1176,3 +1176,92 @@ SELECT name, title, module, public, content FROM tabWorkspace WHERE name LIKE '%
 2026-08-10 10:09:04,832 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
 2026-08-10 10:19:13,610 INFO /home/frappe/.local/bin/bench --site site1.local console
 2026-08-10 10:25:11,047 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 12:00:02,162 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-10 12:08:28,731 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 12:08:34,233 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-10 12:08:36,017 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-10 12:12:10,825 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 12:17:00,845 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 12:19:24,299 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-10 12:19:40,394 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 12:20:43,625 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-10 12:44:34,872 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-10 12:44:53,084 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 03:29:40,300 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-11 03:29:45,738 INFO /home/frappe/.local/bin/bench start
+2026-08-11 03:29:46,185 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 03:29:46,194 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 03:29:46,199 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 03:29:46,200 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 03:32:04,135 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 03:33:22,810 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 03:38:49,791 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 03:40:00,489 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 03:50:08,654 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 04:17:26,687 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 04:17:32,237 INFO /home/frappe/.local/bin/bench --site site1.local run-tests --app biometric_integration --module biometric_integration.tests.test_attendance_state
+2026-08-11 04:21:15,569 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 05:45:52,394 INFO /home/frappe/.local/bin/bench start
+2026-08-11 05:46:08,206 INFO /home/frappe/.local/bin/bench start
+2026-08-11 05:46:16,098 INFO /home/frappe/.local/bin/bench start
+2026-08-11 05:47:18,354 INFO /home/frappe/.local/bin/bench start
+2026-08-11 05:47:19,154 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 05:47:19,160 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 05:47:19,168 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 05:47:19,168 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 05:53:44,643 INFO /home/frappe/.local/bin/bench use site1.locl
+2026-08-11 05:53:52,884 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-11 05:53:56,164 INFO /home/frappe/.local/bin/bench start
+2026-08-11 05:54:12,882 INFO /home/frappe/.local/bin/bench start
+2026-08-11 05:54:16,003 INFO /home/frappe/.local/bin/bench start
+2026-08-11 05:54:16,488 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 05:54:16,501 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 05:54:16,506 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 05:54:16,509 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 06:00:03,345 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-11 06:27:07,242 INFO /home/frappe/.local/bin/bench start
+2026-08-11 06:27:07,869 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 06:27:07,870 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 06:27:07,880 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 06:27:07,880 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 06:41:12,770 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 06:51:51,034 INFO /home/frappe/.local/bin/bench start
+2026-08-11 06:51:51,507 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 06:51:51,509 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 06:51:51,513 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 06:51:51,513 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 06:52:42,406 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-11 06:52:48,002 INFO /home/frappe/.local/bin/bench start
+2026-08-11 06:52:48,475 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 06:52:48,490 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 06:52:48,496 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 06:52:48,500 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 06:55:57,179 INFO /home/frappe/.local/bin/bench start
+2026-08-11 06:55:57,721 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 06:55:57,731 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 06:55:57,736 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 06:55:57,748 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 06:59:18,600 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 06:59:24,830 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 06:59:30,676 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 06:59:49,117 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 06:59:52,839 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT processing_status, COUNT(*) c FROM `tabBiometric Punch Log` GROUP BY processing_status; SELECT COUNT(*) FROM `tabBiometric Check In Check Out` WHERE attendance_date='2026-08-11';
+2026-08-11 06:59:59,675 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT name, log_type, punch_time, processing_status FROM `tabBiometric Check In Check Out` WHERE employee='HR-EMP-00001' AND attendance_date='2026-08-11'; SELECT name, punch_time, processing_status, rejection_reason FROM `tabBiometric Punch Log` WHERE user_id='2' ORDER BY creation DESC LIMIT 5;
+2026-08-11 07:00:02,619 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT name, log_type, check_time, processing_status FROM `tabBiometric Check In Check Out` WHERE employee='HR-EMP-00001' AND attendance_date='2026-08-11'; SELECT name, punch_time, processing_status, rejection_reason FROM `tabBiometric Punch Log` WHERE user_id='2' ORDER BY creation DESC LIMIT 5;
+2026-08-11 07:00:07,677 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT name, log_type, time FROM `tabBiometric Check In Check Out` WHERE employee='HR-EMP-00001' AND attendance_date='2026-08-11'; SELECT name, punch_time, processing_status, rejection_reason FROM `tabBiometric Punch Log` WHERE user_id='2' ORDER BY creation DESC LIMIT 5; SELECT COUNT(*) pending FROM `tabBiometric Punch Log` WHERE processed=0;
+2026-08-11 08:55:44,925 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 08:59:46,773 INFO /home/frappe/.local/bin/bench site1.local console
+2026-08-11 16:05:34,735 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 16:08:41,503 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT name, enabled, user_type FROM tabUser WHERE name IN ('Administrator', 'Guest') OR enabled=0 LIMIT 20; SELECT sid, user, lastupdate FROM `tabSessions` ORDER BY lastupdate DESC LIMIT 5;
+2026-08-11 16:08:52,024 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT sid, user, lastupdate FROM `tabSessions` WHERE user IS NULL OR user='' OR user NOT IN (SELECT name FROM tabUser WHERE enabled=1);
+2026-08-11 16:08:52,774 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-11 16:09:01,666 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-11 16:09:01,684 INFO /home/frappe/.local/bin/bench --site site1.local clear-sessions
+2026-08-11 16:09:02,710 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-11 16:09:05,254 INFO /home/frappe/.local/bin/bench start
+2026-08-11 16:09:05,690 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-11 16:09:05,703 INFO /home/frappe/.local/bin/bench schedule
+2026-08-11 16:09:05,721 INFO /home/frappe/.local/bin/bench watch
+2026-08-11 16:09:05,724 INFO /home/frappe/.local/bin/bench worker
+2026-08-11 16:09:07,122 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e DELETE FROM `tabSessions`;
+2026-08-11 16:09:11,322 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e DELETE FROM `tabSessions` WHERE sid IS NOT NULL;

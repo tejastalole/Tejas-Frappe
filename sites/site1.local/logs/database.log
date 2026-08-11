@@ -2156,3 +2156,11 @@ index modified(modified))
 ALTER TABLE `tabBiometric Tea Break` ADD COLUMN `attendance_date` date, ADD COLUMN `expected_end_time` datetime(6), ADD COLUMN `expected_duration_minutes` int(11) not null default 0, ADD COLUMN `actual_duration_minutes` int(11) not null default 0, ADD COLUMN `excess_duration_minutes` int(11) not null default 0, ADD COLUMN `break_status` varchar(140), ADD COLUMN `paired_event` varchar(140), ADD COLUMN `is_regularized` int(1) not null default 0
 2026-08-10 10:08:58,734 WARNING database DDL Query made to DB:
 RENAME TABLE `tabBiometric Check In Out` TO `tabBiometric Check In Check Out`
+2026-08-11 03:50:11,354 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Lunch Break` ADD COLUMN `employee_name` varchar(140)
+2026-08-11 03:50:11,946 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Punch Log` ADD COLUMN `employee_name` varchar(140)
+2026-08-11 03:50:12,274 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Check In Check Out` ADD COLUMN `employee_name` varchar(140)
+2026-08-11 03:50:12,520 WARNING database DDL Query made to DB:
+ALTER TABLE `tabBiometric Tea Break` ADD COLUMN `employee_name` varchar(140)

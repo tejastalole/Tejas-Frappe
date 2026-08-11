@@ -79,7 +79,8 @@ Configure in **Biometric Settings → Office Policy**:
 
 | Rule | Default | Used for |
 |------|---------|----------|
-| Office Start | **09:00 AM** | Late entry calculation |
+| Office Start | **09:00 AM** | Check-in window start |
+| Late Entry After | **10:00 AM** | Late minutes count only after this time |
 | Office End | **06:00 PM** | Early exit / overtime |
 | Lunch window | **12:00 PM – 3:00 PM** | Lunch Start **and** Lunch End must be inside this window |
 | Lunch duration | **45 minutes** | Expected break end = Lunch Start + 45 min |
@@ -125,20 +126,48 @@ Rejected example: 3:30 PM Tea Start.
 
 ---
 
-## 4. Punch status mapping (device codes)
+## 4. Punch routing (time-based — current default)
 
-Configured in **Biometric Settings → Punch Status Mappings**.
+**Use Time-Based Punch Routing** is enabled by default in **Biometric Settings**.
 
-| Device punch status | Event category | Log type | DocType created |
-|---------------------|----------------|----------|-----------------|
-| `0` | Check In Out | Check In | Biometric Check In Check Out |
-| `1` | Check In Out | Check Out | Biometric Check In Check Out |
-| `2` | Lunch Break | Break Start | Biometric Lunch Break |
-| `3` | Lunch Break | Break End | Biometric Lunch Break |
-| `4` | Tea Break | Break Start | Biometric Tea Break |
-| `5` | Tea Break | Break End | Biometric Tea Break |
+Device punch status codes are **ignored for routing**. Punch type is decided only by **clock time**:
 
-Change mappings if your machine uses different status codes. Device and Settings must match.
+| Punch time | Routed to | DocType / Log Type |
+|------------|-----------|--------------------|
+| **Before 9:00 AM** (before Office Start) | Regular **Check In** | Biometric Check In Check Out → Check In |
+| **9:00 AM – 10:00 AM** | Regular **Check In** (on time) | No late minutes |
+| **After 10:00 AM** (before lunch, not yet checked in) | Regular **Check In** (late) | Late minutes = punch time − 10:00 AM |
+| **12:00 PM – 3:00 PM** | Lunch **check in** then **check out** | First punch → Break Start; next → Break End |
+| **4:00 PM – 6:00 PM** | Tea **check in** then **check out** | First punch → Break Start; next → Break End |
+| **After 6:00 PM** (after Office End) | Regular **Check Out** | Biometric Check In Check Out → Check Out |
+
+Gaps (already checked in):
+
+| Gap | Result |
+|-----|--------|
+| 9:00 AM – 12:00 PM (already checked in) | Rejected |
+| 3:00 PM – 4:00 PM | Rejected |
+
+Within lunch/tea windows the **first** punch is Break Start (check in to break) and the **second** is Break End (check out from break).
+
+Lunch and Tea punches are **always stored** in **Biometric Lunch Break** / **Biometric Tea Break** even if Regular Check In is missing for that day.
+
+Regular **Check In** (before office start / late before lunch) and **Check Out** (after office end) are **always stored** in **Biometric Check In Check Out**. Check Out is saved even if Check In is missing.
+
+### Punch Status Mapping (fallback only)
+
+If **Use Time-Based Punch Routing** is turned **Off**, device status codes are used again:
+
+| Device punch status | Event category | Log type |
+|---------------------|----------------|----------|
+| `0` | Check In Out | Check In |
+| `1` | Check In Out | Check Out |
+| `2` | Lunch Break | Break Start |
+| `3` | Lunch Break | Break End |
+| `4` | Tea Break | Break Start |
+| `5` | Tea Break | Break End |
+
+Change mappings only when time-based routing is disabled.
 
 ---
 
@@ -188,20 +217,22 @@ Check In → WORKING
   → Check Out → COMPLETED
 ```
 
-### Example day (PIN `1001`, 10-Aug-2026)
+### Example day (PIN `1001`, 10-Aug-2026) — time-based routing
 
-| Time | Status | Event created |
-|------|--------|---------------|
-| 09:02 AM | `0` | Check In Check Out → Check In |
-| 01:00 PM | `2` | Lunch Break → Break Start |
-| 01:45 PM | `3` | Lunch Break → Break End |
-| 04:00 PM | `4` | Tea Break → Break Start |
-| 04:15 PM | `5` | Tea Break → Break End |
-| 06:03 PM | `1` | Check In Check Out → Check Out |
+| Time | Event created (status code ignored) |
+|------|--------------------------------------|
+| 08:55 AM | Check In Check Out → Check In |
+| 01:00 PM | Lunch Break → Break Start (lunch check in) |
+| 01:45 PM | Lunch Break → Break End (lunch check out) |
+| 04:00 PM | Tea Break → Break Start (tea check in) |
+| 04:15 PM | Tea Break → Break End (tea check out) |
+| 06:03 PM | Check In Check Out → Check Out |
+
+Any single punch in the lunch window alternates Start → End. Same for tea.
 
 **Biometric Attendance Day** for that employee/date will typically show:
 
-- Late: **2** minutes (after 09:00)  
+- Late: **0** minutes (08:55 is before / within 9–10 AM window-in window)  
 - Overtime: **3** minutes (after 18:00)  
 - Lunch: expected 45, actual 45, excess 0, status Normal  
 - Tea: expected 15, actual 15, excess 0, status Normal  
@@ -271,8 +302,9 @@ Login → **Biometric Integration**.
 | Accept Unknown Devices | Yes (first setup) |
 | Create Attendance Events | Yes |
 | Create Employee Checkin | Yes (if HRMS installed) |
-| Office Policy | 09:00–18:00; lunch 12:00–15:00; tea 16:00–18:00; 45 / 15 min |
-| Punch Status Mappings | 0–5 as in section 4 |
+| **Use Time-Based Punch Routing** | **Yes** (default) |
+| Office Policy | 09:00–18:00; late after 10:00; lunch 12:00–15:00; tea 16:00–18:00; 45 / 15 min |
+| Punch Status Mappings | Used only if time-based routing is Off |
 | Enable TCP Pull | No (for SenseFace ADMS) |
 | Enable Debug Logging | Yes only while troubleshooting |
 
@@ -325,9 +357,18 @@ Expect: `GET OPTION FROM: YOUR_SERIAL`.
 
 If wrong: Punch Log row appears, but no attendance events / Employee Checkin.
 
-### Step 7 — Test full day
+### Step 7 — Test full day (time-based)
 
-Punch statuses `0 → 2 → 3 → 4 → 5 → 1` and verify:
+Punch at these times (device status code does not matter):
+
+1. Before 9:00 AM → Regular Check In  
+2. Between 12:00–3:00 → Lunch Start  
+3. Between 12:00–3:00 again → Lunch End  
+4. Between 4:00–6:00 → Tea Start  
+5. Between 4:00–6:00 again → Tea End  
+6. After 6:00 PM → Regular Check Out  
+
+Verify:
 
 | Screen | Expect |
 |--------|--------|
@@ -466,12 +507,13 @@ SenseFace in ADMS mode usually refuses TCP pull (`BrokenPipe` / connection refus
 - [ ] App installed; `bench start` running  
 - [ ] Biometric Settings enabled  
 - [ ] Create Attendance Events = Yes  
-- [ ] Office Policy: 09:00–18:00; lunch window 12:00–15:00; tea window 16:00–18:00  
-- [ ] Punch Status Mappings 0–5 match device  
+- [ ] **Use Time-Based Punch Routing = Yes**  
+- [ ] Office Policy: 09:00–18:00; **Late Entry After 10:00**; lunch window 12:00–15:00; tea window 16:00–18:00  
+- [ ] Punch Status Mappings optional (only if time-based is Off)  
 - [ ] Device serial/IP saved; Connection Mode = ADMS Push  
 - [ ] Machine Cloud Server = ADMS, correct IP + port  
 - [ ] Employee Attendance Device ID mapped  
-- [ ] Test 6-punch day → 6 Accepted logs + Attendance Day COMPLETED  
+- [ ] Test day: before 9 / lunch twice / tea twice / after 6 → Attendance Day COMPLETED  
 - [ ] (Optional) HRMS Shift Type assigned before relying on On-Shift / Auto Attendance  
 
 ---

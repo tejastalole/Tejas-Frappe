@@ -9,6 +9,7 @@
   "accept_unknown_devices",
   "create_employee_checkin",
   "create_attendance_events",
+  "use_time_based_punch_routing",
   "column_break_1",
   "last_push_at",
   "section_mapping",
@@ -16,6 +17,7 @@
   "section_office_policy",
   "office_start_time",
   "office_end_time",
+  "late_entry_after_time",
   "lunch_break_duration_minutes",
   "lunch_window_start",
   "lunch_window_end",
@@ -67,6 +69,13 @@
    "label": "Create Attendance Events"
   },
   {
+   "default": "1",
+   "description": "Ignore device status codes and route punches by time: before Office Start = Check In, Lunch Window = Lunch Start/End, Tea Window = Tea Start/End, after Office End = Check Out",
+   "fieldname": "use_time_based_punch_routing",
+   "fieldtype": "Check",
+   "label": "Use Time-Based Punch Routing"
+  },
+  {
    "fieldname": "column_break_1",
    "fieldtype": "Column Break"
   },
@@ -95,6 +104,7 @@
   },
   {
    "default": "09:00:00",
+   "description": "Office / check-in window starts at this time (default 9:00 AM)",
    "fieldname": "office_start_time",
    "fieldtype": "Time",
    "label": "Office Start Time"
@@ -104,6 +114,13 @@
    "fieldname": "office_end_time",
    "fieldtype": "Time",
    "label": "Office End Time"
+  },
+  {
+   "default": "10:00:00",
+   "description": "Check-in from Office Start until this time is on time. Late minutes are counted only after this time (default 10:00 AM)",
+   "fieldname": "late_entry_after_time",
+   "fieldtype": "Time",
+   "label": "Late Entry After Time"
   },
   {
    "default": "45",

@@ -7,6 +7,7 @@
  "field_order": [
   "user_id",
   "employee",
+  "employee_name",
   "punch_time",
   "punch_status",
   "event_category",
@@ -41,10 +42,17 @@
   {
    "fieldname": "employee",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Employee",
    "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "read_only": 1
   },
   {
    "fieldname": "punch_time",
@@ -223,5 +231,5 @@
  "sort_field": "punch_time",
  "sort_order": "DESC",
  "states": [],
- "title_field": "user_id"
+ "title_field": "employee_name"
 }

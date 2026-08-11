@@ -86,7 +86,7 @@ def calculate_day_summary(ctx: AttendanceDayContext) -> dict[str, Any]:
 	lunch_excess = max(lunch_actual - lunch_expected, 0) if lunch_end else 0
 	tea_excess = max(tea_actual - tea_expected, 0) if tea_end else 0
 
-	late_entry, late_minutes = _late_entry(check_in_time, ctx.attendance_date, policy["office_start_time"])
+	late_entry, late_minutes = _late_entry(check_in_time, ctx.attendance_date, policy["late_entry_after_time"])
 	early_exit, early_exit_minutes = _early_exit(check_out_time, ctx.attendance_date, policy["office_end_time"])
 	overtime_minutes = _overtime_minutes(check_out_time, ctx.attendance_date, policy["office_end_time"])
 
@@ -132,7 +132,7 @@ def build_check_in_out_fields(
 	policy = get_office_policy()
 	fields: dict[str, Any] = {"attendance_date": getdate(punch_time)}
 	if log_type == "Check In":
-		late_entry, late_minutes = _late_entry(punch_time, getdate(punch_time), policy["office_start_time"])
+		late_entry, late_minutes = _late_entry(punch_time, getdate(punch_time), policy["late_entry_after_time"])
 		fields.update({"late_entry": late_entry, "late_minutes": late_minutes})
 	elif log_type == "Check Out":
 		early_exit, early_exit_minutes = _early_exit(
@@ -215,14 +215,15 @@ def _combine_date_time(attendance_date, time_value) -> datetime:
 	return get_datetime(f"{attendance_date} {time_part}")
 
 
-def _late_entry(check_in_time, attendance_date, office_start_time) -> tuple[int, int]:
+def _late_entry(check_in_time, attendance_date, late_after_time) -> tuple[int, int]:
+	"""Late minutes start after late_after_time (default 10:00 AM), not office start (9:00 AM)."""
 	if not check_in_time:
 		return 0, 0
-	office_start = _combine_date_time(attendance_date, office_start_time)
+	late_after = _combine_date_time(attendance_date, late_after_time)
 	check_in_time = get_datetime(check_in_time)
-	if check_in_time <= office_start:
+	if check_in_time <= late_after:
 		return 0, 0
-	return 1, _minutes_between(office_start, check_in_time)
+	return 1, _minutes_between(late_after, check_in_time)
 
 
 def _early_exit(check_out_time, attendance_date, office_end_time) -> tuple[int, int]:

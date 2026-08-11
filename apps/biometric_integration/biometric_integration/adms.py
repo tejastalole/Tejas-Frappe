@@ -115,7 +115,7 @@ def _handshake_options(sn: str, device: str | None) -> str:
 		"TransTimes=00:00;14:05",
 		"TransInterval=1",
 		"TransFlag=1111000000",
-		"TimeZone=5.0",
+		"TimeZone=330",
 		"Realtime=1",
 		"Encrypt=0",
 	]

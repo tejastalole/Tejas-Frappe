@@ -110,10 +110,11 @@
    "label": "Office Start Time"
   },
   {
-   "default": "18:00:00",
+   "default": "19:00:00",
+   "description": "Regular Check Out is allowed only after this time (default 7:00 PM)",
    "fieldname": "office_end_time",
    "fieldtype": "Time",
-   "label": "Office End Time"
+   "label": "Office End Time / Check Out After"
   },
   {
    "default": "10:00:00",

@@ -2164,3 +2164,9 @@ ALTER TABLE `tabBiometric Punch Log` ADD COLUMN `employee_name` varchar(140)
 ALTER TABLE `tabBiometric Check In Check Out` ADD COLUMN `employee_name` varchar(140)
 2026-08-11 03:50:12,520 WARNING database DDL Query made to DB:
 ALTER TABLE `tabBiometric Tea Break` ADD COLUMN `employee_name` varchar(140)
+2026-08-11 17:11:57,648 WARNING database DDL Query made to DB:
+alter table `tabDocType` add column if not exists migration_hash varchar(140)
+2026-08-11 17:11:58,885 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` DROP INDEX `print_heading`
+2026-08-11 17:11:59,942 WARNING database DDL Query made to DB:
+ALTER TABLE `tabPrint Heading` ADD UNIQUE INDEX IF NOT EXISTS print_heading (`print_heading`)

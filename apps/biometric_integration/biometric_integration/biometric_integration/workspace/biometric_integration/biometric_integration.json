@@ -1,0 +1,245 @@
+{
+ "charts": [
+  {
+   "chart_name": "Punch Logs This Week",
+   "label": "Punch Logs This Week"
+  }
+ ],
+ "content": "[{\"id\": \"hdr_overview\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Overview</b></span>\", \"col\": 12}}, {\"id\": \"nc_today\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Punches Today\", \"col\": 3}}, {\"id\": \"nc_pending\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pending Punches\", \"col\": 3}}, {\"id\": \"nc_failed\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Failed Syncs\", \"col\": 3}}, {\"id\": \"sp1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"chart_punches\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Punch Logs This Week\", \"col\": 12}}, {\"id\": \"sp2\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr_quick\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quick Access</b></span>\", \"col\": 12}}, {\"id\": \"sc_devices\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Devices\", \"col\": 3}}, {\"id\": \"sc_punches\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Punch Logs\", \"col\": 3}}, {\"id\": \"sc_pending\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Pending Punches\", \"col\": 3}}, {\"id\": \"sc_checkin\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employee Checkin\", \"col\": 3}}, {\"id\": \"sc_settings\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Settings\", \"col\": 3}}, {\"id\": \"sc_sync\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sync Logs\", \"col\": 3}}, {\"id\": \"sc_employee\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employees\", \"col\": 3}}, {\"id\": \"sc_att_tracker\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Attendance Tracker\", \"col\": 3}}, {\"id\": \"sp3\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"hdr_masters\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Masters &amp; Operations</b></span>\", \"col\": 12}}, {\"id\": \"card_setup\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}, {\"id\": \"card_ops\", \"type\": \"card\", \"data\": {\"card_name\": \"Operations\", \"col\": 4}}, {\"id\": \"card_hr\", \"type\": \"card\", \"data\": {\"card_name\": \"Attendance\", \"col\": 4}}]",
+ "creation": "2026-08-11 09:47:31.138990",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "add-round",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Biometric Integration",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Biometric Settings",
+   "link_count": 0,
+   "link_to": "Biometric Settings",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Biometric Device",
+   "link_count": 0,
+   "link_to": "Biometric Device",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Operations",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Biometric Punch Log",
+   "link_count": 0,
+   "link_to": "Biometric Punch Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Biometric Sync Log",
+   "link_count": 0,
+   "link_to": "Biometric Sync Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attendance",
+   "link_count": 4,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Biometric Check In Check Out",
+   "link_count": 0,
+   "link_to": "Biometric Check In Check Out",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Biometric Lunch Break",
+   "link_count": 0,
+   "link_to": "Biometric Lunch Break",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Biometric Tea Break",
+   "link_count": 0,
+   "link_to": "Biometric Tea Break",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Attendance",
+   "link_count": 0,
+   "link_to": "Attendance",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Employee Attendance Tracker",
+   "link_count": 0,
+   "link_to": "Employee Attendance Tracker",
+   "link_type": "Report",
+   "onboard": 0,
+   "report_ref_doctype": "Biometric Attendance Day",
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-08-11 17:12:11.813172",
+ "modified_by": "Administrator",
+ "module": "Biometric Integration",
+ "name": "Biometric Integration",
+ "number_cards": [
+  {
+   "label": "Punches Today",
+   "number_card_name": "Punches Today"
+  },
+  {
+   "label": "Pending Punches",
+   "number_card_name": "Pending Punches"
+  },
+  {
+   "label": "Failed Syncs",
+   "number_card_name": "Failed Syncs"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 16.0,
+ "shortcuts": [
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "",
+   "label": "Devices",
+   "link_to": "Biometric Device",
+   "stats_filter": "[[\"Biometric Device\",\"enabled\",\"=\",1]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "",
+   "label": "Punch Logs",
+   "link_to": "Biometric Punch Log",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "format": "",
+   "label": "Pending Punches",
+   "link_to": "Biometric Punch Log",
+   "stats_filter": "[[\"Biometric Punch Log\",\"processing_status\",\"=\",\"Pending\"]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "format": "",
+   "label": "Employee Checkin",
+   "link_to": "Employee Checkin",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "format": "",
+   "label": "Settings",
+   "link_to": "Biometric Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Red",
+   "doc_view": "List",
+   "format": "",
+   "label": "Sync Logs",
+   "link_to": "Biometric Sync Log",
+   "stats_filter": "[[\"Biometric Sync Log\",\"status\",\"=\",\"Failed\"]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "doc_view": "List",
+   "format": "",
+   "label": "Employees",
+   "link_to": "Employee",
+   "stats_filter": "[[\"Employee\",\"status\",\"=\",\"Active\"]]",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "label": "Attendance Tracker",
+   "link_to": "Employee Attendance Tracker",
+   "report_ref_doctype": "Biometric Attendance Day",
+   "type": "Report"
+  }
+ ],
+ "title": "Biometric Integration"
+}

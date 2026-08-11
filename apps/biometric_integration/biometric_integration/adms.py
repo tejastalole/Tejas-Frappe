@@ -106,6 +106,9 @@ def _handshake_options(sn: str, device: str | None) -> str:
 	if device and frappe.db.exists("Biometric Device", device):
 		stamp = frappe.db.get_value("Biometric Device", device, "last_att_stamp") or "0"
 
+	# Do not send TimeZone= — SenseFace/eSSL often misreads 5.5/330 and
+	# overwrites the device clock (e.g. IST 5:30 → 5:00). Device keeps
+	# its own Date/Time; punch times are stored exactly as the device sends.
 	lines = [
 		f"GET OPTION FROM: {sn}",
 		f"Stamp={stamp}",
@@ -115,7 +118,6 @@ def _handshake_options(sn: str, device: str | None) -> str:
 		"TransTimes=00:00;14:05",
 		"TransInterval=1",
 		"TransFlag=1111000000",
-		"TimeZone=330",
 		"Realtime=1",
 		"Encrypt=0",
 	]

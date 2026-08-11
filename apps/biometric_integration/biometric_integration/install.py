@@ -13,12 +13,94 @@ def after_install():
 
 	_seed_default_device()
 	_seed_punch_status_mappings()
+	ensure_attendance_tracker_workspace()
 
 	if not frappe.db.exists("DocType", "Employee Checkin"):
 		frappe.msgprint(
 			"Biometric Integration: install HRMS for Employee Checkin / Auto Attendance.",
 			alert=True,
 		)
+
+
+def after_migrate():
+	ensure_attendance_tracker_workspace()
+
+
+def ensure_attendance_tracker_workspace():
+	"""Add Employee Attendance Tracker report to Biometric workspace."""
+	if not frappe.db.exists("Workspace", "Biometric Integration"):
+		return
+
+	ws = frappe.get_doc("Workspace", "Biometric Integration")
+	changed = False
+
+	has_link = any(
+		(row.link_type == "Report" and row.link_to == "Employee Attendance Tracker")
+		for row in (ws.links or [])
+	)
+	if not has_link:
+		ws.append(
+			"links",
+			{
+				"type": "Link",
+				"label": "Employee Attendance Tracker",
+				"link_type": "Report",
+				"link_to": "Employee Attendance Tracker",
+				"report_ref_doctype": "Biometric Attendance Day",
+				"is_query_report": 1,
+				"onboard": 0,
+			},
+		)
+		changed = True
+
+	has_shortcut = any(
+		(row.label == "Attendance Tracker" or row.link_to == "Employee Attendance Tracker")
+		for row in (ws.shortcuts or [])
+	)
+	if not has_shortcut:
+		ws.append(
+			"shortcuts",
+			{
+				"label": "Attendance Tracker",
+				"type": "Report",
+				"link_to": "Employee Attendance Tracker",
+				"report_ref_doctype": "Biometric Attendance Day",
+				"color": "Blue",
+			},
+		)
+		changed = True
+		# Place shortcut in Quick Access block of workspace content
+		try:
+			import json
+
+			content = json.loads(ws.content or "[]")
+			exists = any(
+				block.get("type") == "shortcut"
+				and (block.get("data") or {}).get("shortcut_name") == "Attendance Tracker"
+				for block in content
+			)
+			if not exists:
+				# Insert after Quick Access header if present
+				insert_at = len(content)
+				for idx, block in enumerate(content):
+					if block.get("id") == "sc_employee":
+						insert_at = idx + 1
+						break
+				content.insert(
+					insert_at,
+					{
+						"id": "sc_att_tracker",
+						"type": "shortcut",
+						"data": {"shortcut_name": "Attendance Tracker", "col": 3},
+					},
+				)
+				ws.content = json.dumps(content)
+		except Exception:
+			pass
+
+	if changed:
+		ws.save(ignore_permissions=True)
+		frappe.db.commit()
 
 
 def _seed_default_device():

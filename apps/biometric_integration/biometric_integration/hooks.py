@@ -9,6 +9,7 @@ app_version = "0.0.1"
 required_apps = ["erpnext"]
 
 after_install = "biometric_integration.install.after_install"
+after_migrate = "biometric_integration.install.after_migrate"
 
 # SenseFace / ZKTeco ADMS Cloud Server paths: /iclock/cdata, /iclock/getrequest, ...
 page_renderer = [

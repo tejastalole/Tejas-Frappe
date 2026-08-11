@@ -270,3 +270,60 @@ checkin = frappe.db.count("Biometric Check In Check Out", {"employee": "HR-EMP-0
             bad.append((sid, u))
 print("Bad redis sessions:", len(bad), bad[:5])
 2026-08-11 16:08:53,696 INFO ipython === session end ===
+2026-08-11 17:00:24,289 INFO ipython === bench console session ===
+2026-08-11 17:00:24,289 INFO ipython import frappe
+2026-08-11 17:00:24,290 INFO ipython s = frappe.get_single("Biometric Settings")
+2026-08-11 17:00:24,290 INFO ipython === session end ===
+2026-08-11 17:01:50,800 INFO ipython === bench console session ===
+2026-08-11 17:01:50,800 INFO ipython import frappe
+2026-08-11 17:01:50,800 INFO ipython frappe.connect()
+2026-08-11 17:01:50,800 INFO ipython updates = {
+    "office_start_time": "09:00:00",
+    "office_end_time": "19:00:00",
+    "late_entry_after_time": "10:00:00",
+    "lunch_break_duration_minutes": 45,
+    "lunch_window_start": "12:00:00",
+    "lunch_window_end": "15:00:00",
+    "tea_break_duration_minutes": 15,
+    "tea_window_start": "16:00:00",
+    "tea_window_end": "18:00:00",
+    "duplicate_punch_tolerance_seconds": 120,
+    "use_time_based_punch_routing": 1,
+}
+2026-08-11 17:01:50,800 INFO ipython for k, v in updates.items():
+    frappe.db.set_single_value("Biometric Settings", k, v)
+frappe.db.commit()
+2026-08-11 17:01:50,800 INFO ipython s = frappe.get_single("Biometric Settings")
+2026-08-11 17:01:50,800 INFO ipython print("office_start", s.office_start_time)
+2026-08-11 17:01:50,800 INFO ipython print("office_end", s.office_end_time)
+2026-08-11 17:01:50,801 INFO ipython print("late_after", s.late_entry_after_time)
+2026-08-11 17:01:50,801 INFO ipython print("lunch", s.lunch_window_start, s.lunch_window_end, s.lunch_break_duration_minutes)
+2026-08-11 17:01:50,801 INFO ipython print("tea", s.tea_window_start, s.tea_window_end, s.tea_break_duration_minutes)
+2026-08-11 17:01:50,801 INFO ipython === session end ===
+2026-08-11 17:09:49,623 INFO ipython === bench console session ===
+2026-08-11 17:09:49,623 INFO ipython import frappe, json
+2026-08-11 17:09:49,624 INFO ipython ws = frappe.get_doc("Workspace", "Biometric Integration")
+2026-08-11 17:09:49,624 INFO ipython print("content length", len(ws.content or ""))
+2026-08-11 17:09:49,624 INFO ipython # show links
+2026-08-11 17:09:49,624 INFO ipython === session end ===
+2026-08-11 17:12:12,494 INFO ipython === bench console session ===
+2026-08-11 17:12:12,495 INFO ipython import frappe
+2026-08-11 17:12:12,495 INFO ipython print("Report exists:", frappe.db.exists("Report", "Employee Attendance Tracker"))
+2026-08-11 17:12:12,495 INFO ipython from biometric_integration.install import ensure_attendance_tracker_workspace
+2026-08-11 17:12:12,495 INFO ipython ensure_attendance_tracker_workspace()
+2026-08-11 17:12:12,495 INFO ipython print("Workspace updated")
+2026-08-11 17:12:12,495 INFO ipython # test execute
+2026-08-11 17:12:12,496 INFO ipython from biometric_integration.biometric_integration.report.employee_attendance_tracker.employee_attendance_tracker import execute
+2026-08-11 17:12:12,496 INFO ipython from frappe.utils import add_days, today
+2026-08-11 17:12:12,496 INFO ipython cols, data, msg, chart, summary = execute({"from_date": add_days(today(), -30), "to_date": today()})
+2026-08-11 17:12:12,496 INFO ipython print("rows", len(data), "summary", summary)
+2026-08-11 17:12:12,496 INFO ipython === session end ===
+2026-08-11 18:14:08,208 INFO ipython === bench console session ===
+2026-08-11 18:14:08,209 INFO ipython import frappe
+2026-08-11 18:14:08,209 INFO ipython frappe.connect()
+2026-08-11 18:14:08,210 INFO ipython count = frappe.db.count("Biometric Punch Log")
+2026-08-11 18:14:08,210 INFO ipython print("Deleting", count, "Biometric Punch Log rows")
+2026-08-11 18:14:08,210 INFO ipython frappe.db.sql("DELETE FROM `tabBiometric Punch Log`")
+2026-08-11 18:14:08,210 INFO ipython frappe.db.commit()
+2026-08-11 18:14:08,210 INFO ipython print("Remaining:", frappe.db.count("Biometric Punch Log"))
+2026-08-11 18:14:08,210 INFO ipython === session end ===

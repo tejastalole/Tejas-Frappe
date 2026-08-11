@@ -133,7 +133,7 @@ def get_office_policy() -> dict[str, Any]:
 	settings = frappe.get_single("Biometric Settings")
 	return {
 		"office_start_time": settings.office_start_time or "09:00:00",
-		"office_end_time": settings.office_end_time or "18:00:00",
+		"office_end_time": settings.office_end_time or "19:00:00",
 		"late_entry_after_time": getattr(settings, "late_entry_after_time", None) or "10:00:00",
 		"lunch_break_duration_minutes": int(settings.lunch_break_duration_minutes or 45),
 		"lunch_window_start": settings.lunch_window_start or "12:00:00",
@@ -225,11 +225,11 @@ def resolve_event_type_by_time(
 	"""
 	Route punch by time of day:
 
-	- Before office start (default before 9:00 AM) → Regular Check In
-	  (also allows late Check In anytime before lunch window if not yet checked in)
+	- Check-in window (default 9:00–10:00 AM, and early / late before lunch
+	  if not yet checked in) → Regular Check In
 	- Lunch window (12:00–15:00) → Lunch Break Start, then Break End
 	- Tea window (16:00–18:00) → Tea Break Start, then Break End
-	- After office end (after 6:00 PM) → Regular Check Out
+	- After office end (default after 7:00 PM) → Regular Check Out
 	"""
 	policy = policy or get_office_policy()
 	punch_time = get_datetime(punch_time)
@@ -237,37 +237,38 @@ def resolve_event_type_by_time(
 
 	office_start = _combine_date_time(day, policy["office_start_time"])
 	office_end = _combine_date_time(day, policy["office_end_time"])
+	check_in_until = _combine_date_time(day, policy["late_entry_after_time"])
 	lunch_start = _combine_date_time(day, policy["lunch_window_start"])
 	lunch_end = _combine_date_time(day, policy["lunch_window_end"])
 	tea_start = _combine_date_time(day, policy["tea_window_start"])
 	tea_end = _combine_date_time(day, policy["tea_window_end"])
 
-	# After office end → Regular Check Out
+	# After office end (default 7:00 PM) → Regular Check Out
 	if punch_time > office_end:
 		return "Check In Out", "Check Out"
 
-	# Lunch window → Lunch check in / check out (Start then End)
+	# Lunch window → Lunch Start / End (alternating)
 	if lunch_start <= punch_time <= lunch_end:
 		if ctx.active_lunch_start and not ctx.lunch_end:
 			return "Lunch Break", "Break End"
 		return "Lunch Break", "Break Start"
 
-	# Tea window → Tea check in / check out (Start then End)
+	# Tea window → Tea Start / End (alternating)
 	if tea_start <= punch_time <= tea_end:
 		if ctx.active_tea_start and not ctx.tea_end:
 			return "Tea Break", "Break End"
 		return "Tea Break", "Break Start"
 
-	# Before office start → Regular Check In
-	# Also allow late Check In any time before lunch window if not yet checked in
-	if punch_time < office_start or (not ctx.check_in and punch_time < lunch_start):
+	# Regular Check In: before/at late-entry cutoff (9–10 AM window),
+	# early before office start, or late before lunch if not yet checked in
+	if punch_time <= check_in_until or (not ctx.check_in and punch_time < lunch_start):
 		return "Check In Out", "Check In"
 
 	if office_start <= punch_time < lunch_start:
 		frappe.throw(
 			(
-				f"No attendance punch is expected between office start "
-				f"({_format_time(policy['office_start_time'])}) and lunch window "
+				f"No attendance punch is expected between check-in window end "
+				f"({_format_time(policy['late_entry_after_time'])}) and lunch window "
 				f"({_format_time(policy['lunch_window_start'])}). "
 				"Employee is already checked in."
 			),
@@ -286,12 +287,12 @@ def resolve_event_type_by_time(
 			title="Punch Outside Allowed Windows",
 		)
 
-	# Between tea end and office end (when tea ends before office end)
+	# Between tea end (6 PM) and checkout start (7 PM)
 	if tea_end < punch_time <= office_end:
 		frappe.throw(
 			(
-				f"Regular Check Out is only allowed after office end "
-				f"({_format_time(policy['office_end_time'])}). "
+				f"Regular Check Out is only allowed after "
+				f"{_format_time(policy['office_end_time'])}. "
 				f"Tea break punches are allowed until {_format_time(policy['tea_window_end'])}."
 			),
 			exc=AttendanceValidationError,
@@ -406,17 +407,13 @@ def validate_punch(
 				"Tea Break Start is not allowed while Tea Break is already active.",
 				exc=AttendanceValidationError,
 			)
-		if state == "LUNCH_BREAK":
-			frappe.throw(
-				"Tea Break Start is not allowed while Lunch Break is active.",
-				exc=AttendanceValidationError,
-			)
 		if state == "COMPLETED":
 			frappe.throw(
 				"No further attendance punches are allowed after check out for today.",
 				exc=AttendanceValidationError,
 			)
-		if state not in {"NOT_STARTED", "WORKING", "INCOMPLETE"}:
+		# Allow tea even if lunch was left open (common when Break End was missed)
+		if state not in {"NOT_STARTED", "WORKING", "INCOMPLETE", "LUNCH_BREAK"}:
 			frappe.throw(
 				"Tea Break Start is not allowed in the current attendance state.",
 				exc=AttendanceValidationError,

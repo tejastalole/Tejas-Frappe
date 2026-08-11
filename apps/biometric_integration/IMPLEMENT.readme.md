@@ -81,7 +81,7 @@ Configure in **Biometric Settings → Office Policy**:
 |------|---------|----------|
 | Office Start | **09:00 AM** | Check-in window start |
 | Late Entry After | **10:00 AM** | Late minutes count only after this time |
-| Office End | **06:00 PM** | Early exit / overtime |
+| Office End | **07:00 PM** | Regular Check Out only after this time |
 | Lunch window | **12:00 PM – 3:00 PM** | Lunch Start **and** Lunch End must be inside this window |
 | Lunch duration | **45 minutes** | Expected break end = Lunch Start + 45 min |
 | Tea window | **4:00 PM – 6:00 PM** | Tea Start **and** Tea End must be inside this window |
@@ -134,19 +134,19 @@ Device punch status codes are **ignored for routing**. Punch type is decided onl
 
 | Punch time | Routed to | DocType / Log Type |
 |------------|-----------|--------------------|
-| **Before 9:00 AM** (before Office Start) | Regular **Check In** | Biometric Check In Check Out → Check In |
-| **9:00 AM – 10:00 AM** | Regular **Check In** (on time) | No late minutes |
+| **Before / during 9:00–10:00 AM** | Regular **Check In** | Biometric Check In Check Out → Check In |
 | **After 10:00 AM** (before lunch, not yet checked in) | Regular **Check In** (late) | Late minutes = punch time − 10:00 AM |
 | **12:00 PM – 3:00 PM** | Lunch **check in** then **check out** | First punch → Break Start; next → Break End |
 | **4:00 PM – 6:00 PM** | Tea **check in** then **check out** | First punch → Break Start; next → Break End |
-| **After 6:00 PM** (after Office End) | Regular **Check Out** | Biometric Check In Check Out → Check Out |
+| **After 7:00 PM** (after Office End) | Regular **Check Out** | Biometric Check In Check Out → Check Out |
 
 Gaps (already checked in):
 
 | Gap | Result |
 |-----|--------|
-| 9:00 AM – 12:00 PM (already checked in) | Rejected |
+| 10:00 AM – 12:00 PM (already checked in) | Rejected |
 | 3:00 PM – 4:00 PM | Rejected |
+| 6:00 PM – 7:00 PM | Rejected (checkout only after 7:00 PM) |
 
 Within lunch/tea windows the **first** punch is Break Start (check in to break) and the **second** is Break End (check out from break).
 

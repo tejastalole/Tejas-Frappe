@@ -28,7 +28,7 @@ class TestAttendanceState(FrappeTestCase):
 		self._punch("", f"{self.day} 13:45:00")
 		self._punch("", f"{self.day} 16:00:00")
 		self._punch("", f"{self.day} 16:15:00")
-		self._punch("", f"{self.day} 18:03:00")
+		self._punch("", f"{self.day} 19:03:00")
 
 		summary = refresh_attendance_day_summary(self.employee, self.day)
 		self.assertEqual(summary["current_state"], "COMPLETED")
@@ -55,7 +55,7 @@ class TestAttendanceState(FrappeTestCase):
 		category, log_type = resolve_event_type(self.employee, "99", f"{self.day} 13:10:00")
 		self.assertEqual((category, log_type), ("Lunch Break", "Break End"))
 
-	def test_time_routing_tea_and_checkout_after_six(self):
+	def test_time_routing_tea_and_checkout_after_seven(self):
 		self._punch("", f"{self.day} 08:50:00")
 		category, log_type = resolve_event_type(self.employee, "", f"{self.day} 16:05:00")
 		self.assertEqual((category, log_type), ("Tea Break", "Break Start"))
@@ -63,8 +63,13 @@ class TestAttendanceState(FrappeTestCase):
 		category, log_type = resolve_event_type(self.employee, "", f"{self.day} 16:20:00")
 		self.assertEqual((category, log_type), ("Tea Break", "Break End"))
 		self._punch("", f"{self.day} 16:20:00")
-		category, log_type = resolve_event_type(self.employee, "", f"{self.day} 18:10:00")
+		category, log_type = resolve_event_type(self.employee, "", f"{self.day} 19:10:00")
 		self.assertEqual((category, log_type), ("Check In Out", "Check Out"))
+
+	def test_punch_between_tea_and_checkout_rejected(self):
+		self._punch("", f"{self.day} 08:50:00")
+		with self.assertRaises(AttendanceValidationError):
+			self._punch("", f"{self.day} 18:30:00")
 
 	def test_duplicate_check_in_rejected(self):
 		self._punch("", f"{self.day} 08:50:00")
@@ -98,9 +103,18 @@ class TestAttendanceState(FrappeTestCase):
 	def test_checkout_blocked_during_lunch(self):
 		self._punch("", f"{self.day} 08:50:00")
 		self._punch("", f"{self.day} 13:00:00")
-		# After 6 PM resolves to Check Out, but lunch is still active → rejected
+		# After 7 PM resolves to Check Out, but lunch is still active → rejected
 		with self.assertRaises(AttendanceValidationError):
-			self._punch("", f"{self.day} 18:05:00")
+			self._punch("", f"{self.day} 19:05:00")
+
+	def test_tea_allowed_while_lunch_left_open(self):
+		self._punch("", f"{self.day} 08:50:00")
+		self._punch("", f"{self.day} 13:00:00")  # lunch start only
+		self._punch("", f"{self.day} 16:05:00")  # tea should still store
+		self.assertEqual(
+			frappe.db.count("Biometric Tea Break", {"employee": self.employee, "log_type": "Break Start"}),
+			1,
+		)
 
 	def test_late_check_in_before_lunch_window(self):
 		# 09:15 is inside 9–10 AM check-in window → not late
@@ -138,7 +152,7 @@ class TestAttendanceState(FrappeTestCase):
 		self.assertEqual(summary["lunch_actual_duration_minutes"], 45)
 
 	def test_checkout_without_check_in_is_stored(self):
-		self._punch("", f"{self.day} 18:12:00")
+		self._punch("", f"{self.day} 19:12:00")
 		self.assertEqual(
 			frappe.db.count(
 				"Biometric Check In Check Out",

@@ -26,6 +26,12 @@ scheduler_events = {
 
 app_include_js = "/assets/biometric_integration/js/workspace_link_counts.js"
 
+doctype_list_js = {
+	"Biometric Check In Check Out": "biometric_integration/doctype/biometric_check_in_check_out/biometric_check_in_check_out_list.js",
+	"Biometric Lunch Break": "biometric_integration/doctype/biometric_lunch_break/biometric_lunch_break_list.js",
+	"Biometric Tea Break": "biometric_integration/doctype/biometric_tea_break/biometric_tea_break_list.js",
+}
+
 override_whitelisted_methods = {
 	"frappe.desk.desktop.get_desktop_page": "biometric_integration.desk.workspace.get_desktop_page",
 }

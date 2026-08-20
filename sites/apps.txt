@@ -9,6 +9,7 @@ dynamic_workflow_builder
 hrms
 gym_management
 frappe_flow
+zkteco_biometric_integration
 payments
 bulk_data_tools
 boq_management

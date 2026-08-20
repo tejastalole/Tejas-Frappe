@@ -327,3 +327,101 @@ frappe.db.commit()
 2026-08-11 18:14:08,210 INFO ipython frappe.db.commit()
 2026-08-11 18:14:08,210 INFO ipython print("Remaining:", frappe.db.count("Biometric Punch Log"))
 2026-08-11 18:14:08,210 INFO ipython === session end ===
+2026-08-12 09:03:21,352 INFO ipython === bench console session ===
+2026-08-12 09:03:21,352 INFO ipython import frappe
+2026-08-12 09:03:21,352 INFO ipython frappe.connect()
+2026-08-12 09:03:21,352 INFO ipython print("Punch Log count:", frappe.db.count("Biometric Punch Log"))
+2026-08-12 09:03:21,352 INFO ipython print("last_push_at:", frappe.db.get_single_value("Biometric Settings", "last_push_at"))
+2026-08-12 09:03:21,352 INFO ipython dev = frappe.get_all("Biometric Device", fields=["name","serial_number","enabled","last_seen","last_sync","connection_mode"])
+2026-08-12 09:03:21,353 INFO ipython print("Devices:", dev)
+2026-08-12 09:03:21,353 INFO ipython print("Recent punch logs:", frappe.get_all("Biometric Punch Log", fields=["name","user_id","punch_time","creation","processing_status"], order_by="creation desc", limit=5))
+2026-08-12 09:03:21,353 INFO ipython === session end ===
+2026-08-12 09:06:14,367 INFO ipython === bench console session ===
+2026-08-12 09:06:14,367 INFO ipython import frappe
+2026-08-12 09:06:14,367 INFO ipython frappe.connect()
+2026-08-12 09:06:14,367 INFO ipython count = frappe.db.count("Biometric Punch Log")
+2026-08-12 09:06:14,367 INFO ipython print("Deleting", count, "Biometric Punch Log rows")
+2026-08-12 09:06:14,367 INFO ipython frappe.db.sql("DELETE FROM `tabBiometric Punch Log`")
+2026-08-12 09:06:14,367 INFO ipython frappe.db.commit()
+2026-08-12 09:06:14,367 INFO ipython print("Remaining:", frappe.db.count("Biometric Punch Log"))
+2026-08-12 09:06:14,367 INFO ipython === session end ===
+2026-08-12 15:47:35,770 INFO ipython === bench console session ===
+2026-08-12 15:47:35,771 INFO ipython print(frappe.get_installed_apps())
+2026-08-12 15:47:35,771 INFO ipython === session end ===
+2026-08-14 09:31:26,174 INFO ipython === bench console session ===
+2026-08-14 09:31:26,175 INFO ipython import frappe
+2026-08-14 09:31:26,175 INFO ipython from frappe.utils import getdate, today, get_datetime
+2026-08-14 09:31:26,175 INFO ipython today_date = getdate(today())
+2026-08-14 09:31:26,175 INFO ipython print("Today:", today_date)
+2026-08-14 09:31:26,175 INFO ipython # Count to delete vs keep
+2026-08-14 09:31:26,175 INFO ipython all_names = frappe.get_all("Biometric Punch Log", fields=["name", "punch_time", "attendance_date"])
+2026-08-14 09:31:26,175 INFO ipython to_delete = []
+2026-08-14 09:31:26,176 INFO ipython to_keep = []
+2026-08-14 09:31:26,176 INFO ipython for row in all_names:
+    punch_date = getdate(row.punch_time) if row.punch_time else getdate(row.attendance_date) if row.attendance_date else None
+    if punch_date == today_date:
+        to_keep.append(row.name)
+    else:
+        to_delete.append(row.name)
+2026-08-14 09:31:26,176 INFO ipython print(f"Total: {len(all_names)}")
+2026-08-14 09:31:26,176 INFO ipython print(f"Keep (today): {len(to_keep)}")
+2026-08-14 09:31:26,176 INFO ipython print(f"Delete (older): {len(to_delete)}")
+2026-08-14 09:31:26,176 INFO ipython for name in to_delete:
+    frappe.delete_doc("Biometric Punch Log", name, ignore_permissions=True, force=True)
+2026-08-14 09:31:26,177 INFO ipython frappe.db.commit()
+2026-08-14 09:31:26,177 INFO ipython print(f"Deleted {len(to_delete)} Biometric Punch Log entries. Kept {len(to_keep)} from today.")
+2026-08-14 09:31:26,177 INFO ipython === session end ===
+2026-08-14 09:36:04,447 INFO ipython === bench console session ===
+2026-08-14 09:36:04,447 INFO ipython import frappe
+2026-08-14 09:36:04,447 INFO ipython from frappe.utils import getdate, today
+2026-08-14 09:36:04,447 INFO ipython today_date = getdate(today())
+2026-08-14 09:36:04,447 INFO ipython print("Today:", today_date)
+2026-08-14 09:36:04,448 INFO ipython doctypes = [
+    "Biometric Check In Check Out",
+    "Biometric Lunch Break",
+    "Biometric Tea Break",
+]
+2026-08-14 09:36:04,448 INFO ipython for dt in doctypes:
+    rows = frappe.get_all(dt, fields=["name", "attendance_date"])
+    to_delete = []
+    to_keep = []
+    for row in rows:
+        d = getdate(row.attendance_date) if row.attendance_date else None
+        if d == today_date:
+            to_keep.append(row.name)
+        else:
+            to_delete.append(row.name)
+    for name in to_delete:
+        frappe.delete_doc(dt, name, ignore_permissions=True, force=True)
+    print(f"{dt}: total={len(rows)}, deleted={len(to_delete)}, kept_today={len(to_keep)}")
+2026-08-14 09:36:04,448 INFO ipython frappe.db.commit()
+2026-08-14 09:36:04,448 INFO ipython print("Done.")
+2026-08-14 09:36:04,448 INFO ipython === session end ===
+2026-08-14 09:57:59,897 INFO ipython === bench console session ===
+2026-08-14 09:57:59,897 INFO ipython import frappe, os
+2026-08-14 09:57:59,898 INFO ipython from frappe import get_hooks
+2026-08-14 09:57:59,898 INFO ipython hooks = get_hooks("doctype_list_js")
+2026-08-14 09:57:59,898 INFO ipython print("hooks:", hooks)
+2026-08-14 09:57:59,898 INFO ipython # How desk loads it
+2026-08-14 09:57:59,898 INFO ipython from frappe.desk.form.meta import get_code_files_via_hooks
+2026-08-14 09:57:59,898 INFO ipython # check path
+2026-08-14 09:57:59,898 INFO ipython for dt, paths in (hooks or {}).items() if isinstance(hooks, dict) else []:
+    print(dt, paths)
+# get_hooks returns list of dicts merged
+print(frappe.get_hooks("doctype_list_js"))
+2026-08-14 09:57:59,898 INFO ipython === session end ===
+2026-08-14 09:58:08,149 INFO ipython === bench console session ===
+2026-08-14 09:58:08,149 INFO ipython import frappe
+2026-08-14 09:58:08,149 INFO ipython from frappe.desk.form.meta import get_meta
+2026-08-14 09:58:08,149 INFO ipython frappe.clear_cache(doctype="Biometric Check In Check Out")
+2026-08-14 09:58:08,150 INFO ipython meta = frappe.get_meta("Biometric Check In Check Out", cached=False)
+2026-08-14 09:58:08,150 INFO ipython # Form meta with code
+2026-08-14 09:58:08,150 INFO ipython from frappe.desk.form.meta import FormMeta
+2026-08-14 09:58:08,150 INFO ipython fm = FormMeta("Biometric Check In Check Out")
+2026-08-14 09:58:08,150 INFO ipython fm.load_assets() if hasattr(fm, 'load_assets') else None
+2026-08-14 09:58:08,150 INFO ipython # Check __list_js
+2026-08-14 09:58:08,150 INFO ipython print("has __list_js:", hasattr(fm, '_FormMeta__list_js') or fm.get("__list_js") is not None)
+2026-08-14 09:58:08,150 INFO ipython print("list_js:", (fm.get("__list_js") or "")[:300])
+2026-08-14 09:58:08,150 INFO ipython print("---")
+2026-08-14 09:58:08,150 INFO ipython print("as_dict keys with js:", [k for k in fm.as_dict().keys() if "js" in k or "list" in k])
+2026-08-14 09:58:08,150 INFO ipython === session end ===

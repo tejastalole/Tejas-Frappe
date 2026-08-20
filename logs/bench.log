@@ -1310,3 +1310,88 @@ FROM `tabBiometric Settings`;
 2026-08-11 18:12:53,854 INFO /home/frappe/.local/bin/bench schedule
 2026-08-11 18:12:53,868 INFO /home/frappe/.local/bin/bench worker
 2026-08-11 18:14:06,837 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-12 08:59:44,622 INFO /home/frappe/.local/bin/bench use site1.lcal
+2026-08-12 08:59:50,182 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-12 08:59:53,961 INFO /home/frappe/.local/bin/bench start
+2026-08-12 08:59:54,469 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-12 08:59:54,476 INFO /home/frappe/.local/bin/bench worker
+2026-08-12 08:59:54,479 INFO /home/frappe/.local/bin/bench schedule
+2026-08-12 08:59:54,489 INFO /home/frappe/.local/bin/bench watch
+2026-08-12 09:03:18,050 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-12 09:03:32,975 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT name, last_seen, last_sync FROM `tabBiometric Device`;
+2026-08-12 09:04:50,408 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT COUNT(*) punch_logs FROM `tabBiometric Punch Log`; SELECT last_seen, last_sync FROM `tabBiometric Device` WHERE name='NYU7254601554'; SELECT last_push_at FROM `tabSingles` WHERE doctype='Biometric Settings' AND field='last_push_at';
+2026-08-12 09:05:02,528 INFO /home/frappe/.local/bin/bench --site site1.local mariadb -e SELECT COUNT(*) c FROM `tabBiometric Punch Log`; SELECT name, user_id, punch_time, processing_status, creation FROM `tabBiometric Punch Log` ORDER BY creation DESC LIMIT 8;
+2026-08-12 09:06:13,977 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-12 12:00:02,535 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-12 14:27:45,875 INFO /home/frappe/.local/bin/bench start
+2026-08-12 14:27:47,895 INFO /home/frappe/.local/bin/bench schedule
+2026-08-12 14:27:47,922 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-12 14:27:48,166 INFO /home/frappe/.local/bin/bench worker
+2026-08-12 14:27:48,185 INFO /home/frappe/.local/bin/bench watch
+2026-08-12 15:43:27,735 INFO /home/frappe/.local/bin/bench get-app https://github.com/navariltd/zkteco-biometric-integration.git
+2026-08-12 15:43:27,762 LOG Getting zkteco-biometric-integration
+2026-08-12 15:43:27,763 DEBUG cd ./apps && git clone https://github.com/navariltd/zkteco-biometric-integration.git  --depth 1 --origin upstream
+2026-08-12 15:43:43,493 LOG Installing zkteco_biometric_integration
+2026-08-12 15:43:43,546 DEBUG cd /home/frappe/tejas && uv pip install --quiet -e /home/frappe/tejas/apps/zkteco_biometric_integration  --python /home/frappe/tejas/env/bin/python
+2026-08-12 15:43:46,982 DEBUG bench build --app zkteco_biometric_integration
+2026-08-12 15:43:47,553 INFO /home/frappe/.local/bin/bench build --app zkteco_biometric_integration
+2026-08-12 15:44:23,825 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_biometric_integration
+2026-08-12 15:44:33,588 DEBUG cd /home/frappe/tejas && sudo supervisorctl restart frappe:
+2026-08-12 15:44:33,841 WARNING cd /home/frappe/tejas && sudo supervisorctl restart frappe: executed with exit code 2
+2026-08-12 15:44:33,842 WARNING restarting supervisor group `frappe:` failed. Use `bench restart` to retry.
+2026-08-12 15:44:37,907 INFO /home/frappe/.local/bin/bench --site site1.local install-app zkteco_biometric_integration
+2026-08-12 15:45:01,277 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-12 15:45:09,012 INFO /home/frappe/.local/bin/bench start
+2026-08-12 15:45:09,615 INFO /home/frappe/.local/bin/bench schedule
+2026-08-12 15:45:09,620 INFO /home/frappe/.local/bin/bench worker
+2026-08-12 15:45:09,621 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-12 15:45:09,622 INFO /home/frappe/.local/bin/bench watch
+2026-08-12 15:45:11,391 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-12 15:45:36,048 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-12 15:46:59,312 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-12 15:47:33,814 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-12 15:47:41,898 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-12 15:48:56,222 INFO /home/frappe/.local/bin/bench --site site1.local migrate
+2026-08-12 18:00:03,551 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-13 10:03:02,791 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-13 10:03:09,286 INFO /home/frappe/.local/bin/bench start
+2026-08-13 10:03:09,983 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-13 10:03:09,989 INFO /home/frappe/.local/bin/bench watch
+2026-08-13 10:03:10,008 INFO /home/frappe/.local/bin/bench worker
+2026-08-13 10:03:10,020 INFO /home/frappe/.local/bin/bench schedule
+2026-08-13 10:43:05,696 INFO /home/frappe/.local/bin/bench start
+2026-08-13 10:43:06,764 INFO /home/frappe/.local/bin/bench watch
+2026-08-13 10:43:06,770 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-13 10:43:06,821 INFO /home/frappe/.local/bin/bench schedule
+2026-08-13 10:43:06,853 INFO /home/frappe/.local/bin/bench worker
+2026-08-13 12:00:01,692 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-13 18:00:02,319 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-14 09:22:51,921 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-14 09:22:57,315 INFO /home/frappe/.local/bin/bench start
+2026-08-14 09:22:57,803 INFO /home/frappe/.local/bin/bench schedule
+2026-08-14 09:22:57,805 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-14 09:22:57,810 INFO /home/frappe/.local/bin/bench worker
+2026-08-14 09:22:57,813 INFO /home/frappe/.local/bin/bench watch
+2026-08-14 09:31:24,044 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-14 09:36:03,119 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-14 09:48:45,630 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-14 09:48:47,745 INFO /home/frappe/.local/bin/bench build --app biometric_integration
+2026-08-14 09:57:56,109 INFO /home/frappe/.local/bin/bench --site site1.local clear-cache
+2026-08-14 09:57:57,787 INFO /home/frappe/.local/bin/bench --site site1.local execute frappe.utils.change_log.get_versions
+2026-08-14 09:57:58,877 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-14 09:58:06,476 INFO /home/frappe/.local/bin/bench --site site1.local console
+2026-08-14 12:00:01,708 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-17 10:16:07,656 INFO /home/frappe/.local/bin/bench use site1.local
+2026-08-17 10:16:50,342 INFO /home/frappe/.local/bin/bench start
+2026-08-17 10:16:51,886 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-17 10:16:51,888 INFO /home/frappe/.local/bin/bench worker
+2026-08-17 10:16:51,895 INFO /home/frappe/.local/bin/bench schedule
+2026-08-17 10:16:51,905 INFO /home/frappe/.local/bin/bench watch
+2026-08-17 12:00:02,298 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-17 18:00:01,968 INFO /home/frappe/.local/bin/bench --verbose --site all backup
+2026-08-18 09:06:09,733 INFO /home/frappe/.local/bin/bench start
+2026-08-18 09:06:11,643 INFO /home/frappe/.local/bin/bench watch
+2026-08-18 09:06:11,668 INFO /home/frappe/.local/bin/bench worker
+2026-08-18 09:06:11,690 INFO /home/frappe/.local/bin/bench serve --port 8007
+2026-08-18 09:06:11,947 INFO /home/frappe/.local/bin/bench schedule
+2026-08-18 12:00:02,573 INFO /home/frappe/.local/bin/bench --verbose --site all backup

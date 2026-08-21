@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-08-21 17:40:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "symbol",
+  "stream_url",
+  "column_break_1",
+  "last_price",
+  "last_quantity",
+  "last_trade_time",
+  "last_side",
+  "connection_status",
+  "section_break_1",
+  "last_trade_id",
+  "trades_received"
+ ],
+ "fields": [
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enable Live Stream"
+  },
+  {
+   "default": "BTCUSDT",
+   "description": "Binance symbol in uppercase (e.g. BTCUSDT)",
+   "fieldname": "symbol",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Symbol",
+   "reqd": 1
+  },
+  {
+   "default": "wss://stream.binance.com:9443/ws/btcusdt@trade",
+   "description": "Full Binance trade WebSocket URL",
+   "fieldname": "stream_url",
+   "fieldtype": "Data",
+   "label": "Stream URL",
+   "length": 255,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_price",
+   "fieldtype": "Float",
+   "label": "Last Price",
+   "precision": "8",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_quantity",
+   "fieldtype": "Float",
+   "label": "Last Quantity",
+   "precision": "8",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_trade_time",
+   "fieldtype": "Datetime",
+   "label": "Last Trade Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_side",
+   "fieldtype": "Data",
+   "label": "Last Side",
+   "read_only": 1
+  },
+  {
+   "fieldname": "connection_status",
+   "fieldtype": "Data",
+   "label": "Connection Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Stream Stats"
+  },
+  {
+   "fieldname": "last_trade_id",
+   "fieldtype": "Data",
+   "label": "Last Trade ID",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "trades_received",
+   "fieldtype": "Int",
+   "label": "Trades Received",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-08-21 17:40:00.000000",
+ "modified_by": "Administrator",
+ "module": "Currency Info",
+ "name": "Currency Info Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

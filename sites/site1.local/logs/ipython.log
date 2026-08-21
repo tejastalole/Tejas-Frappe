@@ -34,3 +34,65 @@ ws = frappe.get_doc("Workspace", "Easy TimePro")
 2026-08-21 16:06:05,383 INFO ipython print({k2: k[k2] for k2 in ("present_today","complete_today","still_in","avg_hours","punches_week","presence_rate")})
 2026-08-21 16:06:05,383 INFO ipython print("week", k["week_labels"], k["week_totals"])
 2026-08-21 16:06:05,383 INFO ipython === session end ===
+2026-08-21 16:16:41,209 INFO ipython === bench console session ===
+2026-08-21 16:16:41,209 INFO ipython import frappe
+2026-08-21 16:16:41,209 INFO ipython d = frappe.get_doc("Custom HTML Block", "ETP Analytics KPIs")
+2026-08-21 16:16:41,209 INFO ipython print("has etp-an", "etp-an__kpis" in (d.html or ""))
+2026-08-21 16:16:41,209 INFO ipython print("no meters", "etp-kpi__meter" not in (d.html or ""))
+2026-08-21 16:16:41,209 INFO ipython print("script clean", "week_ins" not in (d.script or ""))
+2026-08-21 16:16:41,209 INFO ipython === session end ===
+2026-08-21 17:41:16,691 INFO ipython === bench console session ===
+2026-08-21 17:41:16,691 INFO ipython import frappe
+2026-08-21 17:41:16,692 INFO ipython print("installed", "currencyinfo" in frappe.get_installed_apps())
+2026-08-21 17:41:16,692 INFO ipython print("settings", frappe.db.exists("DocType", "Currency Info Settings"))
+2026-08-21 17:41:16,692 INFO ipython print("page", frappe.db.exists("Page", "currency-info-live"))
+2026-08-21 17:41:16,692 INFO ipython print("ws", frappe.db.exists("Workspace", "Currency Info"))
+2026-08-21 17:41:16,692 INFO ipython s = frappe.get_single("Currency Info Settings")
+2026-08-21 17:41:16,692 INFO ipython print("url", s.stream_url, "enabled", s.enabled)
+2026-08-21 17:41:16,692 INFO ipython from currencyinfo.currency_info.stream import ensure_stream_loop, get_latest_trade
+2026-08-21 17:41:16,692 INFO ipython ensure_stream_loop(force=True)
+2026-08-21 17:41:16,693 INFO ipython import time
+2026-08-21 17:41:16,693 INFO ipython time.sleep(4)
+2026-08-21 17:41:16,693 INFO ipython print("latest", get_latest_trade())
+2026-08-21 17:41:16,693 INFO ipython print("status", frappe.db.get_single_value("Currency Info Settings", "connection_status"))
+2026-08-21 17:41:16,693 INFO ipython print("trades", frappe.db.get_single_value("Currency Info Settings", "trades_received"))
+2026-08-21 17:41:16,693 INFO ipython === session end ===
+2026-08-21 17:41:40,948 INFO ipython === bench console session ===
+2026-08-21 17:41:40,949 INFO ipython import frappe
+2026-08-21 17:41:40,949 INFO ipython print(frappe.db.sql("select name, creation from `tabError Log` where creation > date_sub(now(), interval 10 minute) order by creation desc limit 5", as_dict=True))
+2026-08-21 17:41:40,949 INFO ipython === session end ===
+2026-08-21 17:42:19,037 INFO ipython === bench console session ===
+2026-08-21 17:42:19,037 INFO ipython import frappe
+2026-08-21 17:42:19,038 INFO ipython from currencyinfo.currency_info.stream import get_latest_trade
+2026-08-21 17:42:19,038 INFO ipython print("status", frappe.db.get_single_value("Currency Info Settings", "connection_status"))
+2026-08-21 17:42:19,038 INFO ipython print("trades", frappe.db.get_single_value("Currency Info Settings", "trades_received"))
+2026-08-21 17:42:19,038 INFO ipython print("latest", get_latest_trade())
+2026-08-21 17:42:19,038 INFO ipython print("flag", frappe.cache().get_value("currencyinfo:stream_running"))
+2026-08-21 17:42:19,039 INFO ipython === session end ===
+2026-08-21 17:43:15,823 INFO ipython === bench console session ===
+2026-08-21 17:43:15,823 INFO ipython import frappe
+2026-08-21 17:43:15,824 INFO ipython from currencyinfo.currency_info.stream import get_latest_trade
+2026-08-21 17:43:15,824 INFO ipython print("status", frappe.db.get_single_value("Currency Info Settings", "connection_status"))
+2026-08-21 17:43:15,824 INFO ipython print("trades", frappe.db.get_single_value("Currency Info Settings", "trades_received"))
+2026-08-21 17:43:15,824 INFO ipython print("price", frappe.db.get_single_value("Currency Info Settings", "last_price"))
+2026-08-21 17:43:15,824 INFO ipython print("latest", get_latest_trade())
+2026-08-21 17:43:15,824 INFO ipython print("flag", frappe.cache().get_value("currencyinfo:stream_running"))
+2026-08-21 17:43:15,825 INFO ipython === session end ===
+2026-08-21 17:43:46,457 INFO ipython === bench console session ===
+2026-08-21 17:43:46,457 INFO ipython import json, time
+2026-08-21 17:43:46,457 INFO ipython import websocket
+2026-08-21 17:43:46,457 INFO ipython import frappe
+2026-08-21 17:43:46,458 INFO ipython from currencyinfo.currency_info.stream import parse_trade, _persist_tick, get_stream_url
+2026-08-21 17:43:46,458 INFO ipython url = get_stream_url()
+2026-08-21 17:43:46,458 INFO ipython print("url", url)
+2026-08-21 17:43:46,458 INFO ipython ws = websocket.create_connection(url, timeout=20)
+2026-08-21 17:43:46,458 INFO ipython raw = ws.recv()
+2026-08-21 17:43:46,458 INFO ipython ws.close()
+2026-08-21 17:43:46,458 INFO ipython payload = json.loads(raw)
+2026-08-21 17:43:46,458 INFO ipython tick = parse_trade(payload)
+2026-08-21 17:43:46,459 INFO ipython print("tick", tick)
+2026-08-21 17:43:46,459 INFO ipython _persist_tick(tick, 1)
+2026-08-21 17:43:46,459 INFO ipython frappe.db.commit()
+2026-08-21 17:43:46,459 INFO ipython print("saved price", frappe.db.get_single_value("Currency Info Settings", "last_price"))
+2026-08-21 17:43:46,459 INFO ipython print("status", frappe.db.get_single_value("Currency Info Settings", "connection_status"))
+2026-08-21 17:43:46,460 INFO ipython === session end ===

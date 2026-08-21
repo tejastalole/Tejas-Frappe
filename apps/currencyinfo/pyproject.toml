@@ -1,0 +1,21 @@
+[project]
+name = "currencyinfo"
+authors = [
+    { name = "Tejas", email = "tejas@example.com"}
+]
+description = "Real-time currency / crypto market data from Binance WebSocket"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    "websocket-client>=1.6.0",
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.dev-dependencies]
+
+[deploy.dependencies.apt]
+packages = []

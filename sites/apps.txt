@@ -14,3 +14,4 @@ frappe_flow
 payments
 bulk_data_tools
 boq_management
+currencyinfo

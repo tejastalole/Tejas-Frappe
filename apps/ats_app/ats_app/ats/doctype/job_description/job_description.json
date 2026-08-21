@@ -1,0 +1,123 @@
+{
+ "actions": [],
+ "autoname": "field:job_title",
+ "creation": "2026-08-20 15:55:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "job_title",
+  "status",
+  "experience_required",
+  "education",
+  "section_desc",
+  "description",
+  "required_skills",
+  "preferred_skills",
+  "keywords"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nClosed"
+  },
+  {
+   "fieldname": "experience_required",
+   "fieldtype": "Float",
+   "label": "Experience Required (Years)"
+  },
+  {
+   "fieldname": "education",
+   "fieldtype": "Data",
+   "label": "Education (e.g. BE / BTech / MCA)"
+  },
+  {
+   "fieldname": "section_desc",
+   "fieldtype": "Section Break",
+   "label": "Job Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Job Description",
+   "reqd": 1
+  },
+  {
+   "description": "Comma-separated skills. Example: Python, Frappe, ERPNext, JavaScript",
+   "fieldname": "required_skills",
+   "fieldtype": "Small Text",
+   "label": "Required Skills",
+   "reqd": 1
+  },
+  {
+   "description": "Comma-separated optional skills",
+   "fieldname": "preferred_skills",
+   "fieldtype": "Small Text",
+   "label": "Preferred Skills"
+  },
+  {
+   "description": "Comma-separated keywords from JD",
+   "fieldname": "keywords",
+   "fieldtype": "Small Text",
+   "label": "Keywords"
+  }
+ ],
+ "modified": "2026-08-20 15:55:00.000000",
+ "module": "ATS",
+ "name": "Job Description",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "job_title",
+ "track_changes": 1
+}

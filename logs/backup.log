@@ -532,3 +532,15 @@ Backup Summary for site1.local at 2026-08-18 12:00:32.178421
 Config  : ./site1.local/private/backups/20260818_120005-site1_local-site_config_backup.json 183.0B
 Database: ./site1.local/private/backups/20260818_120005-site1_local-database.sql.gz         1.5MiB
 Backup for Site site1.local has been successfully completed
+set -o pipefail; /usr/bin/mariadb-dump --user=_8ab0834450224295 --host=127.0.0.1 --port=3306 --password=********** --single-transaction --quick --lock-tables=false _8ab0834450224295 | /usr/bin/gzip >> ./site1.local/private/backups/20260820_120004-site1_local-database.sql.gz
+
+Backup Summary for site1.local at 2026-08-20 12:00:26.790953
+Config  : ./site1.local/private/backups/20260820_120004-site1_local-site_config_backup.json 183.0B
+Database: ./site1.local/private/backups/20260820_120004-site1_local-database.sql.gz         1.5MiB
+Backup for Site site1.local has been successfully completed
+set -o pipefail; /usr/bin/mariadb-dump --user=_8ab0834450224295 --host=127.0.0.1 --port=3306 --password=********** --single-transaction --quick --lock-tables=false _8ab0834450224295 | /usr/bin/gzip >> ./site1.local/private/backups/20260821_120003-site1_local-database.sql.gz
+
+Backup Summary for site1.local at 2026-08-21 12:00:20.196749
+Config  : ./site1.local/private/backups/20260821_120003-site1_local-site_config_backup.json 183.0B
+Database: ./site1.local/private/backups/20260821_120003-site1_local-database.sql.gz         1.5MiB
+Backup for Site site1.local has been successfully completed

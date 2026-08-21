@@ -1,0 +1,91 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"hero\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"ETP Workspace Hero\",\"col\":12}},{\"id\":\"sp0\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"flow\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"ETP Flow Strip\",\"col\":12}},{\"id\":\"sp1\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr_overview\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Overview</b></span>\",\"col\":12}},{\"id\":\"nc_emp\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ETP Employee Checkins Today\",\"col\":4}},{\"id\":\"nc_in\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ETP Check Ins\",\"col\":4}},{\"id\":\"nc_out\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"ETP Check Outs\",\"col\":4}},{\"id\":\"sp2\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr_trends\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Analytics</b></span>\",\"col\":12}},{\"id\":\"analytics_kpis\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"ETP Analytics KPIs\",\"col\":12}},{\"id\":\"sp3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"hdr_quick\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"sc_report\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Attendance\",\"col\":3}},{\"id\":\"sc_punches\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Punch Logs\",\"col\":3}},{\"id\":\"sc_emp_checkin\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Checkin\",\"col\":3}},{\"id\":\"sc_settings\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Settings\",\"col\":3}}]",
+ "creation": "2026-08-21 11:25:00",
+ "custom_blocks": [
+  {
+   "custom_block_name": "ETP Workspace Hero",
+   "label": "ETP Workspace Hero"
+  },
+  {
+   "custom_block_name": "ETP Flow Strip",
+   "label": "ETP Flow Strip"
+  },
+  {
+   "custom_block_name": "ETP Analytics KPIs",
+   "label": "ETP Analytics KPIs"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "hr",
+ "idx": 0,
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Easy TimePro",
+ "links": [],
+ "modified": "2026-08-21 16:10:00.000000",
+ "modified_by": "Administrator",
+ "module": "Easy TimePro",
+ "name": "Easy TimePro",
+ "number_cards": [
+  {
+   "label": "ETP Employee Checkins Today",
+   "number_card_name": "ETP Employee Checkins Today"
+  },
+  {
+   "label": "ETP Check Ins",
+   "number_card_name": "ETP Check Ins"
+  },
+  {
+   "label": "ETP Check Outs",
+   "number_card_name": "ETP Check Outs"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 2.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "doc_view": "",
+   "icon": "file",
+   "label": "Daily Attendance",
+   "link_to": "Easy TimePro Daily Attendance",
+   "report_ref_doctype": "Easy TimePro Punch Log",
+   "type": "Report"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "icon": "list",
+   "label": "Punch Logs",
+   "link_to": "Easy TimePro Punch Log",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "List",
+   "icon": "users",
+   "label": "Employee Checkin",
+   "link_to": "Employee Checkin",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Gray",
+   "doc_view": "",
+   "icon": "setting-gear",
+   "label": "Settings",
+   "link_to": "Easy TimePro Settings",
+   "type": "DocType"
+  }
+ ],
+ "title": "Easy TimePro"
+}

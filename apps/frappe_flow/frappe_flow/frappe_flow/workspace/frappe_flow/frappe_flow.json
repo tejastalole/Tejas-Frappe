@@ -110,7 +110,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-08-10 11:21:02.493699",
+ "modified": "2026-08-21 16:04:08.659358",
  "modified_by": "Administrator",
  "module": "Frappe Flow",
  "name": "Frappe Flow",
@@ -119,7 +119,7 @@
  "public": 1,
  "quick_lists": [],
  "roles": [],
- "sequence_id": 2.0,
+ "sequence_id": 4.0,
  "shortcuts": [
   {
    "color": "Blue",

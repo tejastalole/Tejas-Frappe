@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "autoname": "format:ATS-{#####}",
+ "creation": "2026-08-20 15:55:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "candidate_name",
+  "email",
+  "job_description",
+  "resume",
+  "column_break_1",
+  "ats_score",
+  "recommendation",
+  "checked_on",
+  "section_result",
+  "matched_skills",
+  "missing_skills",
+  "matched_keywords",
+  "missing_keywords",
+  "score_breakdown",
+  "resume_text"
+ ],
+ "fields": [
+  {
+   "fieldname": "candidate_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Candidate Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "job_description",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Job Description",
+   "options": "Job Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "resume",
+   "fieldtype": "Attach",
+   "label": "Resume (PDF / DOCX / TXT)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ats_score",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "ATS Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "recommendation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Recommendation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "checked_on",
+   "fieldtype": "Datetime",
+   "label": "Checked On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_result",
+   "fieldtype": "Section Break",
+   "label": "Score Details"
+  },
+  {
+   "fieldname": "matched_skills",
+   "fieldtype": "Small Text",
+   "label": "Matched Skills",
+   "read_only": 1
+  },
+  {
+   "fieldname": "missing_skills",
+   "fieldtype": "Small Text",
+   "label": "Missing Skills",
+   "read_only": 1
+  },
+  {
+   "fieldname": "matched_keywords",
+   "fieldtype": "Small Text",
+   "label": "Matched Keywords",
+   "read_only": 1
+  },
+  {
+   "fieldname": "missing_keywords",
+   "fieldtype": "Small Text",
+   "label": "Missing Keywords",
+   "read_only": 1
+  },
+  {
+   "fieldname": "score_breakdown",
+   "fieldtype": "Text Editor",
+   "label": "Score Breakdown",
+   "read_only": 1
+  },
+  {
+   "fieldname": "resume_text",
+   "fieldtype": "Long Text",
+   "label": "Extracted Resume Text",
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-08-20 15:55:00.000000",
+ "module": "ATS",
+ "name": "ATS Resume Check",
+ "naming_rule": "Expression",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "candidate_name",
+ "track_changes": 1
+}

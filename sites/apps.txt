@@ -1,4 +1,5 @@
 frappe
+easytimepro
 whatsapp_integration
 erpnext
 ai_resume_parser
@@ -8,8 +9,8 @@ biometric_integration
 dynamic_workflow_builder
 hrms
 gym_management
+ats_app
 frappe_flow
-zkteco_biometric_integration
 payments
 bulk_data_tools
 boq_management

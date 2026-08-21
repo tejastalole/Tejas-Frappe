@@ -1,0 +1,51 @@
+/* Easy TimePro — workspace only; Punch Log stays white */
+
+body.etp-glass-workspace .layout-main-section {
+	background: #f5f7fa !important;
+}
+
+body.etp-glass-workspace .widget.number-widget-box,
+body.etp-glass-workspace .number-card-loading,
+body.etp-glass-workspace .widget.shortcut-widget-box,
+body.etp-glass-workspace .shortcut-widget-box,
+body.etp-glass-workspace .widget.chart-widget,
+body.etp-glass-workspace .dashboard-widget-box,
+body.etp-glass-workspace .widget.dashboard-widget-box {
+	border-radius: 10px !important;
+	border: 1px solid #e4e7ec !important;
+	background: #ffffff !important;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04) !important;
+}
+
+/* Analytics KPI custom block: no outer chrome / duplicate title */
+body.etp-glass-workspace .widget.custom-block-widget-box[data-widget-name="ETP Analytics KPIs"],
+body.etp-glass-workspace .custom-block-widget-box.full-width {
+	border: none !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+}
+body.etp-glass-workspace .widget.custom-block-widget-box .widget-head,
+body.etp-glass-workspace .custom-block-widget-box .widget-control {
+	display: none !important;
+}
+
+/* Global hard override for Punch Log list — no green/mint tint */
+body[data-route*="Punch Log"] .layout-main-section,
+body[data-route*="punch-log"] .layout-main-section,
+body[data-route*="Punch Log"] .layout-main-section-wrapper,
+body[data-route*="punch-log"] .layout-main-section-wrapper,
+body[data-route*="Punch Log"] .frappe-list,
+body[data-route*="punch-log"] .frappe-list,
+body[data-route*="Punch Log"] .frappe-list .result,
+body[data-route*="punch-log"] .frappe-list .result,
+body[data-route*="Punch Log"] .page-form,
+body[data-route*="punch-log"] .page-form,
+body[data-route*="Punch Log"] .list-paging-area,
+body[data-route*="punch-log"] .list-paging-area,
+body[data-route*="Punch Log"] .frappe-card,
+body[data-route*="punch-log"] .frappe-card {
+	background: #ffffff !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+}

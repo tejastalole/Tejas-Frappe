@@ -45,14 +45,18 @@
         "idx": 5,
         "version": "0.0.1"
     },
-    "zkteco_biometric_integration": {
-        "is_repo": true,
-        "resolution": {
-            "commit_hash": "57a160c294ca8226b84d368cb3d319b865241d1a",
-            "branch": "develop"
-        },
+    "ats_app": {
+        "is_repo": false,
+        "resolution": "not a repo",
         "required": [],
         "idx": 6,
+        "version": "0.0.1"
+    },
+    "easytimepro": {
+        "is_repo": false,
+        "resolution": "not a repo",
+        "required": [],
+        "idx": 7,
         "version": "0.0.1"
     }
 }

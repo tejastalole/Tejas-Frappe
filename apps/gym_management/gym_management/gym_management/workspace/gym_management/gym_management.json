@@ -108,7 +108,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-08-10 11:21:02.580681",
+ "modified": "2026-08-21 16:04:08.901438",
  "modified_by": "Administrator",
  "module": "Gym Management",
  "name": "Gym Management",
@@ -118,7 +118,7 @@
  "public": 1,
  "quick_lists": [],
  "roles": [],
- "sequence_id": 3.0,
+ "sequence_id": 5.0,
  "shortcuts": [
   {
    "color": "Green",
